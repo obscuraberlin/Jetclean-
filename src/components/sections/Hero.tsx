@@ -121,7 +121,7 @@ export function Hero() {
               />
             </div>
             {siteConfig.reviews ? (
-              <figcaption className="absolute bottom-10 -left-6 z-10 flex animate-float items-center gap-3 rounded-2xl bg-white/95 px-4 py-3 shadow-lift ring-1 ring-line backdrop-blur">
+              <figcaption className="absolute right-2 bottom-8 z-10 flex animate-float items-center gap-3 rounded-2xl bg-white/95 px-4 py-3 shadow-lift ring-1 ring-line backdrop-blur">
                 <span className="flex items-center gap-0.5 text-brand-500" aria-hidden="true">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <Star key={i} className="size-3.5 fill-current" />

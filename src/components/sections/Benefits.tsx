@@ -6,7 +6,7 @@ import { benefits } from '@/content/benefits';
 export function Benefits() {
   return (
     <section className="relative overflow-hidden section-y" aria-labelledby="benefits-title">
-      <div aria-hidden="true" className="blob -top-20 -left-32 size-[26rem] bg-brand-500/15" />
+      <div aria-hidden="true" className="blob -top-20 -left-32 size-[26rem] bg-brand-500/10" />
       <div
         aria-hidden="true"
         className="blob right-[-8rem] bottom-[-6rem] size-[22rem] bg-navy-200/40 [animation-delay:-6s]"
