@@ -16,13 +16,13 @@ export type ClientLogo = {
 
 export const clientLogos: ClientLogo[] = [
   // Logos aus der gelieferten Design-Vorlage – Freigabe der Kunden vor Livegang prüfen!
-  { name: 'Mercedes-Benz', src: '/images/logos/mercedes.png', isPlaceholder: true },
-  { name: 'Charité', src: '/images/logos/charite.png', isPlaceholder: true },
-  { name: 'Deutsche Bahn', src: '/images/logos/db.png', isPlaceholder: true },
-  { name: 'Zalando', src: '/images/logos/zalando.png', isPlaceholder: true },
-  { name: 'Siemens', src: '/images/logos/siemens.png', isPlaceholder: true },
-  { name: 'Berliner Volksbank', src: '/images/logos/volksbank.png', isPlaceholder: true },
-  { name: 'Bayer', src: '/images/logos/bayer.png', isPlaceholder: true },
+  { name: 'Mercedes-Benz', src: '/images/logos/mercedes.webp', isPlaceholder: true },
+  { name: 'Charité', src: '/images/logos/charite.webp', isPlaceholder: true },
+  { name: 'Deutsche Bahn', src: '/images/logos/db.webp', isPlaceholder: true },
+  { name: 'Zalando', src: '/images/logos/zalando.webp', isPlaceholder: true },
+  { name: 'Siemens', src: '/images/logos/siemens.webp', isPlaceholder: true },
+  { name: 'Berliner Volksbank', src: '/images/logos/volksbank.webp', isPlaceholder: true },
+  { name: 'Bayer', src: '/images/logos/bayer.webp', isPlaceholder: true },
 ];
 
 export const logoStripHeadline = 'Reinigungspartner für Unternehmen und Institutionen in Berlin.';
