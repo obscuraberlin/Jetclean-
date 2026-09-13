@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { PageHero } from '@/components/sections/PageHero';
 import { LegalNotice } from '@/components/ui/LegalNotice';
 import { Prose } from '@/components/ui/Prose';
@@ -110,7 +111,7 @@ export default function TermsPage() {
             <h2>§ 10 Datenschutz</h2>
             <p>
               Die Verarbeitung personenbezogener Daten erfolgt gemäß unserer{' '}
-              <a href="/datenschutz">Datenschutzerklärung</a>. Soweit JETCLEAN im Rahmen der
+              <Link href="/datenschutz">Datenschutzerklärung</Link>. Soweit JETCLEAN im Rahmen der
               Leistungserbringung Zugang zu personenbezogenen Daten des Auftraggebers erhält,
               schließen die Parteien bei Bedarf eine Vereinbarung zur Auftragsverarbeitung nach Art.
               28 DSGVO.

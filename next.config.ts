@@ -21,15 +21,27 @@ const contentSecurityPolicy = [
   "frame-ancestors 'none'",
 ].join('; ');
 
+/**
+ * Statischer Export (z. B. Vorschau auf GitHub Pages): `STATIC_EXPORT=1 npm run build`.
+ * Server-Funktionen (Lead-Speicherung, Admin) stehen dort nicht zur Verfügung –
+ * siehe .github/workflows/pages.yml.
+ */
+const isStaticExport = process.env.STATIC_EXPORT === '1';
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  ...(isStaticExport ? { output: 'export', trailingSlash: true } : {}),
+  ...(basePath ? { basePath } : {}),
   images: {
     formats: ['image/avif', 'image/webp'],
     qualities: [70, 80, 90],
     deviceSizes: [390, 430, 640, 768, 1024, 1280, 1536, 1920],
+    unoptimized: isStaticExport,
   },
   async headers() {
+    if (isStaticExport) return [];
     return [
       {
         source: '/(.*)',

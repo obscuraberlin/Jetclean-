@@ -1,0 +1,55 @@
+name: Preview (GitHub Pages)
+
+# Statische Vorschau der öffentlichen Website ohne Backend.
+# Das Angebotsformular zeigt hier nur einen simulierten Erfolg (keine Speicherung).
+on:
+  push:
+    branches: [main, claude/jetclean-production-website-ht6gi4]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Demo-Modus vorbereiten (kein Server, kein Admin)
+        run: |
+          cp src/lib/leads/actions.demo.ts src/lib/leads/actions.ts
+          rm -rf src/app/admin src/lib/admin src/components/admin src/proxy.ts
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - name: Statischen Export bauen
+        env:
+          STATIC_EXPORT: '1'
+          NEXT_PUBLIC_BASE_PATH: /Jetclean-
+          NEXT_PUBLIC_SITE_URL: https://obscuraberlin.github.io/Jetclean-
+        run: npm run build
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
