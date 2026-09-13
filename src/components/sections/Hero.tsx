@@ -35,16 +35,16 @@ export function Hero() {
       {/* Desktop: Foto hinter der rechten Hälfte */}
       <OfficeBackdrop className="pointer-events-none absolute inset-y-0 right-0 hidden w-[62%] lg:block" />
 
-      <div className="relative container-site pt-8 pb-6 sm:pt-12 sm:pb-8 lg:pt-20 lg:pb-24">
+      <div className="relative container-site pt-7 pb-5 sm:pt-10 sm:pb-7 lg:pt-20 lg:pb-24">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-8 xl:gap-10">
           {/* Text */}
           <div className="lg:col-span-7 xl:col-span-5">
-            <p className="text-xs font-semibold tracking-[0.16em] text-brand-600 uppercase">
+            <p className="hidden text-xs font-semibold tracking-[0.16em] text-brand-600 uppercase lg:block">
               Seit über {company.yearsOfExperience} Jahren in Berlin
             </p>
             <h1
               id="hero-title"
-              className="mt-3 text-[2rem] leading-[1.08] sm:text-5xl lg:mt-4 lg:text-[2.875rem] lg:leading-[1.06] xl:text-[3rem] 2xl:text-[3.375rem]"
+              className="text-[2rem] leading-[1.08] sm:text-5xl lg:mt-4 lg:text-[2.875rem] lg:leading-[1.06] xl:text-[3rem] 2xl:text-[3.375rem]"
             >
               {/* Mobil/Tablet: kurze Überschrift, Desktop: ausführlich */}
               <span className="lg:hidden">
@@ -56,7 +56,7 @@ export function Hero() {
                 <span className="text-accent">auf die Sie sich verlassen können.</span>
               </span>
             </h1>
-            <p className="mt-3 max-w-xl text-base font-medium text-navy-800 sm:text-xl lg:mt-5 lg:text-xl">
+            <p className="mt-5 hidden max-w-xl text-xl font-medium text-navy-800 lg:block">
               {company.tagline}
             </p>
             <p className="mt-3 hidden max-w-xl text-base leading-relaxed text-muted lg:block">
