@@ -1,5 +1,5 @@
 import type { LucideIcon } from 'lucide-react';
-import { Award, Leaf, Users, HeartHandshake, ShieldCheck, ClipboardCheck } from 'lucide-react';
+import { Award, Leaf, Users, HeartHandshake, ShieldCheck } from 'lucide-react';
 import { company } from './company';
 
 export type Benefit = {
@@ -36,6 +36,5 @@ export const benefits: Benefit[] = [
 export const heroTrustpoints: { label: string; icon: LucideIcon }[] = [
   { label: `Über ${company.yearsOfExperience} Jahre Erfahrung`, icon: ShieldCheck },
   { label: 'Fester Ansprechpartner', icon: Users },
-  { label: 'Geschulte Reinigungsteams', icon: Award },
-  { label: 'Qualitätskontrollen', icon: ClipboardCheck },
+  { label: 'Nachhaltige Reinigung', icon: Leaf },
 ];

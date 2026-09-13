@@ -14,11 +14,22 @@ const heroImage = {
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-surface-gradient" aria-labelledby="hero-title">
-      {/* Dezenter Lichtschein oben rechts */}
+      {/* Großflächiges Büro-Foto hinter Bild und Formular (Desktop) */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-40 right-[-10%] h-[36rem] w-[36rem] rounded-full bg-[radial-gradient(closest-side,rgb(242_106_27/0.10),transparent)]"
-      />
+        className="pointer-events-none absolute inset-y-0 right-0 hidden w-[62%] lg:block"
+      >
+        <Image
+          src="/images/hero/office.webp"
+          alt=""
+          fill
+          priority
+          sizes="62vw"
+          className="object-cover object-left"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/55 to-white/10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-white/40" />
+      </div>
       <div className="relative container-site pt-10 pb-12 sm:pt-14 sm:pb-16 lg:pt-20 lg:pb-24">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-8 xl:gap-10">
           {/* Text */}
@@ -28,9 +39,9 @@ export function Hero() {
             </p>
             <h1
               id="hero-title"
-              className="mt-4 text-[2.375rem] leading-[1.06] sm:text-5xl lg:text-[3rem] xl:text-[3.125rem] 2xl:text-[3.5rem]"
+              className="mt-4 text-[2.375rem] leading-[1.06] sm:text-5xl lg:text-[2.875rem] xl:text-[3rem] 2xl:text-[3.375rem]"
             >
-              Gebäudereinigung für Berliner Unternehmen,{' '}
+              Gebäude&shy;reinigung für Berliner Unternehmen,{' '}
               <span className="text-accent">auf die Sie sich verlassen können.</span>
             </h1>
             <p className="mt-5 max-w-xl text-lg font-medium text-navy-800 sm:text-xl">
@@ -41,7 +52,7 @@ export function Hero() {
               Praxen, Gewerbe und Hausverwaltungen in ganz Berlin.
             </p>
 
-            <ul className="mt-7 grid max-w-xl grid-cols-2 gap-x-6 gap-y-4 text-sm font-medium text-navy-800">
+            <ul className="mt-7 grid max-w-xl grid-cols-2 gap-x-6 gap-y-4 text-sm font-medium text-navy-800 sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3">
               {heroTrustpoints.map((point) => (
                 <li key={point.label} className="flex items-center gap-3">
                   <point.icon
@@ -54,9 +65,14 @@ export function Hero() {
               ))}
             </ul>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <QuoteButton source="hero" size="lg" className="lg:hidden" />
-              <Button href="/referenzen" variant="secondary" size="lg">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
+              <QuoteButton source="hero" size="lg" />
+              <Button
+                href="/referenzen"
+                variant="link"
+                size="lg"
+                className="justify-center font-semibold text-navy-900 hover:text-brand-600"
+              >
                 Referenzen ansehen
                 <ArrowRight className={buttonIconClass} aria-hidden="true" />
               </Button>
@@ -65,7 +81,7 @@ export function Hero() {
 
           {/* Bild – kompakt auf Mobile/Tablet, schmales Hochformat auf XL */}
           <figure className="relative lg:hidden xl:col-span-3 xl:block">
-            <div className="relative aspect-[16/10] overflow-hidden rounded-3xl sm:aspect-[2/1] xl:aspect-auto xl:h-full xl:min-h-[34rem]">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-3xl sm:aspect-[2/1] xl:aspect-auto xl:h-full xl:min-h-[34rem] xl:rounded-none xl:[mask-image:linear-gradient(to_right,transparent,black_14%,black_86%,transparent)]">
               <Image
                 src={heroImage.src}
                 alt={heroImage.alt}
@@ -78,9 +94,9 @@ export function Hero() {
               />
               <div
                 aria-hidden="true"
-                className="absolute inset-0 bg-gradient-to-t from-navy-950/40 via-transparent to-transparent"
+                className="absolute inset-0 bg-gradient-to-t from-navy-950/40 via-transparent to-transparent xl:hidden"
               />
-              <figcaption className="absolute bottom-4 left-4 rounded-full bg-white/90 px-3.5 py-1.5 font-display text-sm font-bold text-navy-950 shadow-soft backdrop-blur">
+              <figcaption className="absolute bottom-4 left-4 rounded-full bg-white/90 px-3.5 py-1.5 font-display text-sm font-bold text-navy-950 shadow-soft backdrop-blur xl:hidden">
                 {company.claim}
               </figcaption>
             </div>

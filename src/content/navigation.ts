@@ -10,7 +10,6 @@ export const mainNavigation: NavItem[] = [
   { label: 'Referenzen', href: '/referenzen' },
   { label: 'Über uns', href: '/ueber-uns' },
   { label: 'Nachhaltigkeit', href: '/nachhaltigkeit' },
-  { label: 'Karriere', href: '/karriere' },
   { label: 'Kontakt', href: '/kontakt' },
 ];
 
