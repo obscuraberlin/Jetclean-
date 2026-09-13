@@ -1,4 +1,4 @@
-import { ArrowRight, Check } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import { QuoteButton } from '@/components/quote/QuoteButton';
 import { QuoteForm } from '@/components/quote/QuoteForm';
@@ -41,13 +41,15 @@ export function Hero() {
               Praxen, Gewerbe und Hausverwaltungen in ganz Berlin.
             </p>
 
-            <ul className="mt-7 grid max-w-xl grid-cols-2 gap-x-6 gap-y-3 text-sm font-medium text-navy-800">
+            <ul className="mt-7 grid max-w-xl grid-cols-2 gap-x-6 gap-y-4 text-sm font-medium text-navy-800">
               {heroTrustpoints.map((point) => (
-                <li key={point} className="flex items-center gap-2.5">
-                  <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-success-50 text-success-600">
-                    <Check className="size-3" strokeWidth={3} aria-hidden="true" />
-                  </span>
-                  {point}
+                <li key={point.label} className="flex items-center gap-3">
+                  <point.icon
+                    className="size-6 shrink-0 text-brand-500"
+                    strokeWidth={1.75}
+                    aria-hidden="true"
+                  />
+                  {point.label}
                 </li>
               ))}
             </ul>

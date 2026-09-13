@@ -60,7 +60,7 @@ export function MobileCTA() {
                 track('cta_click', { source: 'sticky-mobile' });
                 open('sticky-mobile');
               }}
-              className="group inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-brand-600 text-[0.9375rem] font-semibold text-white shadow-brand transition-colors hover:bg-brand-700"
+              className="group inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-brand-500 text-[0.9375rem] font-semibold text-white shadow-brand transition-colors hover:bg-brand-600"
             >
               Kostenloses Angebot
               <ArrowRight

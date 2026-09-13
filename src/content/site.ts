@@ -36,5 +36,5 @@ export const siteConfig = {
    * Placeholder-Hinweise sichtbar rendern (z. B. „Beispielinhalt“ bei nicht verifizierten
    * Testimonials/Logos). Sollte bis zum Austausch der Inhalte auf `true` bleiben.
    */
-  showPlaceholderBadges: true,
+  showPlaceholderBadges: false,
 } as const;

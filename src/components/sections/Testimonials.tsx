@@ -1,6 +1,7 @@
 'use client';
 
 import { ArrowRight, Quote, Star } from 'lucide-react';
+import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { PlaceholderBadge } from '@/components/ui/Badge';
 import { Button, buttonIconClass } from '@/components/ui/Button';
@@ -113,12 +114,22 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
         „{testimonial.quote}“
       </blockquote>
       <figcaption className="mt-5 flex items-center gap-3">
-        <span
-          className="flex size-11 shrink-0 items-center justify-center rounded-full bg-navy-950 font-display text-sm font-bold text-white"
-          aria-hidden="true"
-        >
-          {initials(testimonial.name)}
-        </span>
+        {testimonial.avatar ? (
+          <Image
+            src={testimonial.avatar}
+            alt=""
+            width={44}
+            height={44}
+            className="size-11 shrink-0 rounded-full object-cover"
+          />
+        ) : (
+          <span
+            className="flex size-11 shrink-0 items-center justify-center rounded-full bg-navy-950 font-display text-sm font-bold text-white"
+            aria-hidden="true"
+          >
+            {initials(testimonial.name)}
+          </span>
+        )}
         <span className="min-w-0">
           <span className="block text-sm font-bold text-navy-950">{testimonial.name}</span>
           <span className="block text-xs leading-snug text-muted">

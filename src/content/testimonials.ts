@@ -28,6 +28,7 @@ export const testimonials: Testimonial[] = [
     role: 'Geschäftsführer',
     company: 'IT-Unternehmen',
     rating: 5,
+    avatar: '/images/testimonials/thomas.webp',
     isPlaceholder: true,
   },
   {
@@ -38,6 +39,7 @@ export const testimonials: Testimonial[] = [
     role: 'Facility Managerin',
     company: 'Immobilienverwaltung',
     rating: 5,
+    avatar: '/images/testimonials/sabine.webp',
     isPlaceholder: true,
   },
   {
@@ -48,6 +50,7 @@ export const testimonials: Testimonial[] = [
     role: 'Leitung Immobilienmanagement',
     company: 'Wohnungsunternehmen',
     rating: 5,
+    avatar: '/images/testimonials/markus.webp',
     isPlaceholder: true,
   },
 ];

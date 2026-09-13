@@ -55,7 +55,7 @@ function LogoItem({ name, src }: { name: string; src?: string }) {
         alt={name}
         width={140}
         height={40}
-        className="h-8 w-auto opacity-70 grayscale transition-opacity hover:opacity-100 sm:h-9"
+        className="h-9 w-auto opacity-90 mix-blend-multiply transition-opacity hover:opacity-100 sm:h-11"
       />
     );
   }

@@ -15,13 +15,14 @@ export type ClientLogo = {
 };
 
 export const clientLogos: ClientLogo[] = [
-  { name: 'Musterkunde Automotive', isPlaceholder: true },
-  { name: 'Klinikum Beispiel', isPlaceholder: true },
-  { name: 'Beispiel Bahn', isPlaceholder: true },
-  { name: 'Fashion E-Commerce', isPlaceholder: true },
-  { name: 'Technologiekonzern', isPlaceholder: true },
-  { name: 'Volksbank Muster', isPlaceholder: true },
-  { name: 'Pharma Beispiel', isPlaceholder: true },
+  // Logos aus der gelieferten Design-Vorlage – Freigabe der Kunden vor Livegang prüfen!
+  { name: 'Mercedes-Benz', src: '/images/logos/mercedes.png', isPlaceholder: true },
+  { name: 'Charité', src: '/images/logos/charite.png', isPlaceholder: true },
+  { name: 'Deutsche Bahn', src: '/images/logos/db.png', isPlaceholder: true },
+  { name: 'Zalando', src: '/images/logos/zalando.png', isPlaceholder: true },
+  { name: 'Siemens', src: '/images/logos/siemens.png', isPlaceholder: true },
+  { name: 'Berliner Volksbank', src: '/images/logos/volksbank.png', isPlaceholder: true },
+  { name: 'Bayer', src: '/images/logos/bayer.png', isPlaceholder: true },
 ];
 
 export const logoStripHeadline = 'Reinigungspartner für Unternehmen und Institutionen in Berlin.';
