@@ -9,6 +9,7 @@ export type AnalyticsEvent =
   | 'quote_step_completed'
   | 'quote_submitted'
   | 'quote_failed'
+  | 'callback_submitted'
   | 'phone_click'
   | 'cta_click';
 

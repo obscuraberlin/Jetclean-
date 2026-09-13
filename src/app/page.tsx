@@ -6,6 +6,9 @@ import { CtaSection } from '@/components/sections/CtaSection';
 import { FaqSection } from '@/components/sections/FaqSection';
 import { Hero } from '@/components/sections/Hero';
 import { LogoStrip } from '@/components/sections/LogoStrip';
+import { ProcessSteps } from '@/components/sections/ProcessSteps';
+import { Promises } from '@/components/sections/Promises';
+import { ServiceArea } from '@/components/sections/ServiceArea';
 import { ServicesCarousel } from '@/components/sections/ServicesCarousel';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { faqs, homepageFaqCount } from '@/content/faqs';
@@ -27,7 +30,10 @@ export default function HomePage() {
       <ServicesCarousel />
       <BeforeAfterSection />
       <Benefits />
+      <ProcessSteps />
+      <Promises />
       <Testimonials />
+      <ServiceArea />
       <FaqSection />
       <CtaSection />
       {siteConfig.seo.enableFaqSchema ? (

@@ -93,6 +93,44 @@ export const leadSchema = stepServiceSchema
 
 export type LeadInput = z.infer<typeof leadSchema>;
 
+/** Wunschzeit für einen Rückruf */
+export const callbackTimeOptions = [
+  { value: 'asap', label: 'So schnell wie möglich' },
+  { value: 'morning', label: 'Vormittags (8 – 12 Uhr)' },
+  { value: 'afternoon', label: 'Nachmittags (12 – 18 Uhr)' },
+] as const;
+
+/** Kurzformular „Rückruf anfordern“ – bewusst nur wenige Felder. */
+export const callbackSchema = z
+  .object({
+    contact_name: trimmed(120).min(2, 'Bitte geben Sie Ihren Namen an.'),
+    phone: z
+      .string()
+      .trim()
+      .min(6, 'Bitte geben Sie eine Telefonnummer an.')
+      .max(40)
+      .regex(/^[+\d\s()/-]+$/, 'Bitte nur Ziffern, Leerzeichen, +, /, ( ) oder - verwenden.'),
+    company: trimmed(120).optional().or(z.literal('')),
+    postal_code: z
+      .string()
+      .trim()
+      .regex(/^\d{5}$/, 'Bitte eine gültige fünfstellige Postleitzahl eingeben.'),
+    callback_time: z.enum(enumValues(callbackTimeOptions), {
+      message: 'Bitte wählen Sie eine Wunschzeit.',
+    }),
+    consent_privacy: z.literal(true, {
+      message: 'Bitte stimmen Sie der Verarbeitung Ihrer Daten zu.',
+    }),
+    source: trimmed(60).optional().or(z.literal('')),
+  })
+  .merge(attributionSchema)
+  .merge(antiSpamSchema);
+
+export type CallbackInput = z.infer<typeof callbackSchema>;
+
+export const labelForCallbackTime = (value: string) =>
+  callbackTimeOptions.find((o) => o.value === value)?.label ?? value;
+
 export const stepSchemas = [
   stepServiceSchema,
   stepAreaSchema,
@@ -101,7 +139,7 @@ export const stepSchemas = [
   stepContactSchema,
 ] as const;
 
-export type FieldErrors = Partial<Record<keyof LeadInput, string>>;
+export type FieldErrors = Partial<Record<keyof LeadInput | 'callback_time', string>>;
 
 /** Zod-Issues in ein flaches Fehlerobjekt (erste Meldung je Feld) umwandeln. */
 export function toFieldErrors(error: z.ZodError): FieldErrors {

@@ -23,7 +23,7 @@ export default defineConfig({
     command: `npm run start -- --port ${port}`,
     url: baseURL,
     // Ohne Supabase-Zugang landen Test-Leads in .data/leads.jsonl statt in der DB.
-    env: { LEAD_STORE: 'file' },
+    env: { LEAD_STORE: 'file', LEAD_RATE_LIMIT_MAX: '100' },
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
   },

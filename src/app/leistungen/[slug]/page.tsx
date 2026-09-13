@@ -7,6 +7,7 @@ import { QuoteButton } from '@/components/quote/QuoteButton';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { CtaSection } from '@/components/sections/CtaSection';
 import { PageHero } from '@/components/sections/PageHero';
+import { ProcessSteps } from '@/components/sections/ProcessSteps';
 import { Accordion } from '@/components/ui/Accordion';
 import { Button, buttonIconClass } from '@/components/ui/Button';
 import { IconBox } from '@/components/ui/IconBox';
@@ -142,43 +143,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<Pa
       </section>
 
       {/* Ablauf */}
-      <section className="section-y" aria-labelledby="process-title">
-        <div className="container-site">
-          <SectionHeading
-            id="process-title"
-            eyebrow="So läuft es ab"
-            title="In vier Schritten zum passenden Reinigungskonzept."
-          />
-          <RevealGroup as="ol" className="mt-8 grid gap-6 sm:grid-cols-2 lg:mt-12 lg:grid-cols-4">
-            {[
-              {
-                title: 'Anfrage',
-                text: 'Sie beschreiben Ihr Objekt in 60 Sekunden über das Formular oder telefonisch.',
-              },
-              {
-                title: 'Besichtigung',
-                text: 'Wir sehen uns die Flächen an und klären Anforderungen, Zeiten und Besonderheiten.',
-              },
-              {
-                title: 'Angebot',
-                text: 'Sie erhalten ein transparentes Angebot mit klarem Leistungsverzeichnis.',
-              },
-              {
-                title: 'Start',
-                text: 'Ihr festes Team beginnt – begleitet von Ihrem persönlichen Ansprechpartner.',
-              },
-            ].map((step, index) => (
-              <RevealItem key={step.title} as="li" className="relative pl-14">
-                <span className="absolute top-0 left-0 flex size-10 items-center justify-center rounded-full bg-navy-950 font-display text-sm font-bold text-white">
-                  {index + 1}
-                </span>
-                <h3 className="text-base font-bold">{step.title}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted">{step.text}</p>
-              </RevealItem>
-            ))}
-          </RevealGroup>
-        </div>
-      </section>
+      <ProcessSteps />
 
       {/* FAQ zur Leistung */}
       {service.faqs.length > 0 ? (

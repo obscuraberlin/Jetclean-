@@ -1,5 +1,6 @@
-import { Phone } from 'lucide-react';
+import { Phone, PhoneCall } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { QuoteButton } from '@/components/quote/QuoteButton';
 import { Reveal } from '@/components/ui/Reveal';
 import { company } from '@/content/company';
@@ -47,6 +48,13 @@ export function CtaSection({
                 <p className="mt-3 max-w-2xl text-base leading-relaxed text-navy-200 sm:text-lg">
                   {text}
                 </p>
+                <Link
+                  href="/kontakt#rueckruf"
+                  className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-white/85 underline-offset-4 hover:text-white hover:underline"
+                >
+                  <PhoneCall className="size-4 text-brand-400" aria-hidden="true" />
+                  Lieber zurückrufen lassen? Rückruf anfordern
+                </Link>
               </div>
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center lg:col-span-4 lg:flex-col lg:items-stretch">
                 <QuoteButton source={source} size="lg" className="w-full sm:w-auto lg:w-full">

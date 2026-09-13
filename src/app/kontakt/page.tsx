@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import { Clock, Mail, MapPin, Phone } from 'lucide-react';
+import { CallbackForm } from '@/components/quote/CallbackForm';
 import { QuoteForm } from '@/components/quote/QuoteForm';
 import { FaqSection } from '@/components/sections/FaqSection';
 import { PageHero } from '@/components/sections/PageHero';
+import { ServiceArea } from '@/components/sections/ServiceArea';
 import { company, fullAddress } from '@/content/company';
 import { buildMetadata } from '@/lib/seo';
 import { telHref } from '@/lib/utils';
@@ -67,6 +69,15 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+      <section className="section-y-sm pt-0" aria-labelledby="rueckruf-title" id="rueckruf">
+        <div className="container-site">
+          <h2 id="rueckruf-title" className="sr-only">
+            Rückruf anfordern
+          </h2>
+          <CallbackForm source="kontakt-callback" className="scroll-mt-24" />
+        </div>
+      </section>
+      <ServiceArea withCta={false} />
       <FaqSection all id="faq" />
     </>
   );

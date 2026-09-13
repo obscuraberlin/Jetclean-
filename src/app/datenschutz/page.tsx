@@ -62,12 +62,15 @@ export default function PrivacyPage() {
               Website). Mit dem Hosting-Anbieter besteht ein Vertrag zur Auftragsverarbeitung.
             </p>
 
-            <h2>4. Anfrageformular („Kostenloses Angebot“)</h2>
+            <h2>4. Anfrageformular („Kostenloses Angebot“) und Rückruf-Formular</h2>
             <p>
-              Wenn Sie uns über das Anfrageformular kontaktieren, verarbeiten wir die von Ihnen
-              eingegebenen Daten (Firma, Name, E-Mail-Adresse, Telefonnummer, Postleitzahl, Angaben
-              zum Reinigungsobjekt sowie optional Ihre Nachricht) zur Bearbeitung Ihrer Anfrage und
-              für eventuelle Anschlussfragen. Zusätzlich speichern wir technische Angaben zur
+              Wenn Sie uns über das Anfrageformular oder das Rückruf-Formular kontaktieren,
+              verarbeiten wir die von Ihnen eingegebenen Daten (Firma, Name, E-Mail-Adresse,
+              Telefonnummer, Postleitzahl, Angaben zum Reinigungsobjekt bzw. Ihre Rückruf-Wunschzeit
+              sowie optional Ihre Nachricht) zur Bearbeitung Ihrer Anfrage und für eventuelle
+              Anschlussfragen. Bei Anfragen über das Angebotsformular erhalten Sie – sofern der
+              E-Mail-Versand eingerichtet ist – eine automatische Eingangsbestätigung an die von
+              Ihnen angegebene E-Mail-Adresse. Zusätzlich speichern wir technische Angaben zur
               Herkunft der Anfrage (z. B. aufgerufene Seite, Kampagnenparameter, Browsertyp), um
               unsere Website zu verbessern.
             </p>

@@ -11,7 +11,8 @@ type Bucket = { timestamps: number[] };
 
 const buckets = new Map<string, Bucket>();
 const WINDOW_MS = 10 * 60 * 1000; // 10 Minuten
-const MAX_REQUESTS = 5;
+/** Maximale Anfragen je IP-Hash und Fenster – per `LEAD_RATE_LIMIT_MAX` anpassbar (z. B. für Tests). */
+const MAX_REQUESTS = Math.max(1, Number(process.env.LEAD_RATE_LIMIT_MAX) || 5);
 const MAX_KEYS = 5000;
 
 function cleanup(now: number) {

@@ -187,8 +187,18 @@ Ablauf des Angebotsformulars (`src/components/quote/QuoteForm.tsx`):
 - Lead-Store-Adapter (`src/lib/leads/store.ts`): Supabase (sobald konfiguriert) → lokale Datei (Entwicklung ohne
   Supabase oder `LEAD_STORE=file`, z. B. für E2E-Tests) → sauberer Fehler (Produktion ohne Konfiguration).
 
-Formular lokal testen: `npm run dev`, Startseite (Desktop: Formular im Hero, Mobile: Button öffnet Bottom-Sheet)
+Formular lokal testen: `npm run dev`, Startseite (Anfrage-Karte im Hero: vier Angaben, dann Kontaktdaten im Dialog)
 oder `/kontakt`. Ohne Supabase erscheint der Lead in `.data/leads.jsonl`.
+
+Zweiter Weg: **Rückruf anfordern** (`src/components/quote/CallbackForm.tsx`, Server Action `submitCallback`) auf
+`/kontakt#rueckruf` und aus jedem CTA-Block verlinkt. Nur Name, Telefon, PLZ und Wunschzeit – der Rückrufwunsch wird als
+Lead mit `source = 'callback'` gespeichert und löst dieselbe interne Benachrichtigung aus.
+
+E-Mails (sobald `RESEND_API_KEY`, `LEAD_NOTIFICATION_EMAIL` und `LEAD_FROM_EMAIL` gesetzt sind, `src/lib/notify/email.ts`):
+
+- interne Benachrichtigung an `LEAD_NOTIFICATION_EMAIL` mit allen Angaben (Reply-To = Interessent),
+- automatische Eingangsbestätigung an den Interessenten (nur beim Angebotsformular, da nur dort eine E-Mail-Adresse
+  erfasst wird). Die Bestätigung nennt die zugesagte Reaktionszeit aus `siteConfig.quote.responseTimePromise`.
 
 ## Admin-Bereich
 
@@ -241,5 +251,6 @@ git push -u origin main
 - [ ] Testimonials, Kundenlogos und Referenz-Cases durch freigegebene echte Inhalte ersetzen (`isPlaceholder: false`)
 - [ ] Bilder gemäß `docs/IMAGES.md` austauschen (Logo ist bereits als Vektor-Nachbau eingebunden, optional durch die offizielle Datei ersetzen)
 - [ ] `NEXT_PUBLIC_SITE_URL` und Supabase-/E-Mail-Variablen in Vercel setzen
-- [ ] Optional: `siteConfig.quote.responseTimePromise` nur setzen, wenn die Zusage eingehalten wird
+- [ ] `siteConfig.quote.responseTimePromise` ist auf „innerhalb eines Werktags“ gesetzt (Hero-Karte, Bestätigungsmail, Versprechen-Sektion) – nur lassen, wenn die Zusage eingehalten wird
+- [ ] Absenderdomain für Resend verifizieren (`LEAD_FROM_EMAIL`, z. B. `anfragen@jetclean-berlin.de`), sonst bleiben Benachrichtigung und Eingangsbestätigung aus
 - [ ] Optional: Plausible aktivieren und Datenschutzerklärung entsprechend anpassen
