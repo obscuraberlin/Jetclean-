@@ -5,8 +5,13 @@ import { benefits } from '@/content/benefits';
 
 export function Benefits() {
   return (
-    <section className="section-y" aria-labelledby="benefits-title">
-      <div className="container-site">
+    <section className="relative overflow-hidden section-y" aria-labelledby="benefits-title">
+      <div aria-hidden="true" className="blob -top-20 -left-32 size-[26rem] bg-brand-500/15" />
+      <div
+        aria-hidden="true"
+        className="blob right-[-8rem] bottom-[-6rem] size-[22rem] bg-navy-200/40 [animation-delay:-6s]"
+      />
+      <div className="relative container-site">
         <SectionHeading
           id="benefits-title"
           eyebrow="Ihre Vorteile"
@@ -20,7 +25,7 @@ export function Benefits() {
             <RevealItem
               key={benefit.title}
               as="li"
-              className="flex flex-col gap-3 rounded-3xl border border-line bg-white p-5 shadow-soft transition-[transform,box-shadow] duration-300 ease-(--ease-premium) hover:shadow-card motion-safe:hover:-translate-y-1 sm:p-6"
+              className="flex card-hover flex-col gap-3 rounded-3xl border border-line bg-white p-5 shadow-soft sm:p-6"
             >
               <IconBox icon={benefit.icon} tone="brand" size="md" />
               <h3 className="text-base font-bold sm:text-lg">{benefit.title}</h3>

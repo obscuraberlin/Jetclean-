@@ -80,6 +80,23 @@
       transform: translateX(-50%);
     }
   }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  @keyframes drift {
+    from {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    to {
+      transform: translate3d(6%, 8%, 0) scale(1.12);
+    }
+  }
   @keyframes shimmer {
     from {
       background-position: -200% 0;
@@ -197,9 +214,75 @@
   }
 }
 
-/* Textmarkierung in Headlines */
+/* Textmarkierung in Headlines – Markenverlauf */
 @utility text-accent {
   color: var(--color-brand-500);
+  background-image: linear-gradient(
+    100deg,
+    var(--color-brand-600) 0%,
+    var(--color-brand-500) 55%,
+    var(--color-brand-400) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Lichtreflex, der bei Hover über primäre Buttons läuft */
+@utility btn-shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      115deg,
+      transparent 30%,
+      rgb(255 255 255 / 0.28) 50%,
+      transparent 70%
+    );
+    transform: translateX(-120%);
+    transition: transform 0.7s var(--ease-premium);
+  }
+  &:hover::after {
+    transform: translateX(120%);
+  }
+}
+
+/* Karten: Anheben, weicher Schatten, feiner Markenrand */
+@utility card-hover {
+  transition:
+    transform 0.35s var(--ease-premium),
+    box-shadow 0.35s var(--ease-premium),
+    border-color 0.35s var(--ease-premium);
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lift);
+    border-color: var(--color-brand-200);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html:not(.force-motion) &:hover {
+      transform: none;
+    }
+  }
+}
+
+/* Weiche Farbflächen im Hintergrund von Sektionen */
+@utility blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  pointer-events: none;
+  opacity: 0.55;
+  animation: drift 18s ease-in-out infinite alternate;
+}
+
+/* Sanftes Schweben (Badges) */
+@utility animate-float {
+  animation: float 6s ease-in-out infinite;
 }
 
 /* Scrollbar in horizontalen Slidern ausblenden */

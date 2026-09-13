@@ -3,6 +3,9 @@ import Image from 'next/image';
 import { HeroQuoteCard } from '@/components/quote/HeroQuoteCard';
 import { QuoteButton } from '@/components/quote/QuoteButton';
 import { Button, buttonIconClass } from '@/components/ui/Button';
+import { Parallax } from '@/components/ui/Parallax';
+import { siteConfig } from '@/content/site';
+import { Star } from 'lucide-react';
 import { heroTrustpoints } from '@/content/benefits';
 import { company } from '@/content/company';
 
@@ -32,8 +35,19 @@ function OfficeBackdrop({ className }: { className?: string }) {
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-surface-gradient" aria-labelledby="hero-title">
-      {/* Desktop: Foto hinter der rechten Hälfte */}
-      <OfficeBackdrop className="pointer-events-none absolute inset-y-0 right-0 hidden w-[62%] lg:block" />
+      {/* Desktop: Foto hinter der rechten Hälfte, mit sanftem Parallax */}
+      <Parallax
+        className="pointer-events-none absolute inset-y-0 right-0 hidden w-[62%] lg:block"
+        distance={80}
+      >
+        <OfficeBackdrop className="absolute inset-x-0 -inset-y-24" />
+      </Parallax>
+      {/* Weiche Farbflächen */}
+      <div aria-hidden="true" className="blob -top-32 -left-32 size-[30rem] bg-brand-500/25" />
+      <div
+        aria-hidden="true"
+        className="blob top-1/2 left-[30%] size-[24rem] bg-navy-200/40 [animation-delay:-8s]"
+      />
 
       <div className="relative container-site pt-6 pb-5 sm:pt-10 sm:pb-7 lg:pt-20 lg:pb-24">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-8 xl:gap-10">
@@ -106,6 +120,21 @@ export function Hero() {
                 quality={80}
               />
             </div>
+            {siteConfig.reviews ? (
+              <figcaption className="absolute bottom-10 -left-6 z-10 flex animate-float items-center gap-3 rounded-2xl bg-white/95 px-4 py-3 shadow-lift ring-1 ring-line backdrop-blur">
+                <span className="flex items-center gap-0.5 text-brand-500" aria-hidden="true">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className="size-3.5 fill-current" />
+                  ))}
+                </span>
+                <span className="text-sm leading-tight">
+                  <strong className="block font-display text-base text-navy-950">
+                    {siteConfig.reviews.rating.toFixed(1).replace('.', ',')} von 5
+                  </strong>
+                  <span className="text-muted">{siteConfig.reviews.count} Bewertungen</span>
+                </span>
+              </figcaption>
+            ) : null}
           </figure>
 
           {/* Anfrage-Karte – Desktop rechts */}

@@ -31,6 +31,7 @@ export default function SustainabilityPage() {
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
             <div className="lg:col-span-5">
               <SectionHeading
+                align="left"
                 id="pillars-title"
                 eyebrow="Konkret"
                 title="Was Nachhaltigkeit bei uns im Alltag bedeutet."
@@ -56,7 +57,7 @@ export default function SustainabilityPage() {
                 <RevealItem
                   key={pillar.title}
                   as="li"
-                  className="rounded-3xl border border-line bg-white p-6 shadow-soft transition-[transform,box-shadow] duration-300 ease-(--ease-premium) hover:shadow-card motion-safe:hover:-translate-y-1"
+                  className="card-hover rounded-3xl border border-line bg-white p-6 shadow-soft"
                 >
                   <IconBox icon={Leaf} tone="success" size="sm" />
                   <h3 className="mt-4 text-base font-bold">{pillar.title}</h3>

@@ -41,7 +41,7 @@ export default function IndustriesPage() {
               <RevealItem
                 key={industry.slug}
                 as="li"
-                className="group flex flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-soft transition-[transform,box-shadow] duration-300 ease-(--ease-premium) hover:shadow-card motion-safe:hover:-translate-y-1"
+                className="group flex card-hover flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-soft"
               >
                 <div className="relative aspect-[16/7] overflow-hidden">
                   <Image

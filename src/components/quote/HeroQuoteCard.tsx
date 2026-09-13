@@ -75,8 +75,7 @@ export function HeroQuoteCard({ source = 'hero', className }: HeroQuoteCardProps
       data-testid="hero-quote-card"
     >
       <p className="font-display text-[1.1875rem] leading-snug font-bold text-navy-950 sm:text-[1.375rem]">
-        Kostenloses
-        <br className="sm:hidden" />
+        Kostenloses <br className="sm:hidden" />
         Reinigungsangebot erhalten
       </p>
       <p className="mt-1 text-sm text-muted">{siteConfig.quote.durationHint}.</p>

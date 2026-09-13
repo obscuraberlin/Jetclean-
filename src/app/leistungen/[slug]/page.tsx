@@ -85,6 +85,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<Pa
           </Reveal>
           <div className="lg:col-span-6">
             <SectionHeading
+              align="left"
               id="scope-title"
               eyebrow="Leistungsumfang"
               title={`Das umfasst unsere ${service.title}.`}
@@ -151,6 +152,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<Pa
           <div className="container-site grid gap-8 lg:grid-cols-12">
             <div className="lg:col-span-4">
               <SectionHeading
+                align="left"
                 id="service-faq-title"
                 eyebrow="Häufige Fragen"
                 title={`Fragen zur ${service.title}`}

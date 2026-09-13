@@ -10,6 +10,8 @@ type AnimatedNumberProps = {
   prefix?: string;
   className?: string;
   durationMs?: number;
+  /** Nachkommastellen (z. B. 1 für Bewertungen) */
+  decimals?: number;
 };
 
 /** Zählt beim erstmaligen Sichtbarwerden von 0 auf `value` hoch (einmalig). */
@@ -19,6 +21,7 @@ export function AnimatedNumber({
   prefix = '',
   className,
   durationMs = 900,
+  decimals = 0,
 }: AnimatedNumberProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: '0px 0px -10% 0px' });
@@ -31,15 +34,17 @@ export function AnimatedNumber({
     const controls = animate(0, value, {
       duration: durationMs / 1000,
       ease: [0.22, 1, 0.36, 1],
-      onUpdate: (latest) => setDisplay(Math.round(latest)),
+      onUpdate: (latest) => setDisplay(latest),
     });
     return () => controls.stop();
   }, [inView, value, reduce, durationMs]);
 
+  const format = (n: number) =>
+    n.toLocaleString('de-DE', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
   return (
-    <span ref={ref} className={className} aria-label={`${prefix}${value}${suffix}`}>
+    <span ref={ref} className={className} aria-label={`${prefix}${format(value)}${suffix}`}>
       {prefix}
-      {shown}
+      {format(shown)}
       {suffix}
     </span>
   );

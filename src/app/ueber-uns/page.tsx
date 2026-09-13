@@ -54,6 +54,7 @@ export default function AboutPage() {
           </Reveal>
           <div className="lg:col-span-6">
             <SectionHeading
+              align="left"
               id="story-title"
               eyebrow="Unsere Geschichte"
               title="Gewachsen in Berlin. Verlässlich seit dem ersten Objekt."
@@ -123,7 +124,7 @@ export default function AboutPage() {
               <RevealItem
                 key={value.title}
                 as="li"
-                className="flex flex-col gap-3 rounded-3xl border border-line bg-white p-5 shadow-soft transition-[transform,box-shadow] duration-300 ease-(--ease-premium) hover:shadow-card motion-safe:hover:-translate-y-1 sm:p-6"
+                className="flex card-hover flex-col gap-3 rounded-3xl border border-line bg-white p-5 shadow-soft sm:p-6"
               >
                 <IconBox icon={value.icon} tone="brand" />
                 <h3 className="text-base font-bold sm:text-lg">{value.title}</h3>

@@ -4,6 +4,7 @@ import Script from 'next/script';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
 import { MobileCTA } from '@/components/layout/MobileCTA';
+import { ScrollProgress } from '@/components/layout/ScrollProgress';
 import { SkipLink } from '@/components/layout/SkipLink';
 import { QuoteModal } from '@/components/quote/QuoteModal';
 import { QuoteProvider } from '@/components/quote/QuoteProvider';
@@ -84,6 +85,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <QuoteProvider>
           <div id="app-root" className="flex min-h-dvh flex-col">
             <SkipLink />
+            <ScrollProgress />
             <Header />
             <main id="main" className="flex-1">
               {children}
