@@ -20,43 +20,41 @@ export default function OpenGraphImage() {
         fontFamily: 'sans-serif',
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
-        <svg width="64" height="64" viewBox="0 0 40 40">
-          <rect x="2" y="2" width="36" height="36" rx="11" fill="#0b1329" />
+      <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
+        <svg width="100" height="73" viewBox="0 0 300 220">
           <path
-            d="M11 20.5 20 12l9 8.5"
-            fill="none"
-            stroke="#ee6212"
-            strokeWidth="2.6"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            fill="#f0851a"
+            d="M12 154C50 128 100 130 155 165C195 190 235 188 262 168C236 200 176 206 124 182C88 165 48 156 12 154Z"
           />
+          <rect x="121" y="70" width="16" height="76" fill="#111111" />
+          <rect x="253" y="70" width="16" height="84" fill="#111111" />
+          <path fill="#111111" d="M80 92L193 6L298 92H278L193 27L100 92Z" />
+          <path d="M173 92V72a20 20 0 0 1 40 0v20Z" fill="#f26f11" />
+          <rect x="191" y="52" width="4" height="40" fill="#ffffff" />
+          <rect x="173" y="72" width="40" height="4" fill="#ffffff" />
+          <path fill="#7cb82f" d="M192 186C178 150 204 100 283 80C287 132 250 180 192 186Z" />
           <path
-            d="M13.5 19v8.5a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V19"
+            d="M196 180C220 140 248 110 278 86"
             fill="none"
             stroke="#ffffff"
-            strokeWidth="2.2"
+            strokeWidth="3"
             strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="m16.75 23.5 2.3 2.3 4.5-4.6"
-            fill="none"
-            stroke="#ee6212"
-            strokeWidth="2.4"
-            strokeLinecap="round"
-            strokeLinejoin="round"
           />
         </svg>
-        <div style={{ display: 'flex', fontSize: 44, fontWeight: 800, letterSpacing: -1.5 }}>
-          JET<span style={{ color: '#ee6212' }}>CLEAN</span>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <div style={{ fontSize: 46, fontWeight: 800, letterSpacing: -1, color: '#ee6f12' }}>
+            JETCLEAN
+          </div>
+          <div style={{ fontSize: 15, letterSpacing: 6, color: '#111111' }}>
+            GEBÄUDESERVICE GMBH
+          </div>
         </div>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
         <div
           style={{
             fontSize: 26,
-            color: '#dd5711',
+            color: '#c2410c',
             fontWeight: 700,
             letterSpacing: 4,
             textTransform: 'uppercase',

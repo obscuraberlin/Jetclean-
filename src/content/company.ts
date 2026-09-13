@@ -25,7 +25,7 @@ export const company = {
     /** PLACEHOLDER – gleiche Nummer im internationalen Format für tel:-Links und Schema.org. */
     phoneE164: '+493012345678',
     /** PLACEHOLDER – echte E-Mail-Adresse eintragen. */
-    email: 'info@jetclean.de',
+    email: 'info@jetclean-berlin.de',
   },
 
   address: {

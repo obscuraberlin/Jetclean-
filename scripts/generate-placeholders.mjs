@@ -255,7 +255,11 @@ for (const job of jobs) {
   console.log('✓', job.file);
 }
 
-// Apple Touch Icon aus dem App-Icon
-const iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="180" height="180"><rect width="40" height="40" fill="#0b1329"/><path d="M11 20.5 20 12l9 8.5" fill="none" stroke="#ee6212" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.5 19v8.5a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V19" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="m16.75 23.5 2.3 2.3 4.5-4.6" fill="none" stroke="#ee6212" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-await sharp(Buffer.from(iconSvg)).png().toFile(join(root, 'src/app/apple-icon.png'));
+// Apple Touch Icon aus dem App-Icon (src/app/icon.svg)
+const { readFile } = await import('node:fs/promises');
+const iconSvg = await readFile(join(root, 'src/app/icon.svg'));
+await sharp(iconSvg, { density: 300 })
+  .resize(180, 180)
+  .png()
+  .toFile(join(root, 'src/app/apple-icon.png'));
 console.log('✓ src/app/apple-icon.png');

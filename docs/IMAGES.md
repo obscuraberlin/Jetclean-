@@ -28,13 +28,20 @@ kleineren Varianten automatisch.
 
 ## Logo
 
-Die Wortmarke wird aktuell als Inline-SVG/HTML in `src/components/brand/Logo.tsx` nachgebaut
-(Platzhalter nach Vorlage). Sobald die offizielle Logodatei vorliegt:
+Die Bildmarke (Haus mit Fenster, Blatt, Swoosh) ist als Vektor-Nachbau des Originallogos von
+jetclean-berlin.de umgesetzt und liegt an zwei Stellen:
 
-1. Datei als `public/images/logo.svg` (und optional `logo-white.svg` für dunkle Flächen) ablegen.
-2. In `Logo.tsx` das Markup durch `<Image src="/images/logo.svg" alt="JETCLEAN Gebäudeservice GmbH" width={…} height={…} priority />` ersetzen.
-3. `src/app/icon.svg` und `src/app/apple-icon.png` (Favicon/Touch-Icon) auf Basis des echten Logos neu erzeugen.
-4. `src/app/opengraph-image.tsx` (Social-Preview) ggf. mit dem echten Logo anpassen.
+- `src/components/brand/Logo.tsx` – Inline-SVG (`LogoMark`) plus Wortmarke „JETCLEAN / Gebäudeservice GmbH“ als Text
+- `public/images/brand/jetclean-mark.svg` – eigenständige Datei (z. B. für E-Mails, Drucksachen)
+
+Favicon (`src/app/icon.svg`), Touch-Icon (`src/app/apple-icon.png`, wird vom Script erzeugt) und das
+Social-Preview-Bild (`src/app/opengraph-image.tsx`) nutzen dieselbe Marke.
+
+Liegt die **offizielle Vektordatei** (SVG/AI/PDF) vor, kann sie die Nachbildung ersetzen: Pfade in
+`LogoMark` bzw. `jetclean-mark.svg` austauschen (viewBox 300 × 220 beibehalten) – alle Einbindungen
+aktualisieren sich automatisch. Die Wortmarke verwendet die Display-Schrift Manrope; soll exakt die
+Originalschrift erscheinen, das komplette Logo als SVG unter `public/images/brand/logo.svg` ablegen und in
+`Logo.tsx` per `<Image>` einbinden.
 
 ## Kundenlogos
 

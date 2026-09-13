@@ -221,7 +221,7 @@ git push -u origin main
 - [ ] `src/content/company.ts`: echte Telefonnummer, E-Mail, Adresse, Öffnungszeiten, Impressumsangaben; `legal.reviewed = true` nach juristischer Prüfung
 - [ ] Impressum & Datenschutz (`src/app/impressum`, `src/app/datenschutz`) juristisch prüfen und Klammer-Platzhalter ersetzen
 - [ ] Testimonials, Kundenlogos und Referenz-Cases durch freigegebene echte Inhalte ersetzen (`isPlaceholder: false`)
-- [ ] Bilder gemäß `docs/IMAGES.md` austauschen, Logo einsetzen
+- [ ] Bilder gemäß `docs/IMAGES.md` austauschen (Logo ist bereits als Vektor-Nachbau eingebunden, optional durch die offizielle Datei ersetzen)
 - [ ] `NEXT_PUBLIC_SITE_URL` und Supabase-/E-Mail-Variablen in Vercel setzen
 - [ ] Optional: `siteConfig.quote.responseTimePromise` nur setzen, wenn die Zusage eingehalten wird
 - [ ] Optional: Plausible aktivieren und Datenschutzerklärung entsprechend anpassen

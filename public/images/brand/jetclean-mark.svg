@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 220" role="img" aria-label="JETCLEAN Logo">
+  <defs>
+    <linearGradient id="swoosh" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f7931e"/>
+      <stop offset="1" stop-color="#e85d04"/>
+    </linearGradient>
+    <linearGradient id="leaf" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#6aa823"/>
+      <stop offset="1" stop-color="#8dc93b"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#swoosh)" d="M12 154C50 128 100 130 155 165C195 190 235 188 262 168C236 200 176 206 124 182C88 165 48 156 12 154Z"/>
+  <rect x="121" y="70" width="16" height="76" fill="#111111"/>
+  <rect x="253" y="70" width="16" height="84" fill="#111111"/>
+  <path fill="#111111" d="M80 92L193 6L298 92H278L193 27L100 92Z"/>
+  <path d="M173 92V72a20 20 0 0 1 40 0v20Z" fill="#f26f11"/>
+  <rect x="191" y="52" width="4" height="40" fill="#ffffff"/>
+  <rect x="173" y="72" width="40" height="4" fill="#ffffff"/>
+  <path fill="url(#leaf)" d="M192 186C178 150 204 100 283 80C287 132 250 180 192 186Z"/>
+  <path d="M196 180C220 140 248 110 278 86" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+</svg>
