@@ -35,7 +35,7 @@ export function Hero() {
       {/* Desktop: Foto hinter der rechten Hälfte */}
       <OfficeBackdrop className="pointer-events-none absolute inset-y-0 right-0 hidden w-[62%] lg:block" />
 
-      <div className="relative container-site pt-10 pb-12 sm:pt-14 sm:pb-16 lg:pt-20 lg:pb-24">
+      <div className="relative container-site pt-8 pb-6 sm:pt-12 sm:pb-8 lg:pt-20 lg:pb-24">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-8 xl:gap-10">
           {/* Text */}
           <div className="lg:col-span-7 xl:col-span-5">
@@ -44,20 +44,28 @@ export function Hero() {
             </p>
             <h1
               id="hero-title"
-              className="mt-4 text-[2.375rem] leading-[1.06] sm:text-5xl lg:text-[2.875rem] xl:text-[3rem] 2xl:text-[3.375rem]"
+              className="mt-3 text-[2rem] leading-[1.08] sm:text-5xl lg:mt-4 lg:text-[2.875rem] lg:leading-[1.06] xl:text-[3rem] 2xl:text-[3.375rem]"
             >
-              Gebäude&shy;reinigung für Berliner Unternehmen,{' '}
-              <span className="text-accent">auf die Sie sich verlassen können.</span>
+              {/* Mobil/Tablet: kurze Überschrift, Desktop: ausführlich */}
+              <span className="lg:hidden">
+                Gebäude&shy;reinigung in Berlin,{' '}
+                <span className="text-accent">auf die Sie sich verlassen können.</span>
+              </span>
+              <span className="hidden lg:inline">
+                Gebäude&shy;reinigung für Berliner Unternehmen,{' '}
+                <span className="text-accent">auf die Sie sich verlassen können.</span>
+              </span>
             </h1>
-            <p className="mt-5 max-w-xl text-lg font-medium text-navy-800 sm:text-xl">
+            <p className="mt-3 max-w-xl text-base font-medium text-navy-800 sm:text-xl lg:mt-5 lg:text-xl">
               {company.tagline}
             </p>
-            <p className="mt-3 hidden max-w-xl text-base leading-relaxed text-muted sm:block">
+            <p className="mt-3 hidden max-w-xl text-base leading-relaxed text-muted lg:block">
               Feste Teams, ein persönlicher Ansprechpartner und dokumentierte Qualität – für Büros,
               Praxen, Gewerbe und Hausverwaltungen in ganz Berlin.
             </p>
 
-            <ul className="mt-7 grid max-w-xl grid-cols-2 gap-x-6 gap-y-4 text-sm font-medium text-navy-800 sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3">
+            {/* Vertrauenspunkte und Buttons: erst ab Desktop, mobil folgt direkt die Anfrage-Karte */}
+            <ul className="mt-7 hidden max-w-xl grid-cols-2 gap-x-6 gap-y-4 text-sm font-medium text-navy-800 lg:grid xl:grid-cols-3">
               {heroTrustpoints.map((point) => (
                 <li key={point.label} className="flex items-center gap-3">
                   <point.icon
@@ -70,7 +78,7 @@ export function Hero() {
               ))}
             </ul>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
+            <div className="mt-8 hidden flex-col gap-3 sm:flex-row sm:items-center sm:gap-6 lg:flex">
               <QuoteButton source="hero" size="lg" />
               <Button
                 href="/referenzen"
@@ -123,11 +131,34 @@ export function Hero() {
             quality={75}
           />
         </div>
-        <div className="relative container-site py-8 sm:py-12">
+        <div className="relative container-site py-6 sm:py-10">
           <div className="ml-auto max-w-md sm:mr-0">
             <HeroQuoteCard source="hero-mobile" />
           </div>
         </div>
+      </div>
+      <div className="container-site pt-6 pb-8 lg:hidden">
+        <ul className="grid grid-cols-3 gap-x-4 gap-y-3 text-[0.8125rem] leading-snug font-medium text-navy-800">
+          {heroTrustpoints.map((point) => (
+            <li key={point.label} className="flex items-center gap-2">
+              <point.icon
+                className="size-5 shrink-0 text-brand-500"
+                strokeWidth={1.75}
+                aria-hidden="true"
+              />
+              {point.label}
+            </li>
+          ))}
+        </ul>
+        <Button
+          href="/referenzen"
+          variant="link"
+          size="md"
+          className="mt-4 font-semibold text-navy-900 hover:text-brand-600"
+        >
+          Referenzen ansehen
+          <ArrowRight className={buttonIconClass} aria-hidden="true" />
+        </Button>
       </div>
     </section>
   );
