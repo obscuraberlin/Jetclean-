@@ -38,7 +38,9 @@ const nextConfig: NextConfig = {
     formats: ['image/avif', 'image/webp'],
     qualities: [70, 80, 90],
     deviceSizes: [390, 430, 640, 768, 1024, 1280, 1536, 1920],
-    unoptimized: isStaticExport,
+    ...(isStaticExport
+      ? { loader: 'custom' as const, loaderFile: './src/lib/image-loader.ts' }
+      : {}),
   },
   async headers() {
     if (isStaticExport) return [];
