@@ -5,8 +5,8 @@ import { siteConfig } from '@/content/site';
 import { cn } from '@/lib/utils';
 
 /**
- * Ruhige Logo-Leiste. Desktop: alle Logos in einer Reihe. Mobile: sehr langsames
- * Marquee (CSS-only, stoppt bei reduced motion und wird dann scrollbar).
+ * Durchlaufende Logo-Leiste (CSS-only Marquee). Bei reduced motion steht sie
+ * still und ist horizontal scrollbar.
  */
 export function LogoStrip() {
   const hasPlaceholders = clientLogos.some((logo) => logo.isPlaceholder);
@@ -20,23 +20,18 @@ export function LogoStrip() {
           {hasPlaceholders && siteConfig.showPlaceholderBadges ? <PlaceholderBadge /> : null}
         </div>
 
-        {/* Desktop */}
-        <ul className="mt-6 hidden flex-wrap items-center justify-center gap-x-8 gap-y-3 md:flex lg:gap-x-10 xl:justify-between">
-          {clientLogos.map((logo) => (
-            <li key={logo.name}>
-              <LogoItem name={logo.name} src={logo.src} />
-            </li>
-          ))}
-        </ul>
-
-        {/* Mobile Marquee */}
-        <div className="mt-5 scrollbar-none overflow-x-auto mask-fade-x md:hidden">
+        {/* Durchlaufende Logo-Leiste (pausiert bei Hover, bei reduced motion statisch scrollbar) */}
+        <div className="group mt-6 scrollbar-none overflow-x-auto mask-fade-x">
           <ul
-            className="flex w-max items-center gap-10 motion-safe:animate-marquee"
-            aria-hidden="true"
+            className="flex w-max items-center gap-10 motion-safe:animate-marquee motion-safe:group-hover:[animation-play-state:paused] lg:gap-16"
+            aria-label="Kundenlogos"
           >
             {items.map((logo, index) => (
-              <li key={`${logo.name}-${index}`} className="shrink-0">
+              <li
+                key={`${logo.name}-${index}`}
+                className="shrink-0"
+                aria-hidden={index >= clientLogos.length ? true : undefined}
+              >
                 <LogoItem name={logo.name} src={logo.src} />
               </li>
             ))}

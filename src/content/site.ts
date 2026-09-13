@@ -25,7 +25,7 @@ export const siteConfig = {
      * Zugesagte Reaktionszeit im Formular / Success-State.
      * `null` = keine konkrete Zusage anzeigen. Nur einen Wert eintragen, der eingehalten wird.
      */
-    responseTimePromise: null as string | null, // z. B. 'innerhalb eines Werktags'
+    responseTimePromise: 'innerhalb eines Werktags' as string | null,
     /** Ungefähre Dauer, die im Formular-Header angezeigt wird. */
     durationHint: 'Dauert ca. 60 Sekunden',
     /** Mindestzeit (ms) zwischen Öffnen und Absenden des Formulars – einfacher Bot-Schutz. */

@@ -78,6 +78,15 @@ const stepFields: (keyof QuoteValues)[][] = [
 
 const initialState: SubmitLeadState = { status: 'idle' };
 
+/** Kurze Vertrauenspunkte unter dem Formular (Hero-Karte und Schritt 1). */
+export const quoteTrustItems = [
+  'Unverbindlich',
+  'Keine Weitergabe Ihrer Daten',
+  siteConfig.quote.responseTimePromise
+    ? `Rückmeldung ${siteConfig.quote.responseTimePromise}`
+    : 'Persönliche Rückmeldung',
+] as const;
+
 type QuoteFormProps = {
   /** Kennung der Einbindung (hero, modal, kontakt …) */
   source: string;
@@ -86,6 +95,10 @@ type QuoteFormProps = {
   className?: string;
   /** Beim Success-State einen „Schließen“-Button anzeigen (Modal) */
   onClose?: () => void;
+  /** Vorbelegte Werte (z. B. aus der kompakten Hero-Karte) */
+  initialValues?: Partial<QuoteValues>;
+  /** Startschritt (0-basiert) */
+  initialStep?: number;
 };
 
 export function QuoteForm({
@@ -94,12 +107,14 @@ export function QuoteForm({
   onSuccess,
   onClose,
   className,
+  initialValues: prefill,
+  initialStep = 0,
 }: QuoteFormProps) {
   const formId = useId();
   const reduce = useReducedMotion();
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(() => Math.min(Math.max(initialStep, 0), steps.length - 1));
   const [direction, setDirection] = useState<1 | -1>(1);
-  const [values, setValues] = useState<QuoteValues>(initialValues);
+  const [values, setValues] = useState<QuoteValues>(() => ({ ...initialValues, ...prefill }));
   const [errors, setErrors] = useState<FieldErrors>({});
   const attribution = useSyncExternalStore(
     subscribeAttribution,
@@ -442,7 +457,7 @@ export function QuoteForm({
 
         {step === 0 ? (
           <ul className="mt-5 flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-muted">
-            {['Unverbindlich', 'Keine Weitergabe Ihrer Daten', 'Persönliche Rückmeldung'].map(
+            {quoteTrustItems.map(
               (item) => (
                 <li key={item} className="inline-flex items-center gap-1.5">
                   <Check className="size-3.5 text-success-500" aria-hidden="true" />

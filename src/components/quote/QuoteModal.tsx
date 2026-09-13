@@ -3,7 +3,7 @@
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { X } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
-import { useCallback, useRef, useState, useSyncExternalStore } from 'react';
+import { useCallback, useRef, useSyncExternalStore } from 'react';
 import { createPortal } from 'react-dom';
 import { useFocusTrap } from '@/hooks/useFocusTrap';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
@@ -18,7 +18,7 @@ const subscribeNoop = () => () => {};
  * Fokus-Trap, Escape, Scroll-Lock und `inert` für den Rest der Seite.
  */
 export function QuoteModal() {
-  const { isOpen, close, source } = useQuote();
+  const { isOpen, close, source, prefill, initialStep, openCount } = useQuote();
   const panelRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const reduce = useReducedMotion();
@@ -28,16 +28,11 @@ export function QuoteModal() {
     () => true,
     () => false,
   );
-  const [formKey, setFormKey] = useState(0);
 
   useScrollLock(isOpen);
   useFocusTrap(panelRef, isOpen, { onEscape: close, initialFocusRef: closeButtonRef });
 
-  const handleClose = useCallback(() => {
-    close();
-    // Formular beim nächsten Öffnen frisch starten
-    setTimeout(() => setFormKey((k) => k + 1), 350);
-  }, [close]);
+  const handleClose = useCallback(() => close(), [close]);
 
   if (!mounted) return null;
 
@@ -107,7 +102,14 @@ export function QuoteModal() {
               className="overflow-y-auto overscroll-contain px-5 py-5 sm:px-7 sm:py-6"
               style={{ paddingBottom: 'max(1.25rem, env(safe-area-inset-bottom))' }}
             >
-              <QuoteForm key={formKey} source={source} variant="modal" onClose={handleClose} />
+              <QuoteForm
+                key={openCount}
+                source={source}
+                variant="modal"
+                onClose={handleClose}
+                initialValues={prefill ?? undefined}
+                initialStep={initialStep}
+              />
             </div>
           </motion.div>
         </div>

@@ -2,6 +2,7 @@ import {
   forwardRef,
   type InputHTMLAttributes,
   type ReactNode,
+  type SelectHTMLAttributes,
   type TextareaHTMLAttributes,
 } from 'react';
 import { cn } from '@/lib/utils';
@@ -68,6 +69,32 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
       className={cn(inputBase, 'h-12', inputTone(invalid), className)}
       {...props}
     />
+  );
+});
+
+type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & { invalid?: boolean };
+
+/** Natives Select mit eigenem Pfeil – gleiche Optik wie Input. */
+export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select(
+  { className, invalid, children, ...props },
+  ref,
+) {
+  return (
+    <select
+      ref={ref}
+      aria-invalid={invalid || undefined}
+      className={cn(
+        inputBase,
+        'h-12 cursor-pointer appearance-none bg-no-repeat pr-11',
+        "bg-[url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%230b1329' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M6 8l4 4 4-4'/%3e%3c/svg%3e\")] bg-[length:1.25rem_1.25rem] bg-[position:right_0.9rem_center]",
+        'invalid:text-navy-300 [&:has(option:checked[value=\'\'])]:text-navy-300',
+        inputTone(invalid),
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </select>
   );
 });
 

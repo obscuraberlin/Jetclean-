@@ -111,6 +111,9 @@
     html:not(.force-motion) {
       scroll-behavior: auto;
     }
+    html.force-motion .motion-safe\:animate-marquee {
+      animation: var(--animate-marquee);
+    }
     html:not(.force-motion) *,
     html:not(.force-motion) *::before,
     html:not(.force-motion) *::after {

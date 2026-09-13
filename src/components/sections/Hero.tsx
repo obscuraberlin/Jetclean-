@@ -1,7 +1,7 @@
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
+import { HeroQuoteCard } from '@/components/quote/HeroQuoteCard';
 import { QuoteButton } from '@/components/quote/QuoteButton';
-import { QuoteForm } from '@/components/quote/QuoteForm';
 import { Button, buttonIconClass } from '@/components/ui/Button';
 import { heroTrustpoints } from '@/content/benefits';
 import { company } from '@/content/company';
@@ -11,25 +11,30 @@ const heroImage = {
   alt: 'JETCLEAN Reinigungskraft in einem modernen Berliner Büro mit Blick auf den Fernsehturm',
 };
 
+/** Büro-Foto als Fläche hinter Bild und Anfrage-Karte */
+function OfficeBackdrop({ className }: { className?: string }) {
+  return (
+    <div aria-hidden="true" className={className}>
+      <Image
+        src="/images/hero/office.webp"
+        alt=""
+        fill
+        priority
+        sizes="(min-width: 1024px) 62vw, 100vw"
+        className="object-cover object-left"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-white via-white/55 to-white/10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-white/40" />
+    </div>
+  );
+}
+
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-surface-gradient" aria-labelledby="hero-title">
-      {/* Großflächiges Büro-Foto hinter Bild und Formular (Desktop) */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 right-0 hidden w-[62%] lg:block"
-      >
-        <Image
-          src="/images/hero/office.webp"
-          alt=""
-          fill
-          priority
-          sizes="62vw"
-          className="object-cover object-left"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/55 to-white/10" />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-white/40" />
-      </div>
+      {/* Desktop: Foto hinter der rechten Hälfte */}
+      <OfficeBackdrop className="pointer-events-none absolute inset-y-0 right-0 hidden w-[62%] lg:block" />
+
       <div className="relative container-site pt-10 pb-12 sm:pt-14 sm:pb-16 lg:pt-20 lg:pb-24">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-8 xl:gap-10">
           {/* Text */}
@@ -79,32 +84,48 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Bild – kompakt auf Mobile/Tablet, schmales Hochformat auf XL */}
-          <figure className="relative lg:hidden xl:col-span-3 xl:block">
-            <div className="relative aspect-[16/10] overflow-hidden rounded-3xl sm:aspect-[2/1] xl:aspect-auto xl:h-full xl:min-h-[34rem] xl:rounded-none xl:[mask-image:linear-gradient(to_right,transparent,black_14%,black_86%,transparent)]">
+          {/* Bild – schmales Hochformat auf XL, auf Mobile/Tablet Teil des Foto-Panels unten */}
+          <figure className="relative hidden xl:col-span-3 xl:block">
+            <div className="relative h-full min-h-[34rem] [mask-image:linear-gradient(to_right,transparent,black_14%,black_86%,transparent)]">
               <Image
                 src={heroImage.src}
                 alt={heroImage.alt}
                 fill
                 priority
                 fetchPriority="high"
-                sizes="(min-width: 1280px) 22vw, (min-width: 640px) 90vw, 100vw"
+                sizes="22vw"
                 className="object-cover"
                 quality={80}
               />
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 bg-gradient-to-t from-navy-950/40 via-transparent to-transparent xl:hidden"
-              />
-              <figcaption className="absolute bottom-4 left-4 rounded-full bg-white/90 px-3.5 py-1.5 font-display text-sm font-bold text-navy-950 shadow-soft backdrop-blur xl:hidden">
-                {company.claim}
-              </figcaption>
             </div>
           </figure>
 
-          {/* Angebotsformular – nur Desktop */}
+          {/* Anfrage-Karte – Desktop rechts */}
           <div className="hidden lg:col-span-5 lg:block xl:col-span-4" data-testid="hero-form">
-            <QuoteForm source="hero" variant="card" />
+            <HeroQuoteCard source="hero" />
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile/Tablet: Foto-Panel mit Reinigungskraft und Anfrage-Karte */}
+      <div className="relative lg:hidden" data-testid="hero-form-mobile">
+        <OfficeBackdrop className="pointer-events-none absolute inset-0" />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 left-0 w-[46%] sm:w-[34%] [mask-image:linear-gradient(to_right,black_70%,transparent)]"
+        >
+          <Image
+            src={heroImage.src}
+            alt=""
+            fill
+            sizes="(min-width: 640px) 34vw, 46vw"
+            className="object-cover object-[35%_top]"
+            quality={75}
+          />
+        </div>
+        <div className="relative container-site py-8 sm:py-12">
+          <div className="ml-auto max-w-md sm:mr-0">
+            <HeroQuoteCard source="hero-mobile" />
           </div>
         </div>
       </div>
