@@ -25,6 +25,7 @@ export default function ContactPage() {
         }
         text="Beschreiben Sie uns kurz, was gereinigt werden soll – oder rufen Sie direkt an. Wir melden uns persönlich bei Ihnen."
         breadcrumbs={[{ name: 'Kontakt', path: '/kontakt' }]}
+        image={{ src: '/images/hero/contact.webp', alt: 'Büro von JETCLEAN in Berlin' }}
       />
       <section className="section-y-sm" aria-label="Kontaktmöglichkeiten">
         <div className="container-site grid gap-8 lg:grid-cols-12 lg:gap-12">

@@ -1,4 +1,5 @@
 import { Phone } from 'lucide-react';
+import Image from 'next/image';
 import { QuoteButton } from '@/components/quote/QuoteButton';
 import { Reveal } from '@/components/ui/Reveal';
 import { company } from '@/content/company';
@@ -20,7 +21,24 @@ export function CtaSection({
     <section className="section-y-sm" aria-labelledby="cta-title">
       <div className="container-site">
         <Reveal>
-          <div className="relative overflow-hidden rounded-3xl bg-navy-950 bg-[radial-gradient(36rem_circle_at_100%_0%,rgb(238_98_18/0.32),transparent_60%)] px-6 py-10 text-white sm:px-10 sm:py-14 lg:px-16 lg:py-16">
+          <div className="relative overflow-hidden rounded-3xl bg-navy-950 px-6 py-10 text-white sm:px-10 sm:py-14 lg:px-16 lg:py-16">
+            {/* Foto, stark abgedunkelt, plus orangefarbener Lichtschein */}
+            <Image
+              src="/images/hero/office.webp"
+              alt=""
+              fill
+              sizes="(min-width: 1280px) 80rem, 100vw"
+              className="object-cover opacity-[0.22]"
+              aria-hidden="true"
+            />
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/85 to-navy-950/55"
+            />
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-[radial-gradient(36rem_circle_at_100%_0%,rgb(253_83_18/0.35),transparent_60%)]"
+            />
             <div className="relative grid gap-8 lg:grid-cols-12 lg:items-center">
               <div className="lg:col-span-8">
                 <h2 id="cta-title" className="text-[1.75rem] leading-tight text-white sm:text-4xl">

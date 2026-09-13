@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Check } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { CtaSection } from '@/components/sections/CtaSection';
 import { PageHero } from '@/components/sections/PageHero';
@@ -28,6 +29,10 @@ export default function IndustriesPage() {
         }
         text="Jede Branche hat eigene Anforderungen an Hygiene, Zeiten und Diskretion. Wir kennen sie – und planen die Reinigung entsprechend."
         breadcrumbs={[{ name: 'Branchen', path: '/branchen' }]}
+        image={{
+          src: '/images/cases/office.webp',
+          alt: 'Besprechungsraum eines Berliner Unternehmens nach der Reinigung',
+        }}
       />
       <section className="section-y-sm" aria-label="Branchen im Überblick">
         <div className="container-site">
@@ -36,40 +41,63 @@ export default function IndustriesPage() {
               <RevealItem
                 key={industry.slug}
                 as="li"
-                className="flex flex-col rounded-3xl border border-line bg-white p-6 shadow-soft sm:p-7"
+                className="group flex flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-soft transition-[transform,box-shadow] duration-300 ease-(--ease-premium) hover:shadow-card motion-safe:hover:-translate-y-1"
               >
-                <div className="flex items-start gap-4">
-                  <IconBox icon={industry.icon} tone="brand" size="lg" />
-                  <div className="min-w-0">
-                    <h2 className="text-xl font-bold">{industry.title}</h2>
-                    <p className="mt-1 text-sm font-medium text-navy-700">{industry.teaser}</p>
+                <div className="relative aspect-[16/7] overflow-hidden">
+                  <Image
+                    src={industry.image.src}
+                    alt={industry.image.alt}
+                    fill
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-500 ease-(--ease-premium) motion-safe:group-hover:scale-[1.03]"
+                  />
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-gradient-to-t from-navy-950/60 via-navy-950/10 to-transparent"
+                  />
+                  <IconBox
+                    icon={industry.icon}
+                    tone="soft"
+                    size="md"
+                    className="absolute top-4 left-4"
+                  />
+                  <div className="absolute right-5 bottom-4 left-5">
+                    <h2 className="text-xl font-bold text-white sm:text-2xl">{industry.title}</h2>
                   </div>
                 </div>
-                <p className="mt-4 text-[0.9375rem] leading-relaxed text-muted">
-                  {industry.description}
-                </p>
-                <ul className="mt-4 space-y-1.5 text-sm text-navy-800">
-                  {industry.needs.map((need) => (
-                    <li key={need} className="flex items-center gap-2">
-                      <span className="size-1.5 rounded-full bg-brand-500" aria-hidden="true" />
-                      {need}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-5 flex flex-wrap gap-2 border-t border-line pt-5">
-                  {industry.services.map((slug) => {
-                    const service = getServiceBySlug(slug);
-                    return service ? (
-                      <Link
-                        key={slug}
-                        href={`/leistungen/${service.slug}`}
-                        className="inline-flex items-center gap-1 rounded-full bg-surface px-3 py-1.5 text-xs font-semibold text-navy-800 ring-1 ring-line transition-colors hover:bg-brand-50 hover:text-brand-700 hover:ring-brand-200"
-                      >
-                        {service.title}
-                        <ArrowRight className="size-3" aria-hidden="true" />
-                      </Link>
-                    ) : null;
-                  })}
+                <div className="flex flex-1 flex-col p-6 sm:p-7">
+                  <p className="text-sm font-semibold text-brand-600">{industry.teaser}</p>
+                  <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted">
+                    {industry.description}
+                  </p>
+                  <ul className="mt-4 grid gap-2 text-sm text-navy-800 sm:grid-cols-1">
+                    {industry.needs.map((need) => (
+                      <li key={need} className="flex items-center gap-2.5">
+                        <span
+                          className="flex size-5 shrink-0 items-center justify-center rounded-full bg-success-50 text-success-600"
+                          aria-hidden="true"
+                        >
+                          <Check className="size-3" strokeWidth={3} />
+                        </span>
+                        {need}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-auto flex flex-wrap gap-2 border-t border-line pt-5 [&:not(:first-child)]:mt-5">
+                    {industry.services.map((slug) => {
+                      const service = getServiceBySlug(slug);
+                      return service ? (
+                        <Link
+                          key={slug}
+                          href={`/leistungen/${service.slug}`}
+                          className="inline-flex items-center gap-1 rounded-full bg-surface px-3 py-1.5 text-xs font-semibold text-navy-800 ring-1 ring-line transition-colors hover:bg-brand-50 hover:text-brand-700 hover:ring-brand-200"
+                        >
+                          {service.title}
+                          <ArrowRight className="size-3" aria-hidden="true" />
+                        </Link>
+                      ) : null;
+                    })}
+                  </div>
                 </div>
               </RevealItem>
             ))}

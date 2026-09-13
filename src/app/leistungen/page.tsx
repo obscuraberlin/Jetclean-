@@ -26,6 +26,10 @@ export default function ServicesPage() {
         }
         text={`Von der täglichen Unterhaltsreinigung bis zur Sonderreinigung: ${company.shortName} bietet alle Leistungen aus einer Hand – mit festen Teams und einem persönlichen Ansprechpartner.`}
         breadcrumbs={[{ name: 'Leistungen', path: '/leistungen' }]}
+        image={{
+          src: '/images/hero/office.webp',
+          alt: 'Frisch gereinigtes Berliner Büro mit Blick auf die Stadt',
+        }}
       />
       <section className="section-y-sm" aria-label="Alle Leistungen">
         <div className="container-site">

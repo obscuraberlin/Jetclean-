@@ -24,6 +24,10 @@ export default function AboutPage() {
         title={aboutContent.headline}
         text={aboutContent.intro}
         breadcrumbs={[{ name: 'Über uns', path: '/ueber-uns' }]}
+        image={{
+          src: '/images/hero/hero.webp',
+          alt: 'JETCLEAN Reinigungskraft in einem Berliner Büro',
+        }}
       />
 
       <section className="section-y" aria-labelledby="story-title">
@@ -57,6 +61,23 @@ export default function AboutPage() {
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
+            <dl className="mt-8 grid grid-cols-3 gap-4 border-t border-line pt-6">
+              {[
+                { value: `${company.yearsOfExperience}+`, label: 'Jahre in Berlin' },
+                { value: '1', label: 'fester Ansprechpartner je Objekt' },
+                {
+                  value: company.openingHours?.display.split(',')[0] ?? 'Mo – Fr',
+                  label: 'persönlich erreichbar',
+                },
+              ].map((fact) => (
+                <div key={fact.label}>
+                  <dt className="font-display text-2xl font-extrabold text-brand-600 sm:text-3xl">
+                    {fact.value}
+                  </dt>
+                  <dd className="mt-1 text-xs leading-snug text-muted sm:text-sm">{fact.label}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </div>
       </section>
@@ -66,10 +87,14 @@ export default function AboutPage() {
           <SectionHeading id="values-title" eyebrow="Unsere Werte" title="Wofür wir stehen." />
           <RevealGroup
             as="ul"
-            className="mt-8 grid grid-cols-2 gap-x-5 gap-y-8 lg:mt-12 lg:grid-cols-4 lg:gap-8"
+            className="mt-8 grid gap-4 sm:grid-cols-2 lg:mt-12 lg:grid-cols-4 lg:gap-5"
           >
             {aboutContent.values.map((value) => (
-              <RevealItem key={value.title} as="li" className="flex flex-col gap-3">
+              <RevealItem
+                key={value.title}
+                as="li"
+                className="flex flex-col gap-3 rounded-3xl border border-line bg-white p-5 shadow-soft transition-[transform,box-shadow] duration-300 ease-(--ease-premium) hover:shadow-card motion-safe:hover:-translate-y-1 sm:p-6"
+              >
                 <IconBox icon={value.icon} tone="brand" />
                 <h3 className="text-base font-bold sm:text-lg">{value.title}</h3>
                 <p className="text-sm leading-relaxed text-muted">{value.text}</p>

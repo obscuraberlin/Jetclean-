@@ -14,10 +14,14 @@ export function Benefits() {
         />
         <RevealGroup
           as="ul"
-          className="mt-8 grid grid-cols-2 gap-x-5 gap-y-8 sm:mt-12 lg:grid-cols-4 lg:gap-8"
+          className="mt-8 grid gap-4 sm:mt-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5"
         >
           {benefits.map((benefit) => (
-            <RevealItem key={benefit.title} as="li" className="flex flex-col gap-3">
+            <RevealItem
+              key={benefit.title}
+              as="li"
+              className="flex flex-col gap-3 rounded-3xl border border-line bg-white p-5 shadow-soft transition-[transform,box-shadow] duration-300 ease-(--ease-premium) hover:shadow-card motion-safe:hover:-translate-y-1 sm:p-6"
+            >
               <IconBox icon={benefit.icon} tone="brand" size="md" />
               <h3 className="text-base font-bold sm:text-lg">{benefit.title}</h3>
               <p className="text-sm leading-relaxed text-muted">{benefit.text}</p>

@@ -120,7 +120,7 @@ export function Hero() {
         <OfficeBackdrop className="pointer-events-none absolute inset-0" />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 left-0 w-[46%] sm:w-[34%] [mask-image:linear-gradient(to_right,black_70%,transparent)]"
+          className="pointer-events-none absolute inset-y-0 left-0 w-[46%] [mask-image:linear-gradient(to_right,black_70%,transparent)] sm:w-[34%]"
         >
           <Image
             src={heroImage.src}

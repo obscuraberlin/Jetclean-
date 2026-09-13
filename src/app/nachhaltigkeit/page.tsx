@@ -24,6 +24,7 @@ export default function SustainabilityPage() {
         title={sustainabilityContent.headline}
         text={sustainabilityContent.intro}
         breadcrumbs={[{ name: 'Nachhaltigkeit', path: '/nachhaltigkeit' }]}
+        image={sustainabilityContent.image}
       />
       <section className="section-y" aria-labelledby="pillars-title">
         <div className="container-site">
@@ -35,14 +36,18 @@ export default function SustainabilityPage() {
                 title="Was Nachhaltigkeit bei uns im Alltag bedeutet."
               />
               <Reveal variant="image" className="mt-8" as="figure">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-card">
                   <Image
-                    src={sustainabilityContent.image.src}
-                    alt={sustainabilityContent.image.alt}
+                    src="/images/before-after/after.webp"
+                    alt="Helles Büro mit Pflanzen nach der Reinigung"
                     fill
                     sizes="(min-width: 1024px) 40vw, 100vw"
                     className="object-cover"
                   />
+                  <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/90 px-3.5 py-1.5 text-sm font-semibold text-navy-950 shadow-soft backdrop-blur">
+                    <Leaf className="size-4 text-success-600" aria-hidden="true" />
+                    Umweltschonend gereinigt
+                  </div>
                 </div>
               </Reveal>
             </div>
@@ -51,7 +56,7 @@ export default function SustainabilityPage() {
                 <RevealItem
                   key={pillar.title}
                   as="li"
-                  className="rounded-3xl border border-line bg-white p-6 shadow-soft"
+                  className="rounded-3xl border border-line bg-white p-6 shadow-soft transition-[transform,box-shadow] duration-300 ease-(--ease-premium) hover:shadow-card motion-safe:hover:-translate-y-1"
                 >
                   <IconBox icon={Leaf} tone="success" size="sm" />
                   <h3 className="mt-4 text-base font-bold">{pillar.title}</h3>

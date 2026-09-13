@@ -55,6 +55,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<Pa
           { name: 'Leistungen', path: '/leistungen' },
           { name: service.title, path: `/leistungen/${service.slug}` },
         ]}
+        image={service.image}
       >
         <div className="flex flex-col gap-3 sm:flex-row">
           <QuoteButton source={`service-${service.slug}`} size="lg" />
@@ -73,10 +74,9 @@ export default async function ServiceDetailPage({ params }: { params: Promise<Pa
           <Reveal variant="image" className="lg:col-span-6" as="figure">
             <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
               <Image
-                src={service.image.src}
-                alt={service.image.alt}
+                src="/images/hero/office.webp"
+                alt="Gereinigte Bürofläche in Berlin"
                 fill
-                priority
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 className="object-cover"
               />

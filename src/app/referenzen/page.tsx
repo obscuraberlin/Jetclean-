@@ -29,6 +29,10 @@ export default function ReferencesPage() {
         }
         text="Ausgewählte Objekte aus Berlin: welche Herausforderung bestand, wie wir sie gelöst haben und was sich seitdem verändert hat."
         breadcrumbs={[{ name: 'Referenzen', path: '/referenzen' }]}
+        image={{
+          src: '/images/before-after/after.webp',
+          alt: 'Gereinigtes Berliner Büro mit Blick auf den Fernsehturm',
+        }}
       />
       <LogoStrip />
       <section className="section-y" aria-labelledby="cases-title">

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Check, Mail, Phone } from 'lucide-react';
+import { RevealGroup, RevealItem } from '@/components/ui/Reveal';
 import { PageHero } from '@/components/sections/PageHero';
 import { Button } from '@/components/ui/Button';
 import { Reveal } from '@/components/ui/Reveal';
@@ -25,6 +26,10 @@ export default function CareersPage() {
         title={careersContent.headline}
         text={careersContent.intro}
         breadcrumbs={[{ name: 'Karriere', path: '/karriere' }]}
+        image={{
+          src: '/images/hero/hero.webp',
+          alt: 'JETCLEAN Mitarbeiterin bei der Arbeit in einem Berliner Büro',
+        }}
       />
       <section className="section-y" aria-labelledby="perks-title">
         <div className="container-site grid gap-10 lg:grid-cols-12 lg:gap-14">
@@ -34,19 +39,23 @@ export default function CareersPage() {
               eyebrow="Das bieten wir"
               title="Gute Arbeit verdient gute Bedingungen."
             />
-            <ul className="mt-6 space-y-3">
+            <RevealGroup as="ul" className="mt-6 grid gap-3 sm:grid-cols-2">
               {careersContent.perks.map((perk) => (
-                <li key={perk} className="flex items-start gap-3 text-[0.9375rem] text-navy-800">
-                  <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-success-50 text-success-600">
-                    <Check className="size-3" strokeWidth={3} aria-hidden="true" />
+                <RevealItem
+                  key={perk}
+                  as="li"
+                  className="flex items-start gap-3 rounded-2xl border border-line bg-white p-4 text-[0.9375rem] leading-snug text-navy-800 shadow-soft"
+                >
+                  <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-success-50 text-success-600">
+                    <Check className="size-3.5" strokeWidth={3} aria-hidden="true" />
                   </span>
                   {perk}
-                </li>
+                </RevealItem>
               ))}
-            </ul>
+            </RevealGroup>
           </div>
           <Reveal className="lg:col-span-6">
-            <div className="rounded-3xl border border-line bg-surface p-6 sm:p-8">
+            <div className="rounded-3xl border border-brand-100 bg-brand-50/60 p-6 sm:p-8">
               <h2 className="text-2xl">
                 {careersContent.openPositions.length > 0 ? 'Offene Stellen' : 'Initiativbewerbung'}
               </h2>

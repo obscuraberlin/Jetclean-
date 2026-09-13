@@ -20,11 +20,14 @@ export type Industry = {
   needs: string[];
   /** Passende Leistungen (Slugs) */
   services: string[];
+  /** Foto für Karten (Platzhalter bis Originalfotos vorliegen) */
+  image: { src: string; alt: string };
 };
 
 export const industries: Industry[] = [
   {
     slug: 'bueros',
+    image: { src: '/images/services/bueroreinigung.webp', alt: 'Modernes Berliner Großraumbüro' },
     title: 'Büros & Unternehmen',
     teaser: 'Saubere Arbeitsplätze, die Ihr Team jeden Morgen gern betritt.',
     description:
@@ -39,6 +42,7 @@ export const industries: Industry[] = [
   },
   {
     slug: 'praxen',
+    image: { src: '/images/cases/medical.webp', alt: 'Helle Arztpraxis mit Empfangsbereich' },
     title: 'Praxen & Gesundheitswesen',
     teaser: 'Hygiene, auf die sich Patienten und Personal verlassen können.',
     description:
@@ -53,6 +57,7 @@ export const industries: Industry[] = [
   },
   {
     slug: 'gewerbe',
+    image: { src: '/images/services/glasreinigung.webp', alt: 'Glasfront eines Ladengeschäfts' },
     title: 'Gewerbe & Einzelhandel',
     teaser: 'Ein gepflegter Auftritt, der Kunden überzeugt.',
     description:
@@ -67,6 +72,10 @@ export const industries: Industry[] = [
   },
   {
     slug: 'hausverwaltungen',
+    image: {
+      src: '/images/services/treppenhausreinigung.webp',
+      alt: 'Gepflegtes Treppenhaus eines Wohnhauses',
+    },
     title: 'Hausverwaltungen & WEGs',
     teaser: 'Ein Partner für Ihren gesamten Bestand.',
     description:
@@ -81,6 +90,7 @@ export const industries: Industry[] = [
   },
   {
     slug: 'immobilien',
+    image: { src: '/images/cases/property.webp', alt: 'Bürogebäude mit Glasfassade' },
     title: 'Immobilien & Facility Management',
     teaser: 'Werterhalt durch professionelle Gebäudepflege.',
     description:
@@ -91,6 +101,7 @@ export const industries: Industry[] = [
   },
   {
     slug: 'kanzleien',
+    image: { src: '/images/cases/office.webp', alt: 'Repräsentativer Besprechungsraum' },
     title: 'Kanzleien & Beratungen',
     teaser: 'Diskretion und Präzision für repräsentative Räume.',
     description:
@@ -105,6 +116,7 @@ export const industries: Industry[] = [
   },
   {
     slug: 'agenturen',
+    image: { src: '/images/services/sonderreinigung.webp', alt: 'Offene Agenturfläche mit Lounge' },
     title: 'Agenturen & Kreativwirtschaft',
     teaser: 'Räume, in denen gute Ideen entstehen.',
     description:
@@ -115,6 +127,10 @@ export const industries: Industry[] = [
   },
   {
     slug: 'grosskunden',
+    image: {
+      src: '/images/services/grundreinigung.webp',
+      alt: 'Großflächiges Bürogebäude in Berlin',
+    },
     title: 'Größere Geschäftskunden',
     teaser: 'Kapazität und Struktur für mehrere Standorte.',
     description:
