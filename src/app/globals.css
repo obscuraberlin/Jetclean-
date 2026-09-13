@@ -106,13 +106,14 @@
     text-size-adjust: 100%;
   }
 
+  /* `html.force-motion` wird nur in Vorschau-Builds gesetzt (NEXT_PUBLIC_FORCE_MOTION=1). */
   @media (prefers-reduced-motion: reduce) {
-    html {
+    html:not(.force-motion) {
       scroll-behavior: auto;
     }
-    *,
-    *::before,
-    *::after {
+    html:not(.force-motion) *,
+    html:not(.force-motion) *::before,
+    html:not(.force-motion) *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;

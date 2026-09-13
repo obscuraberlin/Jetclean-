@@ -76,7 +76,10 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang={siteConfig.language} className={`${inter.variable} ${manrope.variable}`}>
+    <html
+      lang={siteConfig.language}
+      className={`${inter.variable} ${manrope.variable}${process.env.NEXT_PUBLIC_FORCE_MOTION === '1' ? 'force-motion' : ''}`}
+    >
       <body className="pb-mobile-cta">
         <QuoteProvider>
           <div id="app-root" className="flex min-h-dvh flex-col">
