@@ -35,7 +35,7 @@ export function Hero() {
       {/* Desktop: Foto hinter der rechten Hälfte */}
       <OfficeBackdrop className="pointer-events-none absolute inset-y-0 right-0 hidden w-[62%] lg:block" />
 
-      <div className="relative container-site pt-7 pb-5 sm:pt-10 sm:pb-7 lg:pt-20 lg:pb-24">
+      <div className="relative container-site pt-6 pb-5 sm:pt-10 sm:pb-7 lg:pt-20 lg:pb-24">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-8 xl:gap-10">
           {/* Text */}
           <div className="lg:col-span-7 xl:col-span-5">
@@ -44,7 +44,7 @@ export function Hero() {
             </p>
             <h1
               id="hero-title"
-              className="text-[2rem] leading-[1.08] sm:text-5xl lg:mt-4 lg:text-[2.875rem] lg:leading-[1.06] xl:text-[3rem] 2xl:text-[3.375rem]"
+              className="max-w-[22ch] text-[1.75rem] leading-[1.15] tracking-[-0.02em] sm:max-w-none sm:text-5xl sm:leading-[1.08] lg:mt-4 lg:text-[2.875rem] lg:leading-[1.06] xl:text-[3rem] 2xl:text-[3.375rem]"
             >
               {/* Mobil/Tablet: kurze Überschrift, Desktop: ausführlich */}
               <span className="lg:hidden">

@@ -138,7 +138,7 @@
   h3,
   h4 {
     @apply font-display font-bold tracking-[-0.02em] text-balance text-navy-950;
-    hyphens: auto;
+    hyphens: manual;
     /* Fallback für sehr lange Komposita auf schmalen Viewports */
     overflow-wrap: break-word;
   }
