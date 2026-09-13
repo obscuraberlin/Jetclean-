@@ -197,6 +197,24 @@ filterbar nach Status. Ein Lead lässt sich öffnen (alle Details, Attribution) 
 Der Zugriff läuft über Supabase Auth + RLS (`admin_users`), Routen werden in `src/proxy.ts` geschützt.
 Die Seiten sind `noindex` und in `robots.txt` ausgeschlossen.
 
+## Datenschutz (DSGVO / TDDDG)
+
+Die Website ist so gebaut, dass **kein Cookie-Banner nötig ist**:
+
+- **Keine Cookies, kein Local-/Session-Storage** auf der öffentlichen Website. Nur der Admin-Login setzt
+  technisch notwendige Sitzungs-Cookies (Supabase Auth).
+- **Schriften self-hosted**: `next/font` lädt Inter und Manrope beim Build herunter und liefert sie vom eigenen
+  Server aus – keine Verbindung zu Google Fonts zur Laufzeit.
+- **Keine externen Dienste** (keine Karten, Videos, Social-Plugins, Werbe- oder Tracking-Scripte). Eine
+  Content-Security-Policy in `next.config.ts` blockiert fremde Domains technisch; Plausible wird nur
+  freigegeben, wenn `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` gesetzt ist (cookielos, ohne personenbezogene Daten).
+- **Formular**: Einwilligungs-Checkbox mit Link zur Datenschutzerklärung, Datenminimierung (keine
+  IP-Speicherung, kein Fingerprinting), UTM-Parameter nur aus der aktuellen URL beim Absenden.
+- **Rechtstexte** als strukturierte Vorlagen: `/impressum`, `/datenschutz`, `/agb`. Sie enthalten sichtbare
+  Prüfhinweise, bis `company.legal.reviewed = true` gesetzt ist, und müssen juristisch geprüft werden.
+- **Empfehlungen**: Supabase-Projekt in der EU-Region (Frankfurt) anlegen, Auftragsverarbeitungsverträge mit
+  Vercel, Supabase und ggf. Resend abschließen und in der Datenschutzerklärung eintragen.
+
 ## Deployment (Vercel)
 
 1. Repository bei Vercel importieren (Framework wird automatisch erkannt).
@@ -219,7 +237,7 @@ git push -u origin main
 ## Vor dem Livegang
 
 - [ ] `src/content/company.ts`: echte Telefonnummer, E-Mail, Adresse, Öffnungszeiten, Impressumsangaben; `legal.reviewed = true` nach juristischer Prüfung
-- [ ] Impressum & Datenschutz (`src/app/impressum`, `src/app/datenschutz`) juristisch prüfen und Klammer-Platzhalter ersetzen
+- [ ] Impressum, Datenschutz & AGB (`src/app/impressum`, `src/app/datenschutz`, `src/app/agb`) juristisch prüfen und Klammer-Platzhalter ersetzen
 - [ ] Testimonials, Kundenlogos und Referenz-Cases durch freigegebene echte Inhalte ersetzen (`isPlaceholder: false`)
 - [ ] Bilder gemäß `docs/IMAGES.md` austauschen (Logo ist bereits als Vektor-Nachbau eingebunden, optional durch die offizielle Datei ersetzen)
 - [ ] `NEXT_PUBLIC_SITE_URL` und Supabase-/E-Mail-Variablen in Vercel setzen

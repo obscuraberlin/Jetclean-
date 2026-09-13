@@ -19,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/kontakt', priority: 0.8, changeFrequency: 'yearly' },
     { path: '/impressum', priority: 0.1, changeFrequency: 'yearly' },
     { path: '/datenschutz', priority: 0.1, changeFrequency: 'yearly' },
+    { path: '/agb', priority: 0.1, changeFrequency: 'yearly' },
   ];
 
   return [

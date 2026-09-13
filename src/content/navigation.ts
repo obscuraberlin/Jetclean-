@@ -26,5 +26,6 @@ export const footerNavigation = {
   legal: [
     { label: 'Impressum', href: '/impressum' },
     { label: 'Datenschutz', href: '/datenschutz' },
+    { label: 'AGB', href: '/agb' },
   ],
 } satisfies Record<string, NavItem[]>;

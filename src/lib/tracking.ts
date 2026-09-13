@@ -1,8 +1,9 @@
 /**
  * Erfassung von Kampagnen-Parametern (UTM) und Herkunft für Leads.
- * First-Touch: Die Werte des ersten Seitenaufrufs der Sitzung werden in sessionStorage
- * gehalten, damit sie auch bei späterem Absenden des Formulars verfügbar sind.
- * Kein Fingerprinting, keine Cookies.
+ *
+ * Datenschutz: Es wird NICHTS im Browser gespeichert (kein Cookie, kein Local-/Session-Storage,
+ * § 25 TDDDG). Die Werte werden ausschließlich aus der aktuellen URL und dem Referrer gelesen
+ * und nur dann übertragen, wenn der Nutzer das Anfrageformular aktiv absendet.
  */
 
 export type Attribution = {
@@ -15,7 +16,6 @@ export type Attribution = {
   referrer: string;
 };
 
-const STORAGE_KEY = 'jc_attribution_v1';
 const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'] as const;
 
 const empty: Attribution = {
@@ -34,13 +34,6 @@ function truncate(value: string, max = 255) {
 
 export function captureAttribution(): Attribution {
   if (typeof window === 'undefined') return empty;
-  try {
-    const stored = window.sessionStorage.getItem(STORAGE_KEY);
-    if (stored) return { ...empty, ...(JSON.parse(stored) as Partial<Attribution>) };
-  } catch {
-    // sessionStorage kann in privaten Fenstern blockiert sein – dann einfach frisch erfassen.
-  }
-
   const params = new URLSearchParams(window.location.search);
   const attribution: Attribution = { ...empty };
   for (const key of UTM_KEYS) {
@@ -52,18 +45,12 @@ export function captureAttribution(): Attribution {
     referrer && !referrer.startsWith(window.location.origin) ? referrer : '',
     500,
   );
-
-  try {
-    window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(attribution));
-  } catch {
-    // ignorieren
-  }
   return attribution;
 }
 
 let snapshot: Attribution | null = null;
 
-/** Für useSyncExternalStore: stabile Referenz, einmalig pro Sitzung erfasst. */
+/** Für useSyncExternalStore: stabile Referenz pro Seitenaufruf (nur im Speicher). */
 export function getAttributionSnapshot(): Attribution {
   if (!snapshot) snapshot = captureAttribution();
   return snapshot;
