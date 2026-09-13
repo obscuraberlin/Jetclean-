@@ -7,6 +7,15 @@ import { services } from '@/content/services';
 import { telHref } from '@/lib/utils';
 import { SocialIcon } from './SocialIcon';
 
+const socialLabels: Record<(typeof company.social)[number]['platform'], string> = {
+  linkedin: 'LinkedIn',
+  instagram: 'Instagram',
+  youtube: 'YouTube',
+  xing: 'Xing',
+  facebook: 'Facebook',
+  tiktok: 'TikTok',
+};
+
 export function Footer() {
   const year = new Date().getFullYear();
   return (
@@ -28,7 +37,7 @@ export function Footer() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex size-9 items-center justify-center rounded-full border border-line bg-white text-navy-700 transition-colors hover:border-brand-300 hover:text-brand-600"
-                      aria-label={profile.platform}
+                      aria-label={`${company.shortName} auf ${socialLabels[profile.platform]}`}
                     >
                       <SocialIcon platform={profile.platform} className="size-4" />
                     </a>

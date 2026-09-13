@@ -14,7 +14,8 @@ const contentSecurityPolicy = [
   "img-src 'self' data: blob:",
   "font-src 'self'",
   `connect-src 'self'${plausible}`,
-  "frame-src 'none'",
+  // Unternehmensfilm: YouTube im erweiterten Datenschutzmodus, geladen erst nach Klick (2-Klick-Lösung)
+  'frame-src https://www.youtube-nocookie.com',
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",

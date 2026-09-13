@@ -45,6 +45,28 @@ export function Testimonials() {
           id="testimonials-title"
           eyebrow="Das sagen unsere Kunden"
           title="Vertrauen, das bleibt."
+          text={
+            siteConfig.reviews ? (
+              <a
+                href={siteConfig.reviews.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-1 inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-sm font-medium text-navy-800 shadow-soft ring-1 ring-line hover:text-brand-600"
+              >
+                <span className="flex items-center gap-0.5 text-brand-500" aria-hidden="true">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className="size-3.5 fill-current" />
+                  ))}
+                </span>
+                {siteConfig.reviews.rating.toFixed(1).replace('.', ',')} von 5 bei{' '}
+                {siteConfig.reviews.count} Bewertungen auf {siteConfig.reviews.platform}
+                <span className="sr-only">
+                  {' '}
+                  (Stand {siteConfig.reviews.checkedAt}, öffnet in neuem Tab)
+                </span>
+              </a>
+            ) : undefined
+          }
           action={
             <div className="flex items-center gap-4">
               {hasPlaceholders && siteConfig.showPlaceholderBadges ? <PlaceholderBadge /> : null}

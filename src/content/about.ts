@@ -4,12 +4,21 @@ import { company } from './company';
 
 export const aboutContent = {
   eyebrow: 'Über uns',
-  headline: 'Ein Berliner Familienbetrieb, der Verlässlichkeit ernst nimmt.',
-  intro: `Seit über ${company.yearsOfExperience} Jahren reinigen wir Büros, Praxen, Gewerbeobjekte und Wohnhäuser in Berlin. Was uns antreibt, ist einfach: Räume, in denen Menschen gern arbeiten – und Kunden, die sich um nichts kümmern müssen.`,
+  headline: 'Ein familiengeführter Berliner Betrieb – Hauptsache sauber.',
+  intro: `Seit über ${company.yearsOfExperience} Jahren reinigen wir Büros, Praxen, Gewerbeobjekte und Wohnhäuser in allen Berliner Bezirken – von Friedrichshain bis Hellersdorf, von Treptow bis Charlottenburg. Was uns antreibt, ist einfach: Räume, in denen Menschen gern arbeiten – und Kunden, die sich um nichts kümmern müssen.`,
   story: [
-    'JETCLEAN ist in Berlin gewachsen – von ersten Büroobjekten zu einem Team, das heute Unternehmen, Hausverwaltungen und Institutionen in der ganzen Stadt betreut.',
-    'Wir glauben, dass gute Reinigung vor allem eine Frage von Organisation und Haltung ist: feste Teams, klare Absprachen, ehrliche Kommunikation. Deshalb hat bei uns jeder Kunde einen festen Ansprechpartner, und jedes Objekt ein Team, das es kennt.',
-    'Unser Anspruch: Sie sollen unsere Arbeit gar nicht bemerken – außer daran, dass alles sauber ist.',
+    'JETCLEAN ist ein familiengeführtes, mittelständisches Unternehmen aus Berlin-Neukölln. Unser Schwerpunkt ist die Unterhaltsreinigung – dazu kommen anspruchsvolle Glasreinigung und Hygienemaßnahmen in sensiblen Bereichen wie Arztpraxen, Kitas und Gastronomie.',
+    'Wir arbeiten vor allem mit Unternehmen, Hausverwaltungen und Institutionen langfristig zusammen. Einsatztage richten sich nach Ihrem Betrieb – auf Wunsch auch in den Abendstunden oder in der Spätschicht, damit Ihr Tagesgeschäft ungestört bleibt.',
+    'Gute Reinigung ist für uns vor allem eine Frage von Organisation und Haltung: feste Teams, klare Absprachen, ehrliche Kommunikation, moderne Technik und umweltschonende Reinigungsmittel – zu fairen Preisen. Unser Motto seit dem ersten Tag: Hauptsache sauber.',
+  ],
+  /** Kurze Merkmale aus der bisherigen Website – für die „Das macht uns aus“-Liste */
+  highlights: [
+    'Familiengeführt und mittelständisch – kurze Wege, persönliche Entscheidungen',
+    `Über ${company.yearsOfExperience} Jahre Erfahrung in der Gebäudereinigung`,
+    'In allen zwölf Berliner Bezirken im Einsatz',
+    'Langfristige Zusammenarbeit auf gewerblicher Basis (B2B)',
+    'Flexible Einsatztage – auf Wunsch abends oder in der Spätschicht',
+    'Moderne Technik, umweltschonende Reinigungsmittel, faire Preise',
   ],
   values: [
     {

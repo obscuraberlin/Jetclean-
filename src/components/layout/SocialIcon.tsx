@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react';
 
-type Platform = 'linkedin' | 'instagram' | 'youtube' | 'xing';
+type Platform = 'linkedin' | 'instagram' | 'youtube' | 'xing' | 'facebook' | 'tiktok';
 
 /** Markenicons als schlanke Inline-SVGs (Lucide führt keine Brand-Icons mehr). */
 export function SocialIcon({
@@ -40,6 +40,18 @@ export function SocialIcon({
       return (
         <svg {...common}>
           <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.2 3.6-6.2 3.6Z" />
+        </svg>
+      );
+    case 'facebook':
+      return (
+        <svg {...common}>
+          <path d="M13.5 22v-8.2h2.8l.4-3.3h-3.2V8.4c0-.9.3-1.6 1.6-1.6h1.7V3.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.3v3.3h2.8V22h3.4Z" />
+        </svg>
+      );
+    case 'tiktok':
+      return (
+        <svg {...common}>
+          <path d="M16.6 2h-3.2v13.4a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.3a6.2 6.2 0 1 0 5.2 6.1V8.6a7.4 7.4 0 0 0 4.4 1.4V6.8A4.4 4.4 0 0 1 16.6 2Z" />
         </svg>
       );
     case 'xing':

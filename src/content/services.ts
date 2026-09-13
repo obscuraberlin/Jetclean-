@@ -368,3 +368,20 @@ export const quoteFrequencyOptions = [
   { value: 'once', label: 'Einmalig' },
   { value: 'unclear', label: 'Noch unklar' },
 ] as const;
+
+/**
+ * Weitere Leistungen der bisherigen Website (ohne eigene Unterseite).
+ * Werden auf der Leistungsübersicht als Liste gezeigt und im Formular unter „Sonstiges“ angefragt.
+ */
+export const additionalServices = [
+  'Bauendreinigung nach Bauarbeiten',
+  'Praxisreinigung (medizinische & kosmetische Einrichtungen)',
+  'Schul- & Kita-Reinigung',
+  'Hotel- & Ferienwohnungsreinigung',
+  'Gastronomie-Reinigung',
+  'Hausmeisterservice',
+  'Winterdienst',
+  'Teppichreinigung',
+  'Fassadenreinigung',
+  'Industriereinigung',
+] as const;

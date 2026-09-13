@@ -11,6 +11,7 @@ import { Promises } from '@/components/sections/Promises';
 import { ServiceArea } from '@/components/sections/ServiceArea';
 import { ServicesCarousel } from '@/components/sections/ServicesCarousel';
 import { Testimonials } from '@/components/sections/Testimonials';
+import { VideoTrailer } from '@/components/sections/VideoTrailer';
 import { faqs, homepageFaqCount } from '@/content/faqs';
 import { siteConfig } from '@/content/site';
 import { buildMetadata, faqJsonLd } from '@/lib/seo';
@@ -30,6 +31,7 @@ export default function HomePage() {
       <ServicesCarousel />
       <BeforeAfterSection />
       <Benefits />
+      <VideoTrailer />
       <ProcessSteps />
       <Promises />
       <Testimonials />

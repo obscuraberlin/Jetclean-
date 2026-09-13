@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import { Check } from 'lucide-react';
 import { CtaSection } from '@/components/sections/CtaSection';
+import { VideoTrailer } from '@/components/sections/VideoTrailer';
 import { PageHero } from '@/components/sections/PageHero';
 import { AnimatedNumber } from '@/components/ui/AnimatedNumber';
 import { IconBox } from '@/components/ui/IconBox';
@@ -81,6 +83,34 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <section className="section-y-sm pt-0" aria-labelledby="highlights-title">
+        <div className="container-site">
+          <div className="rounded-3xl border border-brand-100 bg-brand-50/60 p-6 sm:p-8 lg:p-10">
+            <SectionHeading
+              id="highlights-title"
+              eyebrow="Das macht uns aus"
+              title={`${company.hashtag} – ${company.motto}`}
+            />
+            <RevealGroup as="ul" className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {aboutContent.highlights.map((item) => (
+                <RevealItem
+                  key={item}
+                  as="li"
+                  className="flex items-start gap-3 rounded-2xl bg-white p-4 text-[0.9375rem] leading-snug text-navy-800 shadow-soft"
+                >
+                  <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-success-50 text-success-600">
+                    <Check className="size-3.5" strokeWidth={3} aria-hidden="true" />
+                  </span>
+                  {item}
+                </RevealItem>
+              ))}
+            </RevealGroup>
+          </div>
+        </div>
+      </section>
+
+      <VideoTrailer id="film" eyebrow="Unser Film" title="Lernen Sie uns in Bewegung kennen." />
 
       <section className="bg-surface section-y" aria-labelledby="values-title">
         <div className="container-site">

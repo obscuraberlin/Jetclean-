@@ -106,9 +106,30 @@ export default function PrivacyPage() {
               Die verwendeten Schriftarten (Inter, Manrope) werden beim Erstellen der Website
               heruntergeladen und ausschließlich von unserem eigenen Server ausgeliefert. Beim
               Aufruf der Seite findet <strong>keine Verbindung zu Servern von Google</strong> oder
-              anderen Schriftanbietern statt. Die Website bindet keine externen Karten, Videos,
+              anderen Schriftanbietern statt. Die Website bindet keine externen Karten,
               Social-Media-Plugins oder Werbenetzwerke ein. Eine Content-Security-Policy verhindert
               technisch das Nachladen von Ressourcen fremder Domains.
+            </p>
+            <p>
+              <strong>Unternehmensfilm (YouTube):</strong> Unser Film wird über eine sogenannte
+              Zwei-Klick-Lösung eingebunden. Beim Aufruf der Seite wird lediglich ein auf unserem
+              Server liegendes Vorschaubild angezeigt; es findet keine Verbindung zu YouTube statt.
+              Erst wenn Sie auf „Film ansehen“ klicken, wird der Player von YouTube (Google Ireland
+              Limited, Gordon House, Barrow Street, Dublin 4, Irland) im erweiterten
+              Datenschutzmodus (youtube-nocookie.com) geladen. Dabei werden Ihre IP-Adresse und
+              Geräteinformationen an Google übertragen; Google kann Cookies bzw. vergleichbare
+              Technologien im Endgerät einsetzen. Rechtsgrundlage ist Ihre Einwilligung durch den
+              Klick (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG). Weitere Informationen:{' '}
+              <a
+                href="https://policies.google.com/privacy"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                policies.google.com/privacy
+              </a>
+              . Links zu unseren Social-Media-Profilen (Facebook, TikTok) sind reine Verlinkungen
+              ohne Plugin; erst beim Aufruf der jeweiligen Plattform gelten deren
+              Datenschutzbestimmungen.
             </p>
 
             <h2>8. Reichweitenmessung</h2>

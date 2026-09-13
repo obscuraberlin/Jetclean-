@@ -33,6 +33,35 @@ export const siteConfig = {
   },
 
   /**
+   * Unternehmensfilm (YouTube). Wird DSGVO-konform erst nach Klick geladen
+   * (youtube-nocookie.com, Vorschaubild liegt lokal). `null` blendet die Sektion aus.
+   */
+  video: {
+    youtubeId: 'a72hnfxB54M',
+    title: 'Jetclean Berlin – Gebäudereinigung',
+    /** Länge nur angeben, wenn bekannt */
+    duration: null as string | null,
+  } as { youtubeId: string; title: string; duration: string | null } | null,
+
+  /**
+   * Öffentliche Bewertungen (aus einem Bewertungsportal). Regelmäßig aktualisieren –
+   * `null` blendet den Hinweis aus. Wird bewusst NICHT als AggregateRating in Schema.org ausgegeben.
+   */
+  reviews: {
+    rating: 5.0,
+    count: 32,
+    platform: 'golocal',
+    url: 'https://www.golocal.de/berlin/gebaeudereinigung/jetclean-gebaeudeservice-3JKK8/',
+    checkedAt: 'September 2026',
+  } as {
+    rating: number;
+    count: number;
+    platform: string;
+    url: string;
+    checkedAt: string;
+  } | null,
+
+  /**
    * Placeholder-Hinweise sichtbar rendern (z. B. „Beispielinhalt“ bei nicht verifizierten
    * Testimonials/Logos). Sollte bis zum Austausch der Inhalte auf `true` bleiben.
    */
