@@ -7,7 +7,12 @@ test.describe('Angebots-Flow', () => {
   }) => {
     await page.goto('/');
     if (isMobile) {
-      await page.getByRole('button', { name: 'Kostenloses Angebot erhalten' }).first().click();
+      // Mobil: Hero zeigt die Anfrage-Karte, der Button-CTA sitzt in der Sticky-Leiste nach dem Scrollen
+      await page.mouse.wheel(0, 900);
+      await page
+        .getByTestId('mobile-cta')
+        .getByRole('button', { name: 'Kostenloses Angebot' })
+        .click();
     } else {
       await page.getByRole('button', { name: 'Kostenloses Angebot', exact: true }).first().click();
     }
