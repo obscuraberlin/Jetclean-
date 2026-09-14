@@ -1,8 +1,8 @@
 'use client';
 
 import { useReducedMotion } from '@/hooks/useReducedMotion';
-import { motion } from 'motion/react';
-import type { ElementType, ReactNode } from 'react';
+import { motion, useInView } from 'motion/react';
+import { useRef, type ElementType, type ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
 type TextRevealProps = {
@@ -16,7 +16,10 @@ type TextRevealProps = {
   inView?: boolean;
 };
 
-/** Headline-Zeilen, die weich aus einer Maskierung herausgleiten (kein simples Fade-in). */
+/**
+ * Headline-Zeilen, die weich aus einer Maskierung herausgleiten (kein simples Fade-in).
+ * Beobachtet wird der sichtbare Container – nicht die (anfangs weggeschobene) Zeile selbst.
+ */
 export function TextReveal({
   lines,
   as = 'h1',
@@ -26,9 +29,12 @@ export function TextReveal({
   inView = false,
 }: TextRevealProps) {
   const reduce = useReducedMotion();
+  const ref = useRef<HTMLElement>(null);
+  const visible = useInView(ref, { once: true, amount: 0.3, margin: '0px 0px -10% 0px' });
   const Tag = as as ElementType;
+  const show = reduce || !inView || visible;
   return (
-    <Tag className={className}>
+    <Tag ref={ref} className={className}>
       {lines.map((line, index) => (
         <span
           key={index}
@@ -40,14 +46,8 @@ export function TextReveal({
             <motion.span
               className="block will-change-transform"
               initial={{ y: '110%', rotate: 1.5 }}
-              {...(inView
-                ? { whileInView: { y: 0, rotate: 0 }, viewport: { once: true, amount: 0.6 } }
-                : { animate: { y: 0, rotate: 0 } })}
-              transition={{
-                duration: 0.9,
-                delay: delay + index * 0.12,
-                ease: [0.22, 1, 0.36, 1],
-              }}
+              animate={show ? { y: 0, rotate: 0 } : { y: '110%', rotate: 1.5 }}
+              transition={{ duration: 0.9, delay: delay + index * 0.12, ease: [0.22, 1, 0.36, 1] }}
             >
               {line}
             </motion.span>
