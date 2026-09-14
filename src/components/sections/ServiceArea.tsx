@@ -33,7 +33,6 @@ export function ServiceArea({ className, id = 'einsatzgebiet', withCta = true }:
       <div className="container-site grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
         <div className="lg:col-span-5">
           <SectionHeading
-            align="left"
             id={`${id}-title`}
             eyebrow="Einsatzgebiet"
             title="In ganz Berlin für Sie da."

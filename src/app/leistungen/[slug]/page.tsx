@@ -58,7 +58,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<Pa
         ]}
         image={service.image}
       >
-        <div className="flex flex-col gap-3 sm:flex-row">
+        <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <QuoteButton source={`service-${service.slug}`} size="lg" />
           <a
             href={telHref(company.contact.phoneE164)}
@@ -85,7 +85,6 @@ export default async function ServiceDetailPage({ params }: { params: Promise<Pa
           </Reveal>
           <div className="lg:col-span-6">
             <SectionHeading
-              align="left"
               id="scope-title"
               eyebrow="Leistungsumfang"
               title={`Das umfasst unsere ${service.title}.`}
@@ -152,7 +151,6 @@ export default async function ServiceDetailPage({ params }: { params: Promise<Pa
           <div className="container-site grid gap-8 lg:grid-cols-12">
             <div className="lg:col-span-4">
               <SectionHeading
-                align="left"
                 id="service-faq-title"
                 eyebrow="Häufige Fragen"
                 title={`Fragen zur ${service.title}`}

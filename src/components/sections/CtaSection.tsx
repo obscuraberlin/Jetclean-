@@ -40,12 +40,12 @@ export function CtaSection({
               aria-hidden="true"
               className="absolute inset-0 bg-[radial-gradient(36rem_circle_at_100%_0%,rgb(253_83_18/0.35),transparent_60%)]"
             />
-            <div className="relative grid gap-8 lg:grid-cols-12 lg:items-center">
-              <div className="lg:col-span-8">
+            <div className="relative flex flex-col items-center gap-8 text-center">
+              <div className="max-w-3xl">
                 <h2 id="cta-title" className="text-[1.75rem] leading-tight text-white sm:text-4xl">
                   {title}
                 </h2>
-                <p className="mt-3 max-w-2xl text-base leading-relaxed text-navy-200 sm:text-lg">
+                <p className="mx-auto mt-3 max-w-2xl text-base leading-relaxed text-navy-200 sm:text-lg">
                   {text}
                 </p>
                 <Link
@@ -56,7 +56,7 @@ export function CtaSection({
                   Lieber zurückrufen lassen? Rückruf anfordern
                 </Link>
               </div>
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center lg:col-span-4 lg:flex-col lg:items-stretch">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
                 <QuoteButton source={source} size="lg" className="w-full sm:w-auto lg:w-full">
                   Kostenloses Angebot
                 </QuoteButton>

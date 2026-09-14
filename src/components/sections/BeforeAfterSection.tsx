@@ -11,7 +11,6 @@ export function BeforeAfterSection() {
       <div className="container-site grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-5">
           <SectionHeading
-            align="left"
             id="before-after-title"
             eyebrow="Vorher / Nachher"
             title={beforeAfter.headline}

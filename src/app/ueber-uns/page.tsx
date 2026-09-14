@@ -52,9 +52,8 @@ export default function AboutPage() {
               </div>
             </div>
           </Reveal>
-          <div className="lg:col-span-6">
+          <div className="text-center lg:col-span-6">
             <SectionHeading
-              align="left"
               id="story-title"
               eyebrow="Unsere Geschichte"
               title="Gewachsen in Berlin. Verlässlich seit dem ersten Objekt."

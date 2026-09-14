@@ -20,7 +20,6 @@ export function FaqSection({ all = false, id = 'faq' }: FaqSectionProps) {
       <div className="container-site grid gap-8 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-4">
           <SectionHeading
-            align="left"
             id={`${id}-title`}
             eyebrow="Häufige Fragen"
             title="Schnelle Antworten auf Ihre Fragen."

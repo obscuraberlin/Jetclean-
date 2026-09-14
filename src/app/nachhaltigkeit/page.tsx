@@ -31,7 +31,6 @@ export default function SustainabilityPage() {
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
             <div className="lg:col-span-5">
               <SectionHeading
-                align="left"
                 id="pillars-title"
                 eyebrow="Konkret"
                 title="Was Nachhaltigkeit bei uns im Alltag bedeutet."

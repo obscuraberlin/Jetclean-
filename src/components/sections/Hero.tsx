@@ -52,57 +52,59 @@ export function Hero() {
       <div className="relative container-site pt-6 pb-5 sm:pt-10 sm:pb-7 lg:pt-20 lg:pb-24">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-8 xl:gap-10">
           {/* Text */}
-          <div className="lg:col-span-7 xl:col-span-5">
-            <p className="hidden text-xs font-semibold tracking-[0.16em] text-brand-600 uppercase lg:block">
-              Seit über {company.yearsOfExperience} Jahren in Berlin
-            </p>
-            <h1
-              id="hero-title"
-              className="max-w-[22ch] text-[1.75rem] leading-[1.15] tracking-[-0.02em] sm:max-w-none sm:text-5xl sm:leading-[1.08] lg:mt-4 lg:text-[2.875rem] lg:leading-[1.06] xl:text-[3rem] 2xl:text-[3.375rem]"
-            >
-              {/* Mobil/Tablet: kurze Überschrift, Desktop: ausführlich */}
-              <span className="lg:hidden">
-                Gebäude&shy;reinigung in Berlin,{' '}
-                <span className="text-accent">auf die Sie sich verlassen können.</span>
-              </span>
-              <span className="hidden lg:inline">
-                Gebäude&shy;reinigung für Berliner Unternehmen,{' '}
-                <span className="text-accent">auf die Sie sich verlassen können.</span>
-              </span>
-            </h1>
-            <p className="mt-5 hidden max-w-xl text-xl font-medium text-navy-800 lg:block">
-              {company.tagline}
-            </p>
-            <p className="mt-3 hidden max-w-xl text-base leading-relaxed text-muted lg:block">
-              Feste Teams, ein persönlicher Ansprechpartner und dokumentierte Qualität – für Büros,
-              Praxen, Gewerbe und Hausverwaltungen in ganz Berlin.
-            </p>
-
-            {/* Vertrauenspunkte und Buttons: erst ab Desktop, mobil folgt direkt die Anfrage-Karte */}
-            <ul className="mt-7 hidden max-w-xl grid-cols-2 gap-x-6 gap-y-4 text-sm font-medium text-navy-800 lg:grid xl:grid-cols-3">
-              {heroTrustpoints.map((point) => (
-                <li key={point.label} className="flex items-center gap-3">
-                  <point.icon
-                    className="size-6 shrink-0 text-brand-500"
-                    strokeWidth={1.75}
-                    aria-hidden="true"
-                  />
-                  {point.label}
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-8 hidden flex-col gap-3 sm:flex-row sm:items-center sm:gap-6 lg:flex">
-              <QuoteButton source="hero" size="lg" />
-              <Button
-                href="/referenzen"
-                variant="link"
-                size="lg"
-                className="justify-center font-semibold text-navy-900 hover:text-brand-600"
+          <div className="text-center lg:col-span-7 xl:col-span-5">
+            <div className="mx-auto max-w-xl lg:max-w-none">
+              <p className="hidden text-xs font-semibold tracking-[0.16em] text-brand-600 uppercase lg:block">
+                Seit über {company.yearsOfExperience} Jahren in Berlin
+              </p>
+              <h1
+                id="hero-title"
+                className="max-w-[22ch] text-[1.75rem] leading-[1.15] tracking-[-0.02em] sm:max-w-none sm:text-5xl sm:leading-[1.08] lg:mt-4 lg:text-[2.875rem] lg:leading-[1.06] xl:text-[3rem] 2xl:text-[3.375rem]"
               >
-                Referenzen ansehen
-                <ArrowRight className={buttonIconClass} aria-hidden="true" />
-              </Button>
+                {/* Mobil/Tablet: kurze Überschrift, Desktop: ausführlich */}
+                <span className="lg:hidden">
+                  Gebäude&shy;reinigung in Berlin,{' '}
+                  <span className="text-accent">auf die Sie sich verlassen können.</span>
+                </span>
+                <span className="hidden lg:inline">
+                  Gebäude&shy;reinigung für Berliner Unternehmen,{' '}
+                  <span className="text-accent">auf die Sie sich verlassen können.</span>
+                </span>
+              </h1>
+              <p className="mx-auto mt-5 hidden max-w-xl text-xl font-medium text-navy-800 lg:block">
+                {company.tagline}
+              </p>
+              <p className="mx-auto mt-3 hidden max-w-xl text-base leading-relaxed text-muted lg:block">
+                Feste Teams, ein persönlicher Ansprechpartner und dokumentierte Qualität – für
+                Büros, Praxen, Gewerbe und Hausverwaltungen in ganz Berlin.
+              </p>
+
+              {/* Vertrauenspunkte und Buttons: erst ab Desktop, mobil folgt direkt die Anfrage-Karte */}
+              <ul className="mx-auto mt-7 hidden max-w-xl grid-cols-2 gap-x-6 gap-y-4 text-sm font-medium text-navy-800 lg:grid xl:grid-cols-3">
+                {heroTrustpoints.map((point) => (
+                  <li key={point.label} className="flex items-center justify-center gap-3">
+                    <point.icon
+                      className="size-6 shrink-0 text-brand-500"
+                      strokeWidth={1.75}
+                      aria-hidden="true"
+                    />
+                    {point.label}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-8 hidden flex-col gap-3 sm:flex-row sm:items-center sm:justify-center sm:gap-6 lg:flex">
+                <QuoteButton source="hero" size="lg" />
+                <Button
+                  href="/referenzen"
+                  variant="link"
+                  size="lg"
+                  className="justify-center font-semibold text-navy-900 hover:text-brand-600"
+                >
+                  Referenzen ansehen
+                  <ArrowRight className={buttonIconClass} aria-hidden="true" />
+                </Button>
+              </div>
             </div>
           </div>
 
@@ -166,7 +168,7 @@ export function Hero() {
           </div>
         </div>
       </div>
-      <div className="container-site pt-6 pb-8 lg:hidden">
+      <div className="container-site pt-6 pb-8 text-center lg:hidden">
         <ul className="grid grid-cols-3 gap-x-4 gap-y-3 text-[0.8125rem] leading-snug font-medium text-navy-800">
           {heroTrustpoints.map((point) => (
             <li key={point.label} className="flex items-center gap-2">

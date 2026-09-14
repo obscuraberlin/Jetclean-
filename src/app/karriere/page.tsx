@@ -35,7 +35,6 @@ export default function CareersPage() {
         <div className="container-site grid gap-10 lg:grid-cols-12 lg:gap-14">
           <div className="lg:col-span-6">
             <SectionHeading
-              align="left"
               id="perks-title"
               eyebrow="Das bieten wir"
               title="Gute Arbeit verdient gute Bedingungen."

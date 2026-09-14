@@ -58,10 +58,10 @@ export function PageHero({
             'mt-6 sm:mt-8',
             image
               ? 'grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-12'
-              : !compact && 'max-w-3xl',
+              : !compact && 'mx-auto max-w-3xl',
           )}
         >
-          <div className={cn(image && 'lg:col-span-7')}>
+          <div className={cn('text-center', image && 'lg:col-span-7')}>
             {eyebrow ? (
               <p className="text-xs font-semibold tracking-[0.16em] text-brand-600 uppercase">
                 {eyebrow}
@@ -78,13 +78,16 @@ export function PageHero({
               {title}
             </h1>
             {text ? (
-              <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
+              <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
                 {text}
               </p>
             ) : null}
-            {children ? <div className="mt-7">{children}</div> : null}
+            {children ? <div className="mt-7 flex flex-col items-center">{children}</div> : null}
             {showFacts ? (
-              <ul className="mt-7 flex flex-wrap gap-2.5" aria-label="Auf einen Blick">
+              <ul
+                className="mt-7 flex flex-wrap justify-center gap-2.5"
+                aria-label="Auf einen Blick"
+              >
                 {facts.map((fact) => (
                   <li
                     key={fact.label}
