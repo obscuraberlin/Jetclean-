@@ -36,7 +36,11 @@ export function ProcessSteps({
   title = 'In vier Schritten zum passenden Reinigungskonzept.',
 }: ProcessStepsProps) {
   return (
-    <section className={cn('section-y', className)} aria-labelledby={`${id}-title`} id={id}>
+    <section
+      className={cn('bg-surface section-y', className)}
+      aria-labelledby={`${id}-title`}
+      id={id}
+    >
       <div className="container-site">
         <SectionHeading id={`${id}-title`} eyebrow={eyebrow} title={title} />
         <RevealGroup as="ol" className="mt-8 grid gap-6 sm:grid-cols-2 lg:mt-12 lg:grid-cols-4">

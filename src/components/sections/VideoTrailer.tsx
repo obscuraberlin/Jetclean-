@@ -36,8 +36,13 @@ export function VideoTrailer({
   if (!video) return null;
 
   return (
-    <section className={cn('section-y', className)} aria-labelledby={`${id}-title`} id={id}>
-      <div className="container-site">
+    <section
+      className={cn('relative overflow-hidden section-y', className)}
+      aria-labelledby={`${id}-title`}
+      id={id}
+    >
+      <div aria-hidden="true" className="blob top-1/3 -left-40 size-[28rem] bg-navy-200/50" />
+      <div className="relative container-site">
         <SectionHeading id={`${id}-title`} eyebrow={eyebrow} title={title} text={text} />
         <Reveal variant="image" className="mt-8 lg:mt-12">
           <div className="relative aspect-video overflow-hidden rounded-3xl bg-navy-950 shadow-lift">

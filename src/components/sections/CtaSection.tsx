@@ -19,7 +19,7 @@ export function CtaSection({
   source = 'cta-section',
 }: CtaSectionProps) {
   return (
-    <section className="section-y-sm" aria-labelledby="cta-title">
+    <section className="section-y" aria-labelledby="cta-title">
       <div className="container-site">
         <Reveal>
           <div className="relative overflow-hidden rounded-3xl bg-navy-950 px-6 py-10 text-white sm:px-10 sm:py-14 lg:px-16 lg:py-16">

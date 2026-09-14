@@ -39,10 +39,7 @@ export function Testimonials() {
   };
 
   return (
-    <section
-      className="relative overflow-hidden bg-surface section-y"
-      aria-labelledby="testimonials-title"
-    >
+    <section className="relative overflow-hidden section-y" aria-labelledby="testimonials-title">
       <div
         aria-hidden="true"
         className="blob top-[-6rem] right-[15%] size-[24rem] bg-brand-500/15"

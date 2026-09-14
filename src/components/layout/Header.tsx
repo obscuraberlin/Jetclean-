@@ -53,14 +53,14 @@ export function Header() {
     >
       <div
         className={cn(
-          'container-site flex items-center justify-between gap-4 transition-[height] duration-300 ease-(--ease-premium) 2xl:gap-6',
-          scrolled ? 'h-16' : 'h-[4.25rem] lg:h-20',
+          'container-site flex items-center justify-between gap-6 transition-[height] duration-300 ease-(--ease-premium) 2xl:gap-10',
+          scrolled ? 'h-[4.25rem] lg:h-[4.75rem]' : 'h-[4.5rem] lg:h-24 2xl:h-28',
         )}
       >
         <Logo compact={scrolled} />
 
         <nav aria-label="Hauptnavigation" className="hidden xl:block">
-          <ul className="flex items-center gap-1">
+          <ul className="flex items-center gap-2 2xl:gap-4">
             {mainNavigation.map((item) => {
               const active = isActive(item.href);
               return (
@@ -69,7 +69,7 @@ export function Header() {
                     href={item.href}
                     aria-current={active ? 'page' : undefined}
                     className={cn(
-                      'group relative inline-flex h-10 items-center rounded-full px-2 text-sm font-medium whitespace-nowrap transition-colors 2xl:px-3 2xl:text-[0.9rem]',
+                      'group relative inline-flex h-10 items-center rounded-full px-3 text-[0.9375rem] font-medium whitespace-nowrap transition-colors 2xl:px-4 2xl:text-base',
                       active ? 'text-navy-950' : 'text-navy-700 hover:text-navy-950',
                     )}
                   >
@@ -88,7 +88,7 @@ export function Header() {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-2 2xl:gap-3">
+        <div className="flex items-center gap-3 2xl:gap-5">
           <a
             href={telHref(company.contact.phoneE164)}
             onClick={() => track('phone_click', { source: 'header' })}

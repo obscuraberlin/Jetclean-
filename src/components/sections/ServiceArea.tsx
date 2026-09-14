@@ -26,7 +26,7 @@ type ServiceAreaProps = { className?: string; id?: string; withCta?: boolean };
 export function ServiceArea({ className, id = 'einsatzgebiet', withCta = true }: ServiceAreaProps) {
   return (
     <section
-      className={cn('bg-surface section-y-sm', className)}
+      className={cn('relative overflow-hidden bg-brand-50/50 section-y', className)}
       aria-labelledby={`${id}-title`}
       id={id}
     >

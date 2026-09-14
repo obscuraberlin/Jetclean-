@@ -50,8 +50,8 @@ export function Hero() {
         className="blob top-1/2 left-[30%] size-[24rem] bg-navy-200/40 [animation-delay:-8s]"
       />
 
-      <div className="relative container-site pt-6 pb-5 sm:pt-10 sm:pb-7 lg:pt-20 lg:pb-24">
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-8 xl:gap-10">
+      <div className="relative container-site pt-6 pb-5 sm:pt-10 sm:pb-7 lg:pt-24 lg:pb-28 2xl:pt-32 2xl:pb-36">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-16">
           {/* Text */}
           <div className="text-center lg:col-span-7 xl:col-span-5">
             <div className="mx-auto max-w-xl lg:max-w-none">

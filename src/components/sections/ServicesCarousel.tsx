@@ -148,7 +148,12 @@ export function ServicesCarousel() {
   };
 
   return (
-    <section className="section-y" aria-labelledby="services-title" id="leistungen">
+    <section
+      className="relative overflow-hidden bg-surface-gradient section-y"
+      aria-labelledby="services-title"
+      id="leistungen"
+    >
+      <div aria-hidden="true" className="blob -top-32 right-[-8rem] size-[30rem] bg-brand-500/10" />
       <div className="container-site">
         <SectionHeading
           id="services-title"
@@ -207,7 +212,7 @@ export function ServicesCarousel() {
             onPointerCancel={endDrag}
             onClickCapture={onClickCapture}
             className={cn(
-              'container-site scrollbar-none flex snap-x snap-mandatory [scroll-padding-inline:1.25rem] gap-4 overflow-x-auto scroll-smooth pb-4 sm:[scroll-padding-inline:1.5rem] sm:gap-5 lg:[scroll-padding-inline:2rem]',
+              'container-site scrollbar-none flex snap-x snap-mandatory [scroll-padding-inline:1.25rem] gap-4 overflow-x-auto scroll-smooth pb-4 sm:[scroll-padding-inline:1.5rem] sm:gap-5 lg:[scroll-padding-inline:2.5rem] 2xl:[scroll-padding-inline:4rem]',
               'cursor-grab touch-pan-x select-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500',
             )}
             data-testid="services-carousel"

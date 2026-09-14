@@ -65,7 +65,7 @@
   --shadow-brand: 0 8px 24px -8px rgb(242 106 27 / 0.45);
 
   /* Container */
-  --container-site: 80rem;
+  --container-site: 96rem;
 
   /* Bewegung */
   --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
@@ -189,7 +189,10 @@
     padding-inline: 1.5rem;
   }
   @media (min-width: 64rem) {
-    padding-inline: 2rem;
+    padding-inline: 2.5rem;
+  }
+  @media (min-width: 96rem) {
+    padding-inline: 4rem;
   }
 }
 
@@ -197,21 +200,34 @@
 @utility section-y {
   padding-block: 3.5rem;
   @media (min-width: 48rem) {
-    padding-block: 5rem;
+    padding-block: 5.5rem;
   }
   @media (min-width: 64rem) {
-    padding-block: 7rem;
+    padding-block: 8rem;
+  }
+  @media (min-width: 96rem) {
+    padding-block: 9.5rem;
   }
 }
 
 @utility section-y-sm {
   padding-block: 2.5rem;
   @media (min-width: 48rem) {
-    padding-block: 3.5rem;
+    padding-block: 4rem;
   }
   @media (min-width: 64rem) {
-    padding-block: 4.5rem;
+    padding-block: 5.5rem;
   }
+}
+
+/* Foto als sehr dezente Kulisse hinter einer Sektion */
+@utility photo-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.1;
+  filter: saturate(0.6);
+  object-fit: cover;
 }
 
 /* Textmarkierung in Headlines – Markenverlauf */
