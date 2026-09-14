@@ -247,7 +247,7 @@ git push -u origin main
 ## Vor dem Livegang
 
 - [ ] `src/content/company.ts`: Adresse (Jonasstraße 69, 12053 Berlin), Telefon (030 805 764 26), Geschäftsführung und HRB wurden aus öffentlichen Quellen übernommen (`PUBLIC_SOURCE`) – bitte bestätigen; E-Mail, USt-IdNr. und Öffnungszeiten sind weiterhin Platzhalter; `legal.reviewed = true` nach juristischer Prüfung
-- [ ] `siteConfig.video` (YouTube-ID des Unternehmensfilms) und `siteConfig.reviews` (Bewertungsstand) prüfen und aktuell halten
+- [ ] `siteConfig.reviews`: Bewertung (aktuell 4,9 bei 43, „Google & weiteren Plattformen“), Link zum Google-Unternehmensprofil und echte Kundenfotos für die Gesichter eintragen; `siteConfig.video` (YouTube-ID) prüfen
 - [ ] Impressum, Datenschutz & AGB (`src/app/impressum`, `src/app/datenschutz`, `src/app/agb`) juristisch prüfen und Klammer-Platzhalter ersetzen
 - [ ] Testimonials, Kundenlogos und Referenz-Cases durch freigegebene echte Inhalte ersetzen (`isPlaceholder: false`)
 - [ ] Bilder gemäß `docs/IMAGES.md` austauschen (Logo ist bereits als Vektor-Nachbau eingebunden, optional durch die offizielle Datei ersetzen)

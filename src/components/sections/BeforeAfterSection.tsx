@@ -1,5 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 import { Button, buttonIconClass } from '@/components/ui/Button';
+import { Parallax } from '@/components/ui/Parallax';
 import { Reveal } from '@/components/ui/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { beforeAfter } from '@/content/references';
@@ -27,7 +28,9 @@ export function BeforeAfterSection() {
           </div>
         </div>
         <Reveal variant="image" className="lg:col-span-7">
-          <BeforeAfterSlider before={beforeAfter.before} after={beforeAfter.after} />
+          <Parallax mode="inview" distance={36}>
+            <BeforeAfterSlider before={beforeAfter.before} after={beforeAfter.after} />
+          </Parallax>
         </Reveal>
       </div>
     </section>

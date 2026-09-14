@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
+import { Reveal } from './Reveal';
 
 type SectionHeadingProps = {
   eyebrow?: string;
@@ -29,11 +30,11 @@ export function SectionHeading({
     <div
       className={cn(
         'flex flex-col gap-4 md:flex-row md:items-end md:justify-between',
-        centered && 'md:flex-col md:items-center md:text-center',
+        centered && 'items-center text-center md:flex-col md:items-center md:text-center',
         className,
       )}
     >
-      <div className={cn('max-w-2xl', centered && 'mx-auto max-w-3xl text-balance')}>
+      <Reveal className={cn('max-w-2xl', centered && 'mx-auto max-w-3xl text-balance')}>
         {eyebrow ? (
           <p className="mb-3 text-xs font-semibold tracking-[0.14em] text-brand-600 uppercase">
             {eyebrow}
@@ -59,7 +60,7 @@ export function SectionHeading({
             {text}
           </p>
         ) : null}
-      </div>
+      </Reveal>
       {action ? (
         <div className={cn('shrink-0', centered && 'flex justify-center')}>{action}</div>
       ) : null}

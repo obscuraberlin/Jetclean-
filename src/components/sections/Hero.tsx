@@ -124,14 +124,21 @@ export function Hero() {
             </div>
             {siteConfig.reviews ? (
               <figcaption className="absolute right-2 bottom-8 z-10 flex animate-float items-center gap-3 rounded-2xl bg-white/95 px-4 py-3 shadow-lift ring-1 ring-line backdrop-blur">
-                <span className="flex items-center gap-0.5 text-brand-500" aria-hidden="true">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="size-3.5 fill-current" />
+                <span className="flex items-center" aria-hidden="true">
+                  {siteConfig.reviews.avatars.slice(0, 3).map((avatar, index) => (
+                    <span
+                      key={avatar.src}
+                      className="relative -ml-2 size-8 overflow-hidden rounded-full border-2 border-white bg-surface first:ml-0"
+                      style={{ zIndex: 5 - index }}
+                    >
+                      <Image src={avatar.src} alt="" fill sizes="32px" className="object-cover" />
+                    </span>
                   ))}
                 </span>
                 <span className="text-sm leading-tight">
-                  <strong className="block font-display text-base text-navy-950">
-                    {siteConfig.reviews.rating.toFixed(1).replace('.', ',')} von 5
+                  <strong className="flex items-center gap-1 font-display text-base text-navy-950">
+                    {siteConfig.reviews.rating.toFixed(1).replace('.', ',')}
+                    <Star className="size-3.5 fill-current text-brand-500" aria-hidden="true" />
                   </strong>
                   <span className="text-muted">{siteConfig.reviews.count} Bewertungen</span>
                 </span>

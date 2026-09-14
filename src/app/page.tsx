@@ -10,7 +10,7 @@ import { ProcessSteps } from '@/components/sections/ProcessSteps';
 import { Promises } from '@/components/sections/Promises';
 import { ServiceArea } from '@/components/sections/ServiceArea';
 import { ServicesCarousel } from '@/components/sections/ServicesCarousel';
-import { StatsBand } from '@/components/sections/StatsBand';
+import { TrustBar } from '@/components/sections/TrustBar';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { VideoTrailer } from '@/components/sections/VideoTrailer';
 import { faqs, homepageFaqCount } from '@/content/faqs';
@@ -29,7 +29,7 @@ export default function HomePage() {
     <>
       <Hero />
       <LogoStrip />
-      <StatsBand />
+      <TrustBar />
       <ServicesCarousel />
       <BeforeAfterSection />
       <Benefits />

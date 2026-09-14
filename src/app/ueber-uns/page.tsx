@@ -6,6 +6,7 @@ import { VideoTrailer } from '@/components/sections/VideoTrailer';
 import { PageHero } from '@/components/sections/PageHero';
 import { AnimatedNumber } from '@/components/ui/AnimatedNumber';
 import { IconBox } from '@/components/ui/IconBox';
+import { Parallax } from '@/components/ui/Parallax';
 import { Reveal, RevealGroup, RevealItem } from '@/components/ui/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { aboutContent } from '@/content/about';
@@ -35,22 +36,24 @@ export default function AboutPage() {
       <section className="section-y" aria-labelledby="story-title">
         <div className="container-site grid gap-10 lg:grid-cols-12 lg:gap-14">
           <Reveal variant="image" className="lg:col-span-6" as="figure">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
-              <Image
-                src={aboutContent.image.src}
-                alt={aboutContent.image.alt}
-                fill
-                priority
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
-              />
-              <div className="absolute bottom-5 left-5 rounded-2xl bg-white/90 px-5 py-4 shadow-soft backdrop-blur">
-                <p className="font-display text-4xl font-extrabold text-navy-950">
-                  <AnimatedNumber value={company.yearsOfExperience} suffix="+" />
-                </p>
-                <p className="text-sm font-medium text-muted">Jahre Gebäudereinigung in Berlin</p>
+            <Parallax mode="inview" distance={40}>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
+                <Image
+                  src={aboutContent.image.src}
+                  alt={aboutContent.image.alt}
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover"
+                />
+                <div className="absolute bottom-5 left-5 rounded-2xl bg-white/90 px-5 py-4 shadow-soft backdrop-blur">
+                  <p className="font-display text-4xl font-extrabold text-navy-950">
+                    <AnimatedNumber value={company.yearsOfExperience} suffix="+" />
+                  </p>
+                  <p className="text-sm font-medium text-muted">Jahre Gebäudereinigung in Berlin</p>
+                </div>
               </div>
-            </div>
+            </Parallax>
           </Reveal>
           <div className="text-center lg:col-span-6">
             <SectionHeading

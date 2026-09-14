@@ -66,7 +66,8 @@ export function Testimonials() {
                   ))}
                 </span>
                 {siteConfig.reviews.rating.toFixed(1).replace('.', ',')} von 5 bei{' '}
-                {siteConfig.reviews.count} Bewertungen auf {siteConfig.reviews.platform}
+                {siteConfig.reviews.count} Bewertungen auf {siteConfig.reviews.platform}{' '}
+                {siteConfig.reviews.platformsNote}
                 <span className="sr-only">
                   {' '}
                   (Stand {siteConfig.reviews.checkedAt}, öffnet in neuem Tab)

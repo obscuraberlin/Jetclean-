@@ -48,17 +48,28 @@ export const siteConfig = {
    * `null` blendet den Hinweis aus. Wird bewusst NICHT als AggregateRating in Schema.org ausgegeben.
    */
   reviews: {
-    rating: 5.0,
-    count: 32,
-    platform: 'golocal',
-    url: 'https://www.golocal.de/berlin/gebaeudereinigung/jetclean-gebaeudeservice-3JKK8/',
+    rating: 4.9,
+    count: 43,
+    platform: 'Google',
+    /** Kurzer Zusatz, z. B. „& weiteren Plattformen“ */
+    platformsNote: '& weiteren Plattformen',
+    /** PLACEHOLDER – Link zum Google-Unternehmensprofil eintragen (Bewertungen-Tab). */
+    url: 'https://www.google.com/search?q=Jetclean+Geb%C3%A4udeservice+Berlin+Bewertungen',
     checkedAt: 'September 2026',
+    /** Gesichter für die Bewertungsleiste – PLACEHOLDER bis echte Kundenfotos/Freigaben vorliegen. */
+    avatars: [
+      { src: '/images/testimonials/thomas.webp', alt: 'Kunde Thomas K.' },
+      { src: '/images/testimonials/sabine.webp', alt: 'Kundin Sabine L.' },
+      { src: '/images/testimonials/markus.webp', alt: 'Kunde Markus B.' },
+    ],
   } as {
     rating: number;
     count: number;
     platform: string;
+    platformsNote: string;
     url: string;
     checkedAt: string;
+    avatars: { src: string; alt: string }[];
   } | null,
 
   /**
