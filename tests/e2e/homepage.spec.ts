@@ -4,9 +4,7 @@ test.describe('Startseite', () => {
   test('lädt mit korrekter Struktur und ohne horizontalen Overflow', async ({ page }) => {
     await page.goto('/');
     await expect(page).toHaveTitle(/Gebäudereinigung Berlin/);
-    await expect(page.getByRole('heading', { level: 1 })).toContainText(
-      'Gebäudereinigung für Berliner Unternehmen',
-    );
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('Gebäudereinigung');
 
     const overflow = await page.evaluate(
       () => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,

@@ -31,6 +31,11 @@ export const company = {
     phoneE164: '+493080576426',
     /** PLACEHOLDER – echte E-Mail-Adresse eintragen. */
     email: 'info@jetclean-berlin.de',
+    /**
+     * WhatsApp-Nummer im internationalen Format ohne '+' (für wa.me).
+     * PUBLIC_SOURCE – Mobilnummer laut Branchenverzeichnis, bitte bestätigen. `null` blendet WhatsApp aus.
+     */
+    whatsapp: '4917664077706' as string | null,
   },
 
   address: {

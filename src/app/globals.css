@@ -21,31 +21,31 @@
   --color-brand-800: #933714;
   --color-brand-900: #772f13;
 
-  /* Navy / Text */
-  --color-navy-50: #f4f6fa;
-  --color-navy-100: #e7ebf3;
-  --color-navy-200: #cbd4e4;
-  --color-navy-300: #9fafc9;
-  --color-navy-400: #6d84a9;
-  --color-navy-500: #4a648c;
-  --color-navy-600: #384e73;
-  --color-navy-700: #2d3f5e;
-  --color-navy-800: #1f2d47;
-  --color-navy-900: #14203a;
-  --color-navy-950: #10152e;
+  /* Fast Schwarz / warme Grautöne (Text & Flächen) – keine blauen Akzente */
+  --color-navy-50: #f7f6f3;
+  --color-navy-100: #efede8;
+  --color-navy-200: #dcd9d2;
+  --color-navy-300: #b9b5ad;
+  --color-navy-400: #8f8b83;
+  --color-navy-500: #6b675f;
+  --color-navy-600: #4f4c46;
+  --color-navy-700: #3a3834;
+  --color-navy-800: #282724;
+  --color-navy-900: #1b1a18;
+  --color-navy-950: #121110;
 
-  /* Neutrale Flächen */
-  --color-surface: #f6f7f9;
-  --color-surface-strong: #eef1f5;
-  --color-line: #e5e9f0;
-  --color-line-strong: #d4dae5;
-  --color-muted: #5b6b85;
+  /* Neutrale Flächen – Warmweiß */
+  --color-surface: #f8f6f2;
+  --color-surface-strong: #f0ede7;
+  --color-line: #e8e4dd;
+  --color-line-strong: #d9d4cb;
+  --color-muted: #6b675f;
 
   /* Status – Grün nur für positive Zustände & Nachhaltigkeit */
   --color-success-50: #ecfdf3;
   --color-success-100: #d1fae5;
-  --color-success-500: #16a34a;
-  --color-success-600: #15803d;
+  --color-success-500: #2f9e44; /* JETCLEAN Grün (Blatt) */
+  --color-success-600: #24803a;
   --color-success-700: #166534;
   --color-danger-50: #fef2f2;
   --color-danger-500: #dc2626;
@@ -57,11 +57,12 @@
   --radius-2xl: 1.25rem;
   --radius-3xl: 1.75rem;
   --radius-4xl: 2.25rem;
+  --radius-5xl: 2.75rem;
 
   /* Schatten – weich, kein harter Kontrast */
-  --shadow-soft: 0 1px 2px rgb(11 19 41 / 0.04), 0 8px 24px -12px rgb(11 19 41 / 0.12);
-  --shadow-card: 0 1px 2px rgb(11 19 41 / 0.05), 0 16px 40px -20px rgb(11 19 41 / 0.18);
-  --shadow-lift: 0 2px 4px rgb(11 19 41 / 0.06), 0 24px 48px -20px rgb(11 19 41 / 0.24);
+  --shadow-soft: 0 1px 2px rgb(20 18 14 / 0.04), 0 8px 24px -12px rgb(20 18 14 / 0.12);
+  --shadow-card: 0 1px 2px rgb(20 18 14 / 0.05), 0 16px 40px -20px rgb(20 18 14 / 0.18);
+  --shadow-lift: 0 2px 4px rgb(20 18 14 / 0.06), 0 24px 48px -20px rgb(20 18 14 / 0.24);
   --shadow-brand: 0 8px 24px -8px rgb(242 106 27 / 0.45);
 
   /* Container */
@@ -141,7 +142,7 @@
   }
 
   body {
-    @apply bg-white font-sans text-navy-900 antialiased;
+    @apply bg-[#fdfcfa] font-sans text-navy-900 antialiased;
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'ss03';
     overflow-x: clip;
   }
@@ -154,7 +155,7 @@
   h2,
   h3,
   h4 {
-    @apply font-display font-bold tracking-[-0.02em] text-balance text-navy-950;
+    @apply font-display font-bold tracking-[-0.03em] text-balance text-navy-950;
     hyphens: manual;
     /* Fallback für sehr lange Komposita auf schmalen Viewports */
     overflow-wrap: break-word;
@@ -317,7 +318,7 @@
 
 /* Sanfter Verlauf-Hintergrund für Flächen */
 @utility bg-surface-gradient {
-  background-image: linear-gradient(180deg, #ffffff 0%, var(--color-surface) 100%);
+  background-image: linear-gradient(180deg, #fdfcfa 0%, var(--color-surface) 100%);
 }
 
 /* Elegante Fade-Kante an horizontalen Slidern */

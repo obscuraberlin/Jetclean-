@@ -1,18 +1,17 @@
 import type { Metadata } from 'next';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { BeforeAfterSection } from '@/components/sections/BeforeAfterSection';
-import { Benefits } from '@/components/sections/Benefits';
-import { CtaSection } from '@/components/sections/CtaSection';
+import { CinematicScene } from '@/components/sections/CinematicScene';
+import { ClosingCta } from '@/components/sections/ClosingCta';
+import { Experience } from '@/components/sections/Experience';
 import { FaqSection } from '@/components/sections/FaqSection';
+import { Gallery } from '@/components/sections/Gallery';
 import { Hero } from '@/components/sections/Hero';
+import { ImageMoment } from '@/components/sections/ImageMoment';
 import { LogoStrip } from '@/components/sections/LogoStrip';
-import { ProcessSteps } from '@/components/sections/ProcessSteps';
-import { Promises } from '@/components/sections/Promises';
-import { ServiceArea } from '@/components/sections/ServiceArea';
 import { ServicesCarousel } from '@/components/sections/ServicesCarousel';
-import { StatsBand } from '@/components/sections/StatsBand';
+import { Statement } from '@/components/sections/Statement';
 import { Testimonials } from '@/components/sections/Testimonials';
-import { VideoTrailer } from '@/components/sections/VideoTrailer';
 import { faqs, homepageFaqCount } from '@/content/faqs';
 import { siteConfig } from '@/content/site';
 import { buildMetadata, faqJsonLd } from '@/lib/seo';
@@ -24,22 +23,25 @@ export const metadata: Metadata = buildMetadata({
   absoluteTitle: true,
 });
 
+/**
+ * Startseite als inszenierte Reise:
+ * Hero → Vertrauen → Leistungen → Wow-Moment → Statement → Ergebnis → Erfahrung → Bildmoment → Arbeit → Vertrauen → FAQ → Abschluss
+ */
 export default function HomePage() {
   return (
     <>
       <Hero />
       <LogoStrip />
-      <StatsBand />
       <ServicesCarousel />
+      <CinematicScene />
+      <Statement />
       <BeforeAfterSection />
-      <Benefits />
-      <VideoTrailer />
-      <ProcessSteps />
-      <Promises />
+      <Experience />
+      <ImageMoment />
+      <Gallery />
       <Testimonials />
-      <ServiceArea />
-      <FaqSection />
-      <CtaSection />
+      <FaqSection variant="quiet" />
+      <ClosingCta />
       {siteConfig.seo.enableFaqSchema ? (
         <JsonLd data={faqJsonLd(faqs.slice(0, homepageFaqCount))} />
       ) : null}

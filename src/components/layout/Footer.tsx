@@ -28,23 +28,34 @@ export function Footer() {
               Professionelle Gebäudereinigung für Unternehmen in {company.address.city} – seit über{' '}
               {company.yearsOfExperience} Jahren.
             </p>
-            {company.social.length > 0 ? (
-              <ul className="mt-5 flex gap-2" aria-label="Social Media">
-                {company.social.map((profile) => (
-                  <li key={profile.platform}>
-                    <a
-                      href={profile.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex size-9 items-center justify-center rounded-full border border-line bg-white text-navy-700 transition-colors hover:border-brand-300 hover:text-brand-600"
-                      aria-label={`${company.shortName} auf ${socialLabels[profile.platform]}`}
-                    >
-                      <SocialIcon platform={profile.platform} className="size-4" />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            ) : null}
+            <ul className="mt-5 flex items-center gap-2" aria-label="Direkter Kontakt">
+              {company.contact.whatsapp ? (
+                <li>
+                  <a
+                    href={`https://wa.me/${company.contact.whatsapp}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex size-9 items-center justify-center rounded-full border border-line bg-white text-navy-700 transition-colors hover:border-success-500 hover:text-success-600"
+                    aria-label="WhatsApp"
+                  >
+                    <SocialIcon platform="whatsapp" className="size-4" />
+                  </a>
+                </li>
+              ) : null}
+              {company.social.map((profile) => (
+                <li key={profile.platform}>
+                  <a
+                    href={profile.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex size-9 items-center justify-center rounded-full border border-line bg-white text-navy-700 transition-colors hover:border-brand-300 hover:text-brand-600"
+                    aria-label={`${company.shortName} auf ${socialLabels[profile.platform]}`}
+                  >
+                    <SocialIcon platform={profile.platform} className="size-4" />
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <FooterColumn title="Leistungen">
