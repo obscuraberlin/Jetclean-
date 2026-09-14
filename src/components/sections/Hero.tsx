@@ -8,6 +8,7 @@ import { siteConfig } from '@/content/site';
 import { Star } from 'lucide-react';
 import { heroTrustpoints } from '@/content/benefits';
 import { company } from '@/content/company';
+import { cn } from '@/lib/utils';
 
 const heroImage = {
   src: '/images/hero/hero.webp',
@@ -17,17 +18,17 @@ const heroImage = {
 /** Büro-Foto als Fläche hinter Bild und Anfrage-Karte */
 function OfficeBackdrop({ className }: { className?: string }) {
   return (
-    <div aria-hidden="true" className={className}>
+    <div aria-hidden="true" className={cn('overflow-hidden', className)}>
       <Image
         src="/images/hero/office.webp"
         alt=""
         fill
         priority
         sizes="(min-width: 1024px) 62vw, 100vw"
-        className="object-cover object-left"
+        className="scale-105 object-cover object-left blur-[2px]"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-white via-white/55 to-white/10" />
-      <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-white/40" />
+      <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-white/45" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/10 to-white/60" />
     </div>
   );
 }
@@ -110,7 +111,7 @@ export function Hero() {
 
           {/* Bild – schmales Hochformat auf XL, auf Mobile/Tablet Teil des Foto-Panels unten */}
           <figure className="relative hidden xl:col-span-3 xl:block">
-            <div className="relative h-full min-h-[34rem] [mask-image:linear-gradient(to_right,transparent,black_14%,black_86%,transparent)]">
+            <div className="relative h-full min-h-[34rem] overflow-hidden rounded-3xl shadow-lift ring-1 ring-white/60">
               <Image
                 src={heroImage.src}
                 alt={heroImage.alt}
@@ -123,7 +124,7 @@ export function Hero() {
               />
             </div>
             {siteConfig.reviews ? (
-              <figcaption className="absolute right-2 bottom-8 z-10 flex animate-float items-center gap-3 rounded-2xl bg-white/95 px-4 py-3 shadow-lift ring-1 ring-line backdrop-blur">
+              <figcaption className="absolute bottom-6 -left-5 z-10 flex animate-float items-center gap-3 rounded-2xl bg-white/95 px-4 py-3 shadow-lift ring-1 ring-line backdrop-blur">
                 <span className="flex items-center" aria-hidden="true">
                   {siteConfig.reviews.avatars.slice(0, 3).map((avatar, index) => (
                     <span
