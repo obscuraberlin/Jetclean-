@@ -14,7 +14,7 @@ test.describe('Angebots-Flow', () => {
         .getByRole('button', { name: 'Kostenloses Angebot' })
         .click();
     } else {
-      await page.getByRole('button', { name: 'Angebot anfragen', exact: true }).first().click();
+      await page.getByRole('button', { name: 'Kostenloses Angebot', exact: true }).first().click();
     }
     const dialog = page.getByRole('dialog', { name: /Kostenloses Reinigungsangebot/ });
     await expect(dialog).toBeVisible();

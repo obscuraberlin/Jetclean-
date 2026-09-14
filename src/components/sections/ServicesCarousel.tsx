@@ -11,8 +11,8 @@ import {
   type PointerEvent as ReactPointerEvent,
 } from 'react';
 import { Button, buttonIconClass } from '@/components/ui/Button';
-import { TextReveal } from '@/components/ui/TextReveal';
-import { Parallax } from '@/components/ui/Parallax';
+import { RevealGroup, RevealItem } from '@/components/ui/Reveal';
+import { SectionHeading } from '@/components/ui/SectionHeading';
 import { services } from '@/content/services';
 import { cn } from '@/lib/utils';
 import { ServiceCard } from './ServiceCard';
@@ -148,44 +148,43 @@ export function ServicesCarousel() {
   };
 
   return (
-    <section className="py-20 sm:py-28 lg:py-36" aria-labelledby="services-title" id="leistungen">
+    <section className="section-y" aria-labelledby="services-title" id="leistungen">
       <div className="container-site">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <TextReveal
-            as="h2"
-            inView
-            className="text-[2.25rem] leading-[1.02] tracking-[-0.03em] sm:text-5xl lg:text-6xl"
-            lines={[
-              <span key="1">Gebäudereinigung,</span>,
-              <span key="2">die zu Ihrem Unternehmen passt.</span>,
-            ]}
-          />
-          <div className="flex items-center gap-3">
-            <Button href="/leistungen" variant="link" className="hidden md:inline-flex">
-              Alle Leistungen
-              <ArrowRight className={buttonIconClass} aria-hidden="true" />
-            </Button>
-            <div className="hidden items-center gap-2 md:flex">
-              <CarouselButton
-                direction="prev"
-                onClick={() => scrollByCards(-1)}
-                disabled={!canPrev}
-              />
-              <CarouselButton
-                direction="next"
-                onClick={() => scrollByCards(1)}
-                disabled={!canNext}
-              />
+        <SectionHeading
+          id="services-title"
+          eyebrow="Unsere Leistungen"
+          title={
+            <>
+              Gebäudereinigung in Berlin –{' '}
+              <span className="text-accent">so individuell wie Ihr Unternehmen.</span>
+            </>
+          }
+          text="Ob Büro, Praxis oder Gewerbe – wir bieten professionelle Reinigungslösungen, die zu Ihrem Unternehmen passen."
+          action={
+            <div className="flex items-center gap-3">
+              <Button href="/leistungen" variant="link" className="hidden md:inline-flex">
+                Alle Leistungen
+                <ArrowRight className={buttonIconClass} aria-hidden="true" />
+              </Button>
+              <div className="hidden items-center gap-2 md:flex">
+                <CarouselButton
+                  direction="prev"
+                  onClick={() => scrollByCards(-1)}
+                  disabled={!canPrev}
+                />
+                <CarouselButton
+                  direction="next"
+                  onClick={() => scrollByCards(1)}
+                  disabled={!canNext}
+                />
+              </div>
             </div>
-          </div>
-        </div>
-        <span id="services-title" className="sr-only">
-          Unsere Leistungen
-        </span>
+          }
+        />
       </div>
 
       <div
-        className="mt-10 sm:mt-14"
+        className="mt-8 sm:mt-10"
         role="region"
         aria-roledescription="Karussell"
         aria-label="Leistungen im Überblick"
@@ -195,36 +194,35 @@ export function ServicesCarousel() {
         onBlurCapture={() => setPaused(false)}
         onTouchStart={() => setPaused(true)}
       >
-        <div className="overflow-x-clip">
-          <Parallax axis="x" distance={-48}>
-            <ul
-              ref={trackRef}
-              aria-label="Leistungen"
-              tabIndex={0}
-              onKeyDown={onKeyDown}
-              onPointerDown={onPointerDown}
-              onPointerMove={onPointerMove}
-              onPointerUp={endDrag}
-              onPointerLeave={endDrag}
-              onPointerCancel={endDrag}
-              onClickCapture={onClickCapture}
-              className={cn(
-                'container-site scrollbar-none flex snap-x snap-mandatory [scroll-padding-inline:1.25rem] gap-5 overflow-x-auto scroll-smooth pb-6 sm:[scroll-padding-inline:1.5rem] sm:gap-6 lg:[scroll-padding-inline:2rem]',
-                'cursor-grab touch-pan-x select-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500',
-              )}
-              data-testid="services-carousel"
-            >
-              {services.map((service, index) => (
-                <li
-                  key={service.slug}
-                  className="w-[86%] shrink-0 snap-start sm:w-[64%] lg:w-[calc((100%-2.5rem)/2.3)]"
-                >
-                  <ServiceCard service={service} priority={index < 2} large />
-                </li>
-              ))}
-            </ul>
-          </Parallax>
-        </div>
+        <RevealGroup as="div">
+          <ul
+            ref={trackRef}
+            aria-label="Leistungen"
+            tabIndex={0}
+            onKeyDown={onKeyDown}
+            onPointerDown={onPointerDown}
+            onPointerMove={onPointerMove}
+            onPointerUp={endDrag}
+            onPointerLeave={endDrag}
+            onPointerCancel={endDrag}
+            onClickCapture={onClickCapture}
+            className={cn(
+              'container-site scrollbar-none flex snap-x snap-mandatory [scroll-padding-inline:1.25rem] gap-4 overflow-x-auto scroll-smooth pb-4 sm:[scroll-padding-inline:1.5rem] sm:gap-5 lg:[scroll-padding-inline:2rem]',
+              'cursor-grab touch-pan-x select-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500',
+            )}
+            data-testid="services-carousel"
+          >
+            {services.map((service, index) => (
+              <RevealItem
+                key={service.slug}
+                as="li"
+                className="w-[82%] shrink-0 snap-start sm:w-[58%] md:w-[46%] lg:w-[calc((100%-2.5rem)/3)] xl:w-[calc((100%-3.75rem)/4)]"
+              >
+                <ServiceCard service={service} priority={index < 2} />
+              </RevealItem>
+            ))}
+          </ul>
+        </RevealGroup>
       </div>
 
       <div className="container-site mt-2 flex items-center justify-between md:hidden">

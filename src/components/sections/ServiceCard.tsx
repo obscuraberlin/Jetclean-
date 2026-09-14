@@ -1,6 +1,7 @@
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { IconBox } from '@/components/ui/IconBox';
 import type { Service } from '@/content/services';
 import { cn } from '@/lib/utils';
 
@@ -9,44 +10,42 @@ type ServiceCardProps = {
   className?: string;
   sizes?: string;
   priority?: boolean;
-  /** Großformat im Karussell (75 % Bild) */
-  large?: boolean;
 };
 
-export function ServiceCard({ service, className, sizes, priority, large }: ServiceCardProps) {
+export function ServiceCard({ service, className, sizes, priority }: ServiceCardProps) {
   return (
     <Link
       href={`/leistungen/${service.slug}`}
       className={cn(
-        'group flex h-full flex-col overflow-hidden rounded-[1.75rem] bg-white ring-1 ring-black/[0.05] transition-[transform,box-shadow] duration-500 ease-(--ease-premium) hover:shadow-card motion-safe:hover:-translate-y-0.5',
-        large && 'rounded-[2rem]',
+        'group flex h-full card-hover flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-soft',
         className,
       )}
       draggable={false}
     >
-      <div className={cn('relative overflow-hidden', large ? 'aspect-[4/3.6]' : 'aspect-[4/3]')}>
+      <div className="relative aspect-[4/3] overflow-hidden">
         <Image
           src={service.image.src}
           alt={service.image.alt}
           fill
-          sizes={sizes ?? '(min-width: 1024px) 45vw, (min-width: 640px) 70vw, 88vw'}
-          className="object-cover transition-transform duration-700 ease-(--ease-premium) motion-safe:group-hover:scale-[1.025]"
+          sizes={
+            sizes ??
+            '(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 85vw'
+          }
+          className="object-cover transition-transform duration-500 ease-(--ease-premium) motion-safe:group-hover:scale-[1.03]"
           draggable={false}
           priority={priority}
         />
+        <IconBox icon={service.icon} tone="soft" size="sm" className="absolute top-4 left-4" />
       </div>
-      <div className={cn('flex flex-1 items-end justify-between gap-4 p-5', large && 'p-6 sm:p-7')}>
-        <div>
-          <h3 className={cn('font-bold', large ? 'text-xl sm:text-2xl' : 'text-lg')}>
-            {service.title}
-          </h3>
-          <p className="mt-1 text-sm leading-relaxed text-muted">{service.teaser}</p>
-        </div>
-        <span
-          className="flex size-10 shrink-0 items-center justify-center rounded-full border border-line text-navy-950 transition-[background-color,color,border-color] duration-300 group-hover:border-navy-950 group-hover:bg-navy-950 group-hover:text-white"
-          aria-hidden="true"
-        >
-          <ArrowRight className="size-4 transition-transform duration-300 ease-(--ease-premium) motion-safe:group-hover:translate-x-0.5" />
+      <div className="flex flex-1 flex-col p-5">
+        <h3 className="text-lg font-bold">{service.title}</h3>
+        <p className="mt-1.5 text-sm leading-relaxed text-muted">{service.teaser}</p>
+        <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600">
+          Mehr erfahren
+          <ArrowRight
+            className="size-4 transition-transform duration-300 ease-(--ease-premium) motion-safe:group-hover:translate-x-1"
+            aria-hidden="true"
+          />
         </span>
       </div>
     </Link>

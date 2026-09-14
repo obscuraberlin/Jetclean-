@@ -10,6 +10,7 @@ export const mainNavigation: NavItem[] = [
   { label: 'Referenzen', href: '/referenzen' },
   { label: 'Über uns', href: '/ueber-uns' },
   { label: 'Nachhaltigkeit', href: '/nachhaltigkeit' },
+  { label: 'Kontakt', href: '/kontakt' },
 ];
 
 export const footerNavigation = {

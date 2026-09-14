@@ -1,6 +1,6 @@
 'use client';
 
-import { Menu, Star, X } from 'lucide-react';
+import { Menu, Phone, X } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -8,15 +8,10 @@ import { Logo } from '@/components/brand/Logo';
 import { QuoteButton } from '@/components/quote/QuoteButton';
 import { company } from '@/content/company';
 import { mainNavigation } from '@/content/navigation';
-import { siteConfig } from '@/content/site';
 import { track } from '@/lib/analytics';
 import { cn, telHref } from '@/lib/utils';
 import { MobileNav } from './MobileNav';
 
-/**
- * Schwebender Header: beim Laden transparent auf Warmweiß, beim Scrollen kompakter,
- * mit milchigem Hintergrund und sehr weichem Schatten.
- */
 export function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
@@ -28,7 +23,7 @@ export function Header() {
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(() => {
-        setScrolled(window.scrollY > 24);
+        setScrolled(window.scrollY > 12);
         ticking = false;
       });
     };
@@ -37,6 +32,7 @@ export function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Menü bei Navigation schließen (State-Abgleich während des Renderns statt Effekt)
   const [lastPathname, setLastPathname] = useState(pathname);
   if (lastPathname !== pathname) {
     setLastPathname(pathname);
@@ -44,28 +40,27 @@ export function Header() {
   }
 
   const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href));
-  const reviews = siteConfig.reviews;
 
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 w-full transition-[background-color,box-shadow,backdrop-filter] duration-500 ease-(--ease-premium)',
+        'sticky top-0 z-50 w-full border-b transition-[background-color,border-color,box-shadow] duration-300',
         scrolled || menuOpen
-          ? 'bg-[#fdfcfa]/80 shadow-[0_12px_40px_-24px_rgb(20_18_14/0.35)] backdrop-blur-xl'
-          : 'bg-[#fdfcfa]/0',
+          ? 'border-line bg-white/85 shadow-[0_1px_0_rgb(11_19_41/0.02),0_8px_24px_-16px_rgb(11_19_41/0.18)] backdrop-blur-xl supports-[backdrop-filter]:bg-white/75'
+          : 'border-transparent bg-white/0',
       )}
       data-scrolled={scrolled ? 'true' : 'false'}
     >
       <div
         className={cn(
-          'container-site flex items-center justify-between gap-6 transition-[height] duration-500 ease-(--ease-premium)',
-          scrolled ? 'h-16' : 'h-[4.5rem] lg:h-[5.5rem]',
+          'container-site flex items-center justify-between gap-4 transition-[height] duration-300 ease-(--ease-premium) 2xl:gap-6',
+          scrolled ? 'h-16' : 'h-[4.25rem] lg:h-20',
         )}
       >
         <Logo compact={scrolled} />
 
-        <nav aria-label="Hauptnavigation" className="hidden lg:block">
-          <ul className="flex items-center gap-7">
+        <nav aria-label="Hauptnavigation" className="hidden xl:block">
+          <ul className="flex items-center gap-1">
             {mainNavigation.map((item) => {
               const active = isActive(item.href);
               return (
@@ -74,15 +69,15 @@ export function Header() {
                     href={item.href}
                     aria-current={active ? 'page' : undefined}
                     className={cn(
-                      'group relative inline-flex h-9 items-center text-[0.9rem] font-medium whitespace-nowrap transition-colors',
-                      active ? 'text-navy-950' : 'text-navy-600 hover:text-navy-950',
+                      'group relative inline-flex h-10 items-center rounded-full px-2 text-sm font-medium whitespace-nowrap transition-colors 2xl:px-3 2xl:text-[0.9rem]',
+                      active ? 'text-navy-950' : 'text-navy-700 hover:text-navy-950',
                     )}
                   >
                     {item.label}
                     <span
                       aria-hidden="true"
                       className={cn(
-                        'absolute inset-x-0 -bottom-0.5 h-px origin-left bg-navy-950 transition-transform duration-400 ease-(--ease-premium)',
+                        'absolute inset-x-2 -bottom-0.5 h-0.5 origin-left rounded-full bg-brand-500 transition-transform duration-300 ease-(--ease-premium) 2xl:inset-x-3',
                         active ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100',
                       )}
                     />
@@ -93,36 +88,29 @@ export function Header() {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-3 lg:gap-5">
-          {reviews ? (
-            <a
-              href={reviews.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden items-center gap-2 text-sm text-navy-600 transition-colors hover:text-navy-950 xl:inline-flex"
-              aria-label={`${reviews.rating.toFixed(1).replace('.', ',')} von 5 Sternen bei ${reviews.count} Bewertungen auf ${reviews.platform}`}
-            >
-              <span className="flex items-center gap-px text-brand-500" aria-hidden="true">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="size-3.5 fill-current" />
-                ))}
-              </span>
-              <span className="font-medium capitalize">{reviews.platform}</span>
-            </a>
-          ) : null}
+        <div className="flex items-center gap-2 2xl:gap-3">
           <a
             href={telHref(company.contact.phoneE164)}
             onClick={() => track('phone_click', { source: 'header' })}
-            className="hidden text-sm font-semibold whitespace-nowrap text-navy-950 transition-colors hover:text-brand-600 lg:inline-flex"
+            className="hidden items-center gap-2 rounded-full px-1 py-2 text-sm font-semibold whitespace-nowrap text-navy-900 transition-colors hover:text-brand-600 xl:inline-flex"
           >
+            <Phone className="size-4 text-brand-500" aria-hidden="true" />
             {company.contact.phoneDisplay}
           </a>
+          <a
+            href={telHref(company.contact.phoneE164)}
+            onClick={() => track('phone_click', { source: 'header-mobile' })}
+            className="inline-flex size-10 items-center justify-center rounded-full text-navy-900 transition-colors hover:bg-surface xl:hidden"
+            aria-label={`Anrufen: ${company.contact.phoneDisplay}`}
+          >
+            <Phone className="size-5" aria-hidden="true" />
+          </a>
           <QuoteButton source="header" size="sm" className="hidden sm:inline-flex" withIcon={false}>
-            Angebot anfragen
+            Kostenloses Angebot
           </QuoteButton>
           <button
             type="button"
-            className="inline-flex size-10 items-center justify-center rounded-full text-navy-950 transition-colors hover:bg-surface lg:hidden"
+            className="inline-flex size-10 items-center justify-center rounded-full text-navy-900 transition-colors hover:bg-surface xl:hidden"
             aria-expanded={menuOpen}
             aria-controls="mobile-navigation"
             aria-label={menuOpen ? 'Menü schließen' : 'Menü öffnen'}

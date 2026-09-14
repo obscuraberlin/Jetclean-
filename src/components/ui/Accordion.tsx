@@ -16,38 +16,25 @@ type AccordionProps = {
   className?: string;
   /** Erstes Element geöffnet starten */
   defaultOpen?: number | null;
-  /** Ohne Rahmen – nur feine Trennlinien, große Zeilen */
-  variant?: 'boxed' | 'plain';
 };
 
 /**
  * Zugängliches Accordion (Button + Region, aria-expanded/aria-controls),
  * mit sanfter Höhenanimation – ohne Layout-Thrashing außerhalb des Panels.
  */
-export function Accordion({
-  items,
-  className,
-  defaultOpen = null,
-  variant = 'boxed',
-}: AccordionProps) {
+export function Accordion({ items, className, defaultOpen = null }: AccordionProps) {
   const [open, setOpen] = useState<number | null>(defaultOpen);
   const baseId = useId();
   const reduce = useReducedMotion();
 
   return (
-    <div
-      className={cn(
-        'divide-y divide-line',
-        variant === 'boxed' ? 'rounded-2xl border border-line bg-white' : 'border-y border-line',
-        className,
-      )}
-    >
+    <div className={cn('divide-y divide-line rounded-2xl border border-line bg-white', className)}>
       {items.map((item, index) => {
         const isOpen = open === index;
         const buttonId = `${baseId}-button-${index}`;
         const panelId = `${baseId}-panel-${index}`;
         return (
-          <div key={item.question} className={variant === 'boxed' ? 'px-5 sm:px-6' : ''}>
+          <div key={item.question} className="px-5 sm:px-6">
             <h3 className="text-base font-semibold tracking-normal">
               <button
                 id={buttonId}
@@ -55,12 +42,7 @@ export function Accordion({
                 aria-expanded={isOpen}
                 aria-controls={panelId}
                 onClick={() => setOpen(isOpen ? null : index)}
-                className={cn(
-                  'flex w-full items-center justify-between gap-4 text-left font-semibold text-navy-900 transition-colors hover:text-brand-600',
-                  variant === 'boxed'
-                    ? 'py-4 text-[0.9375rem] sm:py-5 sm:text-base'
-                    : 'py-6 font-display text-lg tracking-[-0.01em] sm:py-7 sm:text-2xl',
-                )}
+                className="flex w-full items-center justify-between gap-4 py-4 text-left text-[0.9375rem] font-semibold text-navy-900 transition-colors hover:text-brand-600 sm:py-5 sm:text-base"
               >
                 <span>{item.question}</span>
                 <ChevronDown
@@ -85,16 +67,7 @@ export function Accordion({
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                   className="overflow-hidden"
                 >
-                  <p
-                    className={cn(
-                      'leading-relaxed text-muted',
-                      variant === 'boxed'
-                        ? 'pb-5 text-[0.9375rem]'
-                        : 'max-w-3xl pb-7 text-base sm:text-lg',
-                    )}
-                  >
-                    {item.answer}
-                  </p>
+                  <p className="pb-5 text-[0.9375rem] leading-relaxed text-muted">{item.answer}</p>
                 </motion.div>
               ) : null}
             </AnimatePresence>
