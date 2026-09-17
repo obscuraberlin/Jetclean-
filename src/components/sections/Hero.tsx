@@ -140,34 +140,11 @@ export function Hero() {
         {/* Mobile/Tablet: Foto-Hero mit großer Schrift, darunter die Anfrage-Karte */}
         <div className="relative lg:hidden" data-testid="hero-form-mobile">
           <HeroMobileSlider portrait={heroImage} />
-          <div className="relative container-site -mt-6 pb-2">
+          <div className="relative container-site -mt-6 pb-8">
             <div className="mx-auto max-w-md">
               <HeroQuoteCard source="hero-mobile" />
             </div>
           </div>
-        </div>
-        <div className="container-site pt-6 pb-8 text-center lg:hidden">
-          <ul className="grid grid-cols-3 gap-x-4 gap-y-3 text-[0.8125rem] leading-snug font-medium text-navy-800">
-            {heroTrustpoints.map((point) => (
-              <li key={point.label} className="flex items-center gap-2">
-                <point.icon
-                  className="size-5 shrink-0 text-brand-500"
-                  strokeWidth={1.75}
-                  aria-hidden="true"
-                />
-                {point.label}
-              </li>
-            ))}
-          </ul>
-          <Button
-            href="/referenzen"
-            variant="link"
-            size="md"
-            className="mt-4 font-semibold text-navy-900 hover:text-brand-600"
-          >
-            Referenzen ansehen
-            <ArrowRight className={buttonIconClass} aria-hidden="true" />
-          </Button>
         </div>
       </section>
     </HeroSlideProvider>
