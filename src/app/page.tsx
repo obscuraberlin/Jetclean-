@@ -2,11 +2,13 @@ import type { Metadata } from 'next';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { BeforeAfterSection } from '@/components/sections/BeforeAfterSection';
 import { Benefits } from '@/components/sections/Benefits';
+import { BerlinIntro } from '@/components/sections/BerlinIntro';
 import { CtaSection } from '@/components/sections/CtaSection';
 import { FaqSection } from '@/components/sections/FaqSection';
 import { Hero } from '@/components/sections/Hero';
 import { LogoStrip } from '@/components/sections/LogoStrip';
 import { ProcessSteps } from '@/components/sections/ProcessSteps';
+import { QuickFacts } from '@/components/sections/QuickFacts';
 import { Promises } from '@/components/sections/Promises';
 import { ServiceArea } from '@/components/sections/ServiceArea';
 import { ServicesCarousel } from '@/components/sections/ServicesCarousel';
@@ -28,11 +30,13 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <QuickFacts />
       <LogoStrip />
       <TrustBar />
       <ServicesCarousel />
       <BeforeAfterSection />
       <Benefits />
+      <BerlinIntro />
       <VideoTrailer />
       <ProcessSteps />
       <Promises />

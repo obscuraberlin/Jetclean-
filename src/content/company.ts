@@ -20,6 +20,16 @@ export const company = {
   motto: 'Hauptsache sauber – wir sorgen für Sauberkeit in Berlin.',
   /** Hashtag aus den Social-Media-Kanälen */
   hashtag: '#WeCleanBerlin',
+  /** Partnerunternehmen (bisherige Website: „Partner: HD Cleaner“). `null` blendet das Badge aus. */
+  partner: { name: 'HD Cleaner Gebäudeservice GmbH', short: 'HD Cleaner' } as {
+    name: string;
+    short: string;
+  } | null,
+  /** 24/7-Notdienst laut bisheriger Website – nur lassen, wenn tatsächlich erreichbar. */
+  emergencyService: { label: '24/7 Reinigungs-Notdienst', note: 'Rund um die Uhr erreichbar' } as {
+    label: string;
+    note: string;
+  } | null,
 
   /** Jahre am Markt – wird in Hero, Vorteilen und Über-uns verwendet. */
   yearsOfExperience: 23,
@@ -31,6 +41,12 @@ export const company = {
     phoneE164: '+493080576426',
     /** PLACEHOLDER – echte E-Mail-Adresse eintragen. */
     email: 'info@jetclean-berlin.de',
+    /**
+     * WhatsApp-Nummer im internationalen Format ohne '+' (für wa.me).
+     * PUBLIC_SOURCE – Mobilnummer der bisherigen Website (+49 176 64077706), bitte bestätigen.
+     * `null` blendet den WhatsApp-Button aus.
+     */
+    whatsapp: '4917664077706' as string | null,
   },
 
   address: {

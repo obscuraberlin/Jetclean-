@@ -4,6 +4,7 @@ import Script from 'next/script';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
 import { MobileCTA } from '@/components/layout/MobileCTA';
+import { WhatsAppButton } from '@/components/layout/WhatsAppButton';
 import { ScrollProgress } from '@/components/layout/ScrollProgress';
 import { SkipLink } from '@/components/layout/SkipLink';
 import { QuoteModal } from '@/components/quote/QuoteModal';
@@ -92,6 +93,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </main>
             <Footer />
             <MobileCTA />
+            <WhatsAppButton />
           </div>
           <QuoteModal />
         </QuoteProvider>

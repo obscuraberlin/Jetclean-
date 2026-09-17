@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { company } from '@/content/company';
 import { cn } from '@/lib/utils';
 
 type LogoProps = {
@@ -36,6 +37,15 @@ export function Logo({ className, compact, inverse, asLink = true }: LogoProps) 
             )}
           >
             Gebäudeservice GmbH
+          </span>
+        ) : null}
+        {!compact && company.partner ? (
+          <span
+            className={cn(
+              'mt-1 hidden w-fit rounded-sm bg-success-500 px-1.5 py-px text-[0.5rem] font-semibold tracking-[0.08em] whitespace-nowrap text-white uppercase md:block',
+            )}
+          >
+            Partner: {company.partner.short}
           </span>
         ) : null}
       </span>

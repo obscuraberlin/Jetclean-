@@ -50,7 +50,7 @@ export function Hero() {
         className="blob top-1/2 left-[30%] size-[24rem] bg-navy-200/40 [animation-delay:-8s]"
       />
 
-      <div className="relative container-site pt-6 pb-5 sm:pt-10 sm:pb-7 lg:pt-24 lg:pb-28 2xl:pt-32 2xl:pb-36">
+      <div className="relative container-site hidden pt-6 pb-5 sm:pt-10 sm:pb-7 lg:block lg:pt-24 lg:pb-28 2xl:pt-32 2xl:pb-36">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-16">
           {/* Text */}
           <div className="text-center lg:col-span-7 xl:col-span-5">
@@ -62,15 +62,8 @@ export function Hero() {
                 id="hero-title"
                 className="max-w-[22ch] text-[1.75rem] leading-[1.15] tracking-[-0.02em] sm:max-w-none sm:text-5xl sm:leading-[1.08] lg:mt-4 lg:text-[2.875rem] lg:leading-[1.06] xl:text-[3rem] 2xl:text-[3.375rem]"
               >
-                {/* Mobil/Tablet: kurze Überschrift, Desktop: ausführlich */}
-                <span className="lg:hidden">
-                  Gebäude&shy;reinigung in Berlin,{' '}
-                  <span className="text-accent">auf die Sie sich verlassen können.</span>
-                </span>
-                <span className="hidden lg:inline">
-                  Gebäude&shy;reinigung für Berliner Unternehmen,{' '}
-                  <span className="text-accent">auf die Sie sich verlassen können.</span>
-                </span>
+                Gebäude&shy;reinigung für Berliner Unternehmen,{' '}
+                <span className="text-accent">auf die Sie sich verlassen können.</span>
               </h1>
               <p className="mx-auto mt-5 hidden max-w-xl text-xl font-medium text-navy-800 lg:block">
                 {company.tagline}
@@ -154,24 +147,60 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Mobile/Tablet: Foto-Panel mit Reinigungskraft und Anfrage-Karte */}
+      {/* Mobile/Tablet: Foto-Hero mit großer Schrift, darunter die Anfrage-Karte */}
       <div className="relative lg:hidden" data-testid="hero-form-mobile">
-        <OfficeBackdrop className="pointer-events-none absolute inset-0" />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 left-0 w-[46%] [mask-image:linear-gradient(to_right,black_70%,transparent)] sm:w-[34%]"
-        >
+        <div className="relative min-h-[34rem] overflow-hidden sm:min-h-[36rem]">
           <Image
-            src={heroImage.src}
+            src="/images/hero/office.webp"
             alt=""
             fill
-            sizes="(min-width: 640px) 34vw, 46vw"
-            className="object-cover object-[35%_top]"
-            quality={75}
+            priority
+            sizes="100vw"
+            className="object-cover object-[65%_center]"
+            aria-hidden="true"
           />
+          <div
+            aria-hidden="true"
+            className="absolute inset-y-0 left-0 w-[58%] [mask-image:linear-gradient(to_right,black_60%,transparent)] sm:w-[42%]"
+          >
+            <Image
+              src={heroImage.src}
+              alt=""
+              fill
+              sizes="(min-width: 640px) 42vw, 58vw"
+              className="object-cover object-[35%_top]"
+              quality={75}
+            />
+          </div>
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-t from-navy-950/85 via-navy-950/45 to-navy-950/20"
+          />
+          <div className="relative container-site flex min-h-[34rem] flex-col justify-end pt-16 pb-14 text-center sm:min-h-[36rem]">
+            <p className="text-[0.6875rem] font-semibold tracking-[0.22em] text-white/85 uppercase">
+              {company.shortName} Facility Services
+            </p>
+            <h1 className="mt-4 font-display text-[2.5rem] leading-[1.02] font-extrabold tracking-[-0.02em] text-white uppercase sm:text-6xl">
+              <span className="sr-only">Gebäudereinigung für Berliner Unternehmen: </span>
+              Sauberkeit.
+              <br />
+              <span className="text-brand-400">Werterhalt.</span>
+              <br />
+              Wohlbefinden.
+            </h1>
+            <p className="mx-auto mt-5 max-w-md text-[0.9375rem] leading-relaxed text-white/85 sm:text-lg">
+              Professionelle Reinigungs- und Facility-Services für Unternehmen, Immobilien und
+              öffentliche Einrichtungen in Berlin.
+            </p>
+            <div className="mt-7 flex justify-center">
+              <QuoteButton source="hero-mobile-cta" size="lg">
+                Angebot anfordern
+              </QuoteButton>
+            </div>
+          </div>
         </div>
-        <div className="relative container-site py-6 sm:py-10">
-          <div className="ml-auto max-w-md sm:mr-0">
+        <div className="relative container-site -mt-6 pb-2">
+          <div className="mx-auto max-w-md">
             <HeroQuoteCard source="hero-mobile" />
           </div>
         </div>
