@@ -100,17 +100,23 @@ export function Header() {
           <a
             href={telHref(company.contact.phoneE164)}
             onClick={() => track('phone_click', { source: 'header-mobile' })}
-            className="inline-flex size-10 items-center justify-center rounded-full text-navy-900 transition-colors hover:bg-surface xl:hidden"
+            className="hidden size-10 items-center justify-center rounded-full text-navy-900 transition-colors hover:bg-surface sm:inline-flex xl:hidden"
             aria-label={`Anrufen: ${company.contact.phoneDisplay}`}
           >
             <Phone className="size-5" aria-hidden="true" />
           </a>
-          <QuoteButton source="header" size="sm" className="hidden sm:inline-flex" withIcon={false}>
-            Kostenloses Angebot
+          <QuoteButton
+            source="header"
+            size="sm"
+            className="shrink-0 px-3.5 sm:px-4"
+            withIcon={false}
+          >
+            <span className="sm:hidden">Angebot</span>
+            <span className="hidden sm:inline">Kostenloses Angebot</span>
           </QuoteButton>
           <button
             type="button"
-            className="inline-flex size-10 items-center justify-center rounded-full text-navy-900 transition-colors hover:bg-surface xl:hidden"
+            className="hidden size-10 items-center justify-center rounded-full text-navy-900 transition-colors hover:bg-surface sm:inline-flex xl:hidden"
             aria-expanded={menuOpen}
             aria-controls="mobile-navigation"
             aria-label={menuOpen ? 'Menü schließen' : 'Menü öffnen'}

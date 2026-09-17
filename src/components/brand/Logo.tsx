@@ -22,7 +22,7 @@ export function Logo({ className, compact, inverse, asLink = true }: LogoProps) 
       <span className="flex flex-col leading-none">
         <span
           className={cn(
-            'font-display text-[1.375rem] font-extrabold tracking-[-0.02em] sm:text-2xl',
+            'font-display text-xl font-extrabold tracking-[-0.02em] sm:text-2xl',
             inverse ? 'text-white' : 'text-[#ee6f12]',
           )}
         >
@@ -31,7 +31,7 @@ export function Logo({ className, compact, inverse, asLink = true }: LogoProps) 
         {!compact ? (
           <span
             className={cn(
-              'mt-1 text-[0.5rem] font-medium tracking-[0.22em] whitespace-nowrap uppercase sm:text-[0.5625rem]',
+              'mt-1 hidden text-[0.5rem] font-medium tracking-[0.22em] whitespace-nowrap uppercase sm:block sm:text-[0.5625rem]',
               inverse ? 'text-navy-200' : 'text-navy-950',
             )}
           >
