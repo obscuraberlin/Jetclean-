@@ -9,8 +9,6 @@ import { Hero } from '@/components/sections/Hero';
 import { LogoStrip } from '@/components/sections/LogoStrip';
 import { ProcessSteps } from '@/components/sections/ProcessSteps';
 import { QuickFacts } from '@/components/sections/QuickFacts';
-import { Promises } from '@/components/sections/Promises';
-import { ServiceArea } from '@/components/sections/ServiceArea';
 import { ServicesCarousel } from '@/components/sections/ServicesCarousel';
 import { TrustBar } from '@/components/sections/TrustBar';
 import { Testimonials } from '@/components/sections/Testimonials';
@@ -39,9 +37,7 @@ export default function HomePage() {
       <BerlinIntro />
       <VideoTrailer />
       <ProcessSteps />
-      <Promises />
       <Testimonials />
-      <ServiceArea />
       <FaqSection />
       <CtaSection />
       {siteConfig.seo.enableFaqSchema ? (

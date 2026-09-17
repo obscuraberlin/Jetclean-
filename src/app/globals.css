@@ -198,15 +198,15 @@
 
 /* Vertikale Sektionsabstände: bewusst kompakt auf Mobile */
 @utility section-y {
-  padding-block: 3.5rem;
+  padding-block: 3rem;
   @media (min-width: 48rem) {
-    padding-block: 5.5rem;
+    padding-block: 4.5rem;
   }
   @media (min-width: 64rem) {
-    padding-block: 8rem;
+    padding-block: 6rem;
   }
   @media (min-width: 96rem) {
-    padding-block: 9.5rem;
+    padding-block: 6.5rem;
   }
 }
 

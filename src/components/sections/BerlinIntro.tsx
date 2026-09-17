@@ -12,9 +12,9 @@ export function BerlinIntro() {
   return (
     <section className="relative overflow-hidden section-y" aria-labelledby="berlin-title">
       <div aria-hidden="true" className="blob top-10 right-[-10rem] size-[26rem] bg-brand-500/10" />
-      <div className="relative container-site grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
+      <div className="relative container-site grid items-center gap-8 lg:grid-cols-12 lg:gap-16">
         <Reveal variant="image" className="lg:col-span-5" as="figure">
-          <div className="relative mx-auto aspect-square w-full max-w-md">
+          <div className="relative mx-auto aspect-square w-full max-w-[17rem] sm:max-w-md">
             <div
               aria-hidden="true"
               className="absolute inset-[6%] bg-brand-500/15 [clip-path:polygon(50%_0%,100%_42%,100%_100%,0%_100%,0%_42%)]"
@@ -37,12 +37,10 @@ export function BerlinIntro() {
             title="Gebäudereinigung in Berlin."
           />
           <p className="mx-auto mt-6 max-w-2xl text-center text-base leading-relaxed text-navy-800 sm:text-lg">
-            Mit {company.shortName} haben Sie einen Partner in Sachen Raumpflege, Gebäudereinigung
-            und Grundstückspflege, der Berlin wie seine Westentasche kennt. Ob Fensterputzen in
-            Friedrichshain, Hausreinigung in Hellersdorf oder Treppenhausreinigung in Treptow – Sie
-            können uns für alle Bezirke Berlins buchen. Außerdem setzen wir vernünftige
-            Reinigungsmittel, Pflegemittel und Reinigungsverfahren ein. Mit modernen Geräten
-            erzielen wir den von Ihnen gewünschten Reinigungserfolg.
+            Mit {company.shortName} haben Sie einen Partner für Raumpflege, Gebäudereinigung und
+            Grundstückspflege, der Berlin wie seine Westentasche kennt – buchbar in allen Bezirken.
+            Mit modernen Geräten und vernünftigen Reinigungsmitteln erzielen wir genau den
+            Reinigungserfolg, den Sie erwarten.
           </p>
           <div className="mt-7 flex justify-center">
             <Button href="/ueber-uns" variant="secondary">

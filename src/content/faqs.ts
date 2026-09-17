@@ -42,4 +42,4 @@ export const faqs: Faq[] = [
 ];
 
 /** Anzahl FAQs auf der Startseite (mobil kompakt halten). */
-export const homepageFaqCount = 5;
+export const homepageFaqCount = 4;

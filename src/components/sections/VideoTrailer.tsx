@@ -44,7 +44,7 @@ export function VideoTrailer({
       <div aria-hidden="true" className="blob top-1/3 -left-40 size-[28rem] bg-navy-200/50" />
       <div className="relative container-site">
         <SectionHeading id={`${id}-title`} eyebrow={eyebrow} title={title} text={text} />
-        <Reveal variant="image" className="mt-8 lg:mt-12">
+        <Reveal variant="image" className="mx-auto mt-8 max-w-3xl lg:mt-10">
           <div className="relative aspect-video overflow-hidden rounded-3xl bg-navy-950 shadow-lift">
             {active ? (
               <iframe

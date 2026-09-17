@@ -25,7 +25,7 @@ export function HeroMobileSlider({ portrait }: HeroMobileSliderProps) {
 
   return (
     <div
-      className="relative min-h-[34rem] overflow-hidden sm:min-h-[36rem]"
+      className="relative min-h-[32rem] overflow-hidden sm:min-h-[36rem]"
       onPointerEnter={() => setPaused(true)}
       onPointerLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
@@ -83,7 +83,7 @@ export function HeroMobileSlider({ portrait }: HeroMobileSliderProps) {
       />
 
       <div
-        className="relative container-site flex min-h-[34rem] flex-col justify-end pt-16 pb-12 text-center sm:min-h-[36rem]"
+        className="relative container-site flex min-h-[32rem] flex-col justify-end pt-14 pb-11 text-center sm:min-h-[36rem]"
         aria-live="polite"
       >
         <AnimatePresence mode="wait" initial={false}>

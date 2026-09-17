@@ -19,17 +19,17 @@ export function Benefits() {
         />
         <RevealGroup
           as="ul"
-          className="mt-8 grid gap-4 sm:mt-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5"
+          className="mt-8 grid grid-cols-2 gap-3 sm:mt-10 sm:gap-4 lg:grid-cols-4 lg:gap-5"
         >
           {benefits.map((benefit) => (
             <RevealItem
               key={benefit.title}
               as="li"
-              className="flex card-hover flex-col gap-3 rounded-3xl border border-line bg-white p-5 shadow-soft sm:p-6"
+              className="flex card-hover flex-col gap-2.5 rounded-2xl border border-line bg-white p-4 shadow-soft sm:gap-3 sm:rounded-3xl sm:p-6"
             >
               <IconBox icon={benefit.icon} tone="brand" size="md" />
-              <h3 className="text-base font-bold sm:text-lg">{benefit.title}</h3>
-              <p className="text-sm leading-relaxed text-muted">{benefit.text}</p>
+              <h3 className="text-sm font-bold sm:text-lg">{benefit.title}</h3>
+              <p className="text-xs leading-relaxed text-muted sm:text-sm">{benefit.text}</p>
             </RevealItem>
           ))}
         </RevealGroup>

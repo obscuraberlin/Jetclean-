@@ -43,24 +43,27 @@ export function ProcessSteps({
     >
       <div className="container-site">
         <SectionHeading id={`${id}-title`} eyebrow={eyebrow} title={title} />
-        <RevealGroup as="ol" className="mt-8 grid gap-6 sm:grid-cols-2 lg:mt-12 lg:grid-cols-4">
+        <RevealGroup
+          as="ol"
+          className="mt-8 grid grid-cols-2 gap-x-3 gap-y-6 sm:gap-6 lg:mt-10 lg:grid-cols-4"
+        >
           {processSteps.map((step, index) => (
             <RevealItem
               key={step.title}
               as="li"
-              className="relative rounded-3xl border border-line bg-white p-6 pt-7 shadow-soft"
+              className="relative rounded-2xl border border-line bg-white p-4 pt-6 shadow-soft sm:rounded-3xl sm:p-6 sm:pt-7"
             >
               <span
-                className="absolute -top-4 left-6 flex size-9 items-center justify-center rounded-full bg-brand-500 font-display text-sm font-bold text-white shadow-brand"
+                className="absolute -top-4 left-4 flex size-9 items-center justify-center rounded-full bg-brand-500 font-display text-sm font-bold text-white shadow-brand sm:left-6"
                 aria-hidden="true"
               >
                 {index + 1}
               </span>
-              <h3 className="text-base font-bold">
+              <h3 className="text-sm font-bold sm:text-base">
                 <span className="sr-only">Schritt {index + 1}: </span>
                 {step.title}
               </h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-muted">{step.text}</p>
+              <p className="mt-1.5 text-xs leading-relaxed text-muted sm:text-sm">{step.text}</p>
             </RevealItem>
           ))}
         </RevealGroup>

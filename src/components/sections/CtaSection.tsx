@@ -21,7 +21,7 @@ export function CtaSection({
   return (
     <section className="relative" aria-labelledby="cta-title">
       {/* Foto in voller Breite mit großer Aussage */}
-      <div className="relative min-h-[26rem] overflow-hidden sm:min-h-[30rem]">
+      <div className="relative min-h-[20rem] overflow-hidden sm:min-h-[22rem]">
         <Image
           src="/images/services/glasreinigung.webp"
           alt=""
@@ -31,7 +31,7 @@ export function CtaSection({
           aria-hidden="true"
         />
         <div aria-hidden="true" className="absolute inset-0 bg-navy-950/45" />
-        <div className="relative container-site flex min-h-[26rem] items-center justify-center py-20 text-center sm:min-h-[30rem]">
+        <div className="relative container-site flex min-h-[20rem] items-center justify-center py-16 text-center sm:min-h-[22rem]">
           <Reveal>
             <h2
               id="cta-title"
