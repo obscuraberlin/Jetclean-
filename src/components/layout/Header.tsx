@@ -116,7 +116,7 @@ export function Header() {
           </QuoteButton>
           <button
             type="button"
-            className="hidden size-10 items-center justify-center rounded-full text-navy-900 transition-colors hover:bg-surface sm:inline-flex xl:hidden"
+            className="inline-flex size-10 items-center justify-center rounded-full text-navy-900 transition-colors hover:bg-surface xl:hidden"
             aria-expanded={menuOpen}
             aria-controls="mobile-navigation"
             aria-label={menuOpen ? 'Menü schließen' : 'Menü öffnen'}
