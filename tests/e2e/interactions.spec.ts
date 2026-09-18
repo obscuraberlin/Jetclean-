@@ -75,6 +75,26 @@ test.describe('Interaktionen', () => {
     await expect(toggle).toHaveAttribute('aria-expanded', 'false');
   });
 
+  test('Mobile Header bleibt beim Öffnen des Menüs nach dem Scrollen sichtbar', async ({
+    page,
+    isMobile,
+  }) => {
+    test.skip(!isMobile, 'nur mobil');
+    await page.goto('/');
+    await expect(page.getByTestId('header-quote-mobile')).toBeVisible();
+    await page.mouse.wheel(0, 1200);
+    await page.waitForTimeout(300);
+    await page.getByTestId('menu-toggle').click();
+    const nav = page.getByTestId('mobile-nav');
+    await expect(nav).toBeVisible();
+    const navTop = await nav.evaluate((el) => el.getBoundingClientRect().top);
+    expect(navTop).toBeGreaterThan(0);
+    expect(navTop).toBeLessThan(200);
+    await expect(page.getByTestId('menu-toggle')).toBeInViewport();
+    await page.keyboard.press('Escape');
+    await expect(nav).toBeHidden();
+  });
+
   test('Sticky Mobile-CTA erscheint nach dem Scrollen und verschwindet am Footer', async ({
     page,
     isMobile,

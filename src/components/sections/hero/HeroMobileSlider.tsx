@@ -64,7 +64,7 @@ export function HeroMobileSlider({ portrait }: HeroMobileSliderProps) {
       <div
         aria-hidden="true"
         className={cn(
-          'absolute inset-y-0 left-0 w-[58%] [mask-image:linear-gradient(to_right,black_60%,transparent)] transition-opacity duration-[1200ms] sm:w-[42%]',
+          'absolute inset-y-0 right-0 w-[60%] [mask-image:linear-gradient(to_left,black_55%,transparent)] transition-opacity duration-[1200ms] sm:w-[44%]',
           index === 0 ? 'opacity-100' : 'opacity-0',
         )}
       >
@@ -73,17 +73,21 @@ export function HeroMobileSlider({ portrait }: HeroMobileSliderProps) {
           alt=""
           fill
           sizes="(min-width: 640px) 42vw, 58vw"
-          className="object-cover object-[35%_top]"
+          className="object-cover object-[60%_top]"
           quality={75}
         />
       </div>
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-t from-navy-950/85 via-navy-950/45 to-navy-950/20"
+        className="absolute inset-0 bg-gradient-to-t from-navy-950/85 via-navy-950/40 to-navy-950/15"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-r from-navy-950/70 via-navy-950/30 to-transparent"
       />
 
       <div
-        className="relative container-site flex min-h-[32rem] flex-col justify-end pt-14 pb-11 text-center sm:min-h-[36rem]"
+        className="relative container-site flex min-h-[32rem] flex-col items-start justify-end pt-14 pb-11 text-left sm:min-h-[36rem]"
         aria-live="polite"
       >
         <AnimatePresence mode="wait" initial={false}>
@@ -133,7 +137,7 @@ export function HeroMobileSlider({ portrait }: HeroMobileSliderProps) {
             </motion.span>
           </AnimatePresence>
         </h1>
-        <div className="relative mx-auto mt-5 min-h-[4.5rem] max-w-md sm:min-h-[3.5rem]">
+        <div className="relative mt-5 min-h-[4.5rem] max-w-md sm:min-h-[3.5rem]">
           <AnimatePresence mode="wait" initial={false}>
             <motion.p
               key={`text-${slide.id}`}
@@ -147,12 +151,12 @@ export function HeroMobileSlider({ portrait }: HeroMobileSliderProps) {
             </motion.p>
           </AnimatePresence>
         </div>
-        <div className="mt-6 flex justify-center">
+        <div className="mt-6 flex justify-start">
           <QuoteButton source="hero-mobile-cta" size="lg">
             Angebot anfordern
           </QuoteButton>
         </div>
-        <HeroSlideDots className="mt-6" />
+        <HeroSlideDots className="mt-6 justify-start" />
         <span className="sr-only">
           {company.shortName} – Slide {index + 1} von {heroSlides.length}
         </span>

@@ -34,7 +34,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
             type="button"
             aria-label="Menü schließen"
             tabIndex={-1}
-            className="fixed inset-0 top-16 z-40 bg-navy-950/40 xl:hidden"
+            className="fixed inset-0 z-40 bg-navy-950/40 xl:hidden"
             initial={reduce ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={reduce ? undefined : { opacity: 0 }}
@@ -44,7 +44,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
           <motion.div
             ref={panelRef}
             id="mobile-navigation"
-            className="absolute inset-x-0 top-full z-50 max-h-[calc(100dvh-4rem)] overflow-y-auto border-b border-line bg-white shadow-lift xl:hidden"
+            className="absolute inset-x-0 top-full z-50 max-h-[calc(100dvh-7.5rem)] overflow-y-auto border-b border-line bg-white shadow-lift xl:hidden"
             initial={reduce ? false : { opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={reduce ? undefined : { opacity: 0, y: -8 }}
