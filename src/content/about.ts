@@ -2,6 +2,32 @@ import type { LucideIcon } from 'lucide-react';
 import { ShieldCheck, Clock, Leaf, MessageCircle } from 'lucide-react';
 import { company } from './company';
 
+/** Zitat des Geschäftsführers von der bisherigen Website */
+export const founderQuote = {
+  text: 'Unser Team steht für alle Dienstleistungen im Bereich Gebäudereinigung in Berlin zur Verfügung. Ihre Reinigungsfirma Berlin.',
+  hashtag: company.hashtag,
+  signature: 'H. Dahan',
+  name: company.legal.managingDirector,
+  role: 'Geschäftsführer',
+};
+
+/** „Damit unser Berlin sauber bleibt“ – Text und Leistungsliste der bisherigen Website */
+export const berlinPromise = {
+  title: 'Damit unser Berlin sauber bleibt.',
+  intro: [
+    'Das JETCLEAN Team arbeitet jederzeit zuverlässig und routiniert. Die nachhaltige Sauberkeit ist unser Ansporn.',
+    'Unsere Reinigungskräfte sind darauf geschult, qualitativ hochwertige Dienstleistungen zu erbringen:',
+  ],
+  items: [
+    'Tägliche Unterhaltsreinigung für Büros, Kindergärten, Praxen und Unterkünfte (Hotels, Pflegeheime) u. v. m.',
+    'Persönliche Ansprechpartner – Objektleitung, die Ihr Gebäude kennt',
+    'Tägliche Büroreinigung für jegliche Arten von Büros',
+    'Glas- und Fassadenreinigung, auch in großer Höhe',
+    'Treppenhaus- und Grundreinigung für Hausverwaltungen',
+    'Sonderreinigungen nach Absprache – kurzfristig einsatzbereit',
+  ],
+};
+
 export const aboutContent = {
   eyebrow: 'Über uns',
   headline: 'Ein familiengeführter Berliner Betrieb – Hauptsache sauber.',

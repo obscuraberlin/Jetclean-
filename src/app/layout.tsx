@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Manrope } from 'next/font/google';
+import { Caveat, Inter, Manrope } from 'next/font/google';
 import Script from 'next/script';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
@@ -15,6 +15,7 @@ import { company } from '@/content/company';
 import { siteConfig } from '@/content/site';
 import { analyticsConfig } from '@/lib/analytics';
 import { localBusinessJsonLd } from '@/lib/seo';
+import { cn } from '@/lib/utils';
 import './globals.css';
 
 const inter = Inter({
@@ -28,6 +29,14 @@ const manrope = Manrope({
   display: 'swap',
   weight: ['600', '700', '800'],
   variable: '--font-manrope',
+});
+
+/** Handschrift für die Unterschrift des Geschäftsführers – ebenfalls lokal ausgeliefert */
+const caveat = Caveat({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['500', '600'],
+  variable: '--font-caveat',
 });
 
 export const metadata: Metadata = {
@@ -81,7 +90,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang={siteConfig.language}
-      className={`${inter.variable} ${manrope.variable}${process.env.NEXT_PUBLIC_FORCE_MOTION === '1' ? 'force-motion' : ''}`}
+      className={cn(
+        inter.variable,
+        manrope.variable,
+        caveat.variable,
+        process.env.NEXT_PUBLIC_FORCE_MOTION === '1' && 'force-motion',
+      )}
     >
       <body className="pb-mobile-cta">
         <QuoteProvider>

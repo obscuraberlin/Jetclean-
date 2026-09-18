@@ -9,7 +9,7 @@ import { IconBox } from '@/components/ui/IconBox';
 import { Parallax } from '@/components/ui/Parallax';
 import { Reveal, RevealGroup, RevealItem } from '@/components/ui/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { aboutContent } from '@/content/about';
+import { aboutContent, berlinPromise } from '@/content/about';
 import { company } from '@/content/company';
 import { buildMetadata } from '@/lib/seo';
 
@@ -110,6 +110,38 @@ export default function AboutPage() {
               ))}
             </RevealGroup>
           </div>
+        </div>
+      </section>
+
+      <section className="section-y-sm" aria-labelledby="promise-title">
+        <div className="container-site grid gap-8 lg:grid-cols-12 lg:gap-14">
+          <div className="lg:col-span-5">
+            <SectionHeading
+              id="promise-title"
+              eyebrow="Unser Anspruch"
+              title={berlinPromise.title}
+              align="left"
+            />
+            <div className="mt-5 space-y-3 text-[0.9375rem] leading-relaxed text-navy-800 sm:text-base">
+              {berlinPromise.intro.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          </div>
+          <RevealGroup as="ul" className="grid gap-3 sm:grid-cols-2 lg:col-span-7">
+            {berlinPromise.items.map((item) => (
+              <RevealItem
+                key={item}
+                as="li"
+                className="flex items-start gap-3 rounded-2xl border border-line bg-white p-4 text-[0.9375rem] leading-snug text-navy-800 shadow-soft"
+              >
+                <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-600">
+                  <Check className="size-3.5" strokeWidth={3} aria-hidden="true" />
+                </span>
+                {item}
+              </RevealItem>
+            ))}
+          </RevealGroup>
         </div>
       </section>
 

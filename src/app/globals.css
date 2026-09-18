@@ -8,6 +8,7 @@
   --font-sans:
     var(--font-inter), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --font-display: var(--font-manrope), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-signature: var(--font-caveat), 'Segoe Script', 'Bradley Hand', cursive;
 
   /* Markenfarben */
   --color-brand-50: #fff5ee;
