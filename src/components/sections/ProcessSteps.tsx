@@ -33,7 +33,7 @@ export function ProcessSteps({
   id = 'process',
   className,
   eyebrow = 'So läuft es ab',
-  title = 'In vier Schritten zum passenden Reinigungskonzept.',
+  title = 'In vier Schritten zur Zusammenarbeit.',
 }: ProcessStepsProps) {
   return (
     <section

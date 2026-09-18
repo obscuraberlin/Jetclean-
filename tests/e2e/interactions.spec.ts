@@ -38,7 +38,7 @@ test.describe('Interaktionen', () => {
   });
 
   test('Vorher/Nachher-Regler reagiert auf Tastatur und Pointer', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/referenzen');
     const slider = page.getByTestId('before-after');
     await slider.scrollIntoViewIfNeeded();
     const handle = page.getByTestId('before-after-handle');

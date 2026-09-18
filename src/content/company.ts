@@ -31,8 +31,14 @@ export const company = {
     note: string;
   } | null,
 
-  /** Jahre am Markt – wird in Hero, Vorteilen und Über-uns verwendet. */
-  yearsOfExperience: 23,
+  /** USER_PROVIDED – Gründungsjahr laut Unternehmen: Familienunternehmen seit 2004 in Berlin. */
+  foundedYear: 2004,
+  /** Jahre am Markt – aus dem Gründungsjahr berechnet; wird in Hero, Vorteilen und Über-uns verwendet. */
+  yearsOfExperience: new Date().getFullYear() - 2004,
+  /** USER_PROVIDED – Zahl der Mitarbeitenden laut Unternehmen (bitte aktuell halten). */
+  employees: 120,
+  /** USER_PROVIDED – Standorte in Deutschland laut Unternehmen. Namen der Standorte fehlen noch. */
+  locations: 3,
 
   contact: {
     /** PUBLIC_SOURCE – Festnetznummer laut Branchenverzeichnissen (Anzeigeformat). */

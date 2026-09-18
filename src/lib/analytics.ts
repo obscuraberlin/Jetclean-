@@ -11,7 +11,9 @@ export type AnalyticsEvent =
   | 'quote_failed'
   | 'callback_submitted'
   | 'phone_click'
-  | 'cta_click';
+  | 'cta_click'
+  | 'assistant_opened'
+  | 'assistant_question';
 
 type EventProps = Record<string, string | number | boolean>;
 

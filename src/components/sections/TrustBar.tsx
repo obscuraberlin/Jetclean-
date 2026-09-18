@@ -1,7 +1,7 @@
 'use client';
 
 import { useReducedMotion } from '@/hooks/useReducedMotion';
-import { Award, MapPin, Star, UserRound } from 'lucide-react';
+import { Award, Building2, Star, Users } from 'lucide-react';
 import { motion } from 'motion/react';
 import Image from 'next/image';
 import { AnimatedNumber } from '@/components/ui/AnimatedNumber';
@@ -18,94 +18,114 @@ export function TrustBar() {
   const reviews = siteConfig.reviews;
   const reduce = useReducedMotion();
   const facts = [
-    { icon: Award, value: company.yearsOfExperience, suffix: '+', label: 'Jahre Erfahrung' },
-    { icon: MapPin, value: 12, suffix: '', label: 'Berliner Bezirke' },
-    { icon: UserRound, value: 1, suffix: '', label: 'fester Ansprechpartner' },
+    {
+      icon: Award,
+      value: company.yearsOfExperience,
+      suffix: '+',
+      label: 'Jahre Erfahrung',
+      text: `Familienunternehmen seit ${company.foundedYear} in Berlin.`,
+    },
+    {
+      icon: Users,
+      value: company.employees,
+      suffix: '',
+      label: 'Mitarbeitende',
+      text: 'Feste, eingearbeitete Teams für Ihr Objekt.',
+    },
+    {
+      icon: Building2,
+      value: company.locations,
+      suffix: '',
+      label: 'Standorte in Deutschland',
+      text: 'Zentrale in Berlin-Neukölln.',
+    },
   ];
   const rating = reviews?.rating ?? 0;
 
   return (
-    <section className="relative overflow-hidden section-y-sm" aria-label="Bewertungen und Fakten">
+    <section className="relative overflow-hidden section-y" aria-label="Bewertungen und Fakten">
       <div aria-hidden="true" className="blob -top-24 right-[10%] size-[22rem] bg-brand-500/15" />
       <div className="relative container-site">
         <Reveal>
-          <div className="mx-auto flex max-w-5xl flex-col items-center gap-8 rounded-3xl border border-line bg-white/85 px-6 py-8 text-center shadow-card backdrop-blur sm:px-10 lg:flex-row lg:justify-between lg:gap-10 lg:text-left">
-            {reviews ? (
-              <a
-                href={reviews.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col items-center gap-4 sm:flex-row sm:gap-5"
-                aria-label={`${rating.toFixed(1).replace('.', ',')} von 5 Sternen bei ${reviews.count} Bewertungen auf ${reviews.platform} ${reviews.platformsNote}`}
-              >
-                {/* Gesichter + Plus */}
-                <motion.ul
-                  className="flex items-center"
-                  variants={reduce ? undefined : staggerContainer(0.12)}
-                  initial={reduce ? false : 'hidden'}
-                  whileInView="visible"
-                  viewport={viewportOnce}
-                  aria-hidden="true"
-                >
-                  {reviews.avatars.map((avatar, index) => (
-                    <motion.li
-                      key={avatar.src}
-                      variants={reduce ? undefined : popIn}
-                      className="relative -ml-3 size-12 overflow-hidden rounded-full border-[3px] border-white bg-surface shadow-soft first:ml-0 sm:size-14"
-                      style={{ zIndex: 10 - index }}
-                    >
-                      <Image src={avatar.src} alt="" fill sizes="56px" className="object-cover" />
-                    </motion.li>
-                  ))}
-                  <motion.li
-                    variants={reduce ? undefined : popIn}
-                    className="relative -ml-3 flex size-12 items-center justify-center rounded-full border-[3px] border-white bg-brand-500 font-display text-sm font-bold text-white shadow-brand sm:size-14"
-                  >
-                    +{Math.max(0, reviews.count - reviews.avatars.length)}
-                  </motion.li>
-                </motion.ul>
-                <div className="text-center sm:text-left">
-                  <div className="flex items-center justify-center gap-2 sm:justify-start">
-                    <span className="font-display text-3xl font-extrabold tracking-tight text-navy-950">
-                      {rating.toFixed(1).replace('.', ',')}
-                    </span>
-                    <Stars rating={rating} reduce={reduce} />
-                  </div>
-                  <p className="mt-1 text-sm text-muted transition-colors group-hover:text-navy-900">
-                    <span className="font-semibold text-navy-900">{reviews.count} Bewertungen</span>{' '}
-                    auf {reviews.platform} {reviews.platformsNote}
-                  </p>
-                </div>
-              </a>
-            ) : null}
-
-            <div className="hidden h-14 w-px bg-line lg:block" aria-hidden="true" />
-
-            <motion.ul
-              className="grid w-full grid-cols-3 gap-4 lg:w-auto lg:gap-8"
-              variants={reduce ? undefined : staggerContainer(0.1)}
-              initial={reduce ? false : 'hidden'}
-              whileInView="visible"
-              viewport={viewportOnce}
+          {reviews ? (
+            <a
+              href={reviews.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mx-auto flex max-w-2xl flex-col items-center gap-4 rounded-3xl border border-line bg-white/85 px-6 py-6 text-center shadow-card backdrop-blur sm:flex-row sm:justify-center sm:gap-6 sm:px-10"
+              aria-label={`${rating.toFixed(1).replace('.', ',')} von 5 Sternen bei ${reviews.count} Bewertungen auf ${reviews.platform} ${reviews.platformsNote}`}
             >
-              {facts.map((fact) => (
+              {/* Gesichter + Plus */}
+              <motion.ul
+                className="flex items-center"
+                variants={reduce ? undefined : staggerContainer(0.12)}
+                initial={reduce ? false : 'hidden'}
+                whileInView="visible"
+                viewport={viewportOnce}
+                aria-hidden="true"
+              >
+                {reviews.avatars.map((avatar, index) => (
+                  <motion.li
+                    key={avatar.src}
+                    variants={reduce ? undefined : popIn}
+                    className="relative -ml-3 size-12 overflow-hidden rounded-full border-[3px] border-white bg-surface shadow-soft first:ml-0 sm:size-14"
+                    style={{ zIndex: 10 - index }}
+                  >
+                    <Image src={avatar.src} alt="" fill sizes="56px" className="object-cover" />
+                  </motion.li>
+                ))}
                 <motion.li
-                  key={fact.label}
-                  variants={reduce ? undefined : fadeUp}
-                  className="flex flex-col items-center gap-1 text-center"
+                  variants={reduce ? undefined : popIn}
+                  className="relative -ml-3 flex size-12 items-center justify-center rounded-full border-[3px] border-white bg-brand-500 font-display text-sm font-bold text-white shadow-brand sm:size-14"
                 >
-                  <span className="flex size-9 items-center justify-center rounded-full bg-brand-50 text-brand-600">
-                    <fact.icon className="size-4" aria-hidden="true" />
-                  </span>
-                  <span className="font-display text-2xl font-extrabold tracking-tight text-navy-950 sm:text-3xl">
-                    <AnimatedNumber value={fact.value} suffix={fact.suffix} />
-                  </span>
-                  <span className="text-xs text-muted sm:text-sm">{fact.label}</span>
+                  +{Math.max(0, reviews.count - reviews.avatars.length)}
                 </motion.li>
-              ))}
-            </motion.ul>
-          </div>
+              </motion.ul>
+              <div className="text-center sm:text-left">
+                <div className="flex items-center justify-center gap-2 sm:justify-start">
+                  <span className="font-display text-3xl font-extrabold tracking-tight text-navy-950">
+                    {rating.toFixed(1).replace('.', ',')}
+                  </span>
+                  <Stars rating={rating} reduce={reduce} />
+                </div>
+                <p className="mt-1 text-sm text-muted transition-colors group-hover:text-navy-900">
+                  <span className="font-semibold text-navy-900">{reviews.count} Bewertungen</span>{' '}
+                  auf {reviews.platform} {reviews.platformsNote}
+                </p>
+              </div>
+            </a>
+          ) : null}
         </Reveal>
+
+        {/* Drei Fakten als Karten – angeordnet wie „Ihre Vorteile“ */}
+        <motion.ul
+          className="mt-6 grid grid-cols-3 gap-3 sm:mt-8 sm:gap-4 lg:gap-5"
+          variants={reduce ? undefined : staggerContainer(0.1)}
+          initial={reduce ? false : 'hidden'}
+          whileInView="visible"
+          viewport={viewportOnce}
+        >
+          {facts.map((fact) => (
+            <motion.li
+              key={fact.label}
+              variants={reduce ? undefined : fadeUp}
+              className="flex card-hover flex-col items-center gap-2 rounded-2xl border border-line bg-white p-4 text-center shadow-soft sm:gap-3 sm:rounded-3xl sm:p-6"
+            >
+              <span className="flex size-9 items-center justify-center rounded-lg bg-brand-50 text-brand-600 sm:size-11 sm:rounded-xl">
+                <fact.icon className="size-4 sm:size-5" aria-hidden="true" />
+              </span>
+              <span className="font-display text-2xl font-extrabold tracking-tight text-navy-950 sm:text-4xl">
+                <AnimatedNumber value={fact.value} suffix={fact.suffix} />
+              </span>
+              <span className="text-xs leading-snug font-semibold text-navy-900 sm:text-base">
+                {fact.label}
+              </span>
+              <span className="hidden text-sm leading-relaxed text-muted sm:block">
+                {fact.text}
+              </span>
+            </motion.li>
+          ))}
+        </motion.ul>
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 export const dynamic = 'force-static';
 
 import type { MetadataRoute } from 'next';
+import { posts } from '@/content/posts';
 import { services } from '@/content/services';
 import { absoluteUrl } from '@/lib/seo';
 
@@ -19,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/nachhaltigkeit', priority: 0.5, changeFrequency: 'yearly' },
     { path: '/karriere', priority: 0.5, changeFrequency: 'monthly' },
     { path: '/kontakt', priority: 0.8, changeFrequency: 'yearly' },
+    { path: '/ratgeber', priority: 0.5, changeFrequency: 'monthly' },
     { path: '/impressum', priority: 0.1, changeFrequency: 'yearly' },
     { path: '/datenschutz', priority: 0.1, changeFrequency: 'yearly' },
     { path: '/agb', priority: 0.1, changeFrequency: 'yearly' },
@@ -36,6 +38,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: 'monthly' as const,
       priority: 0.85,
+    })),
+    ...posts.map((post) => ({
+      url: absoluteUrl(`/ratgeber/${post.slug}`),
+      lastModified: new Date(`${post.date}T00:00:00`),
+      changeFrequency: 'yearly' as const,
+      priority: 0.4,
     })),
   ];
 }

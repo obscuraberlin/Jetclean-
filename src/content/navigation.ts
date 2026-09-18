@@ -19,6 +19,7 @@ export const footerNavigation = {
     { label: 'Branchen', href: '/branchen' },
     { label: 'Referenzen', href: '/referenzen' },
     { label: 'Nachhaltigkeit', href: '/nachhaltigkeit' },
+    { label: 'Ratgeber', href: '/ratgeber' },
     { label: 'Karriere', href: '/karriere' },
     { label: 'Kontakt', href: '/kontakt' },
   ],
