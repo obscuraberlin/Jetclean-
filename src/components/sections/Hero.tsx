@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { HeroQuoteCard } from '@/components/quote/HeroQuoteCard';
 import { QuoteButton } from '@/components/quote/QuoteButton';
 import { Button, buttonIconClass } from '@/components/ui/Button';
+import { Avatar } from '@/components/ui/Avatar';
 import { Parallax } from '@/components/ui/Parallax';
 import { HeroBackdrop } from './hero/HeroBackdrop';
 import { HeroMobileSlider } from './hero/HeroMobileSlider';
@@ -110,13 +111,15 @@ export function Hero() {
                 <figcaption className="absolute bottom-6 -left-5 z-10 flex animate-float items-center gap-3 rounded-2xl bg-white/95 px-4 py-3 shadow-lift ring-1 ring-line backdrop-blur">
                   <span className="flex items-center" aria-hidden="true">
                     {siteConfig.reviews.avatars.slice(0, 3).map((avatar, index) => (
-                      <span
-                        key={avatar.src}
-                        className="relative -ml-2 size-8 overflow-hidden rounded-full border-2 border-white bg-surface first:ml-0"
+                      <Avatar
+                        key={avatar.name}
+                        name={avatar.name}
+                        src={avatar.src}
+                        tone={avatar.tone}
+                        className="-ml-2 size-8 border-2 border-white text-[0.625rem] first:ml-0"
+                        sizes="32px"
                         style={{ zIndex: 5 - index }}
-                      >
-                        <Image src={avatar.src} alt="" fill sizes="32px" className="object-cover" />
-                      </span>
+                      />
                     ))}
                   </span>
                   <span className="text-sm leading-tight">

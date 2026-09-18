@@ -58,9 +58,9 @@ export const siteConfig = {
     checkedAt: 'September 2026',
     /** Gesichter für die Bewertungsleiste – PLACEHOLDER bis echte Kundenfotos/Freigaben vorliegen. */
     avatars: [
-      { src: '/images/testimonials/thomas.webp', alt: 'Kunde Thomas K.' },
-      { src: '/images/testimonials/sabine.webp', alt: 'Kundin Sabine L.' },
-      { src: '/images/testimonials/markus.webp', alt: 'Kunde Markus B.' },
+      { name: 'Thomas K.', src: null, tone: 'navy' },
+      { name: 'Sabine L.', src: null, tone: 'brand' },
+      { name: 'Markus B.', src: null, tone: 'success' },
     ],
   } as {
     rating: number;
@@ -69,7 +69,8 @@ export const siteConfig = {
     platformsNote: string;
     url: string;
     checkedAt: string;
-    avatars: { src: string; alt: string }[];
+    /** PLACEHOLDER – ohne echte Kundenfotos werden Initialen gezeigt; `src` mit Foto-Pfad ergänzen. */
+    avatars: { name: string; src: string | null; tone: 'navy' | 'brand' | 'success' }[];
   } | null,
 
   /**

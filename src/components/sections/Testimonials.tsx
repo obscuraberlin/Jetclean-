@@ -1,7 +1,6 @@
 'use client';
 
 import { ArrowRight, Quote, Star } from 'lucide-react';
-import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { PlaceholderBadge } from '@/components/ui/Badge';
 import { Button, buttonIconClass } from '@/components/ui/Button';
@@ -9,7 +8,8 @@ import { RevealGroup, RevealItem } from '@/components/ui/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { siteConfig } from '@/content/site';
 import { testimonials, type Testimonial } from '@/content/testimonials';
-import { cn, initials } from '@/lib/utils';
+import { Avatar } from '@/components/ui/Avatar';
+import { cn } from '@/lib/utils';
 
 /** Desktop: drei Karten nebeneinander. Mobile: Snap-Slider mit Punkten. */
 export function Testimonials() {
@@ -91,13 +91,13 @@ export function Testimonials() {
           aria-label="Kundenstimmen"
           data-testid="testimonials"
         >
-          {testimonials.map((testimonial) => (
+          {testimonials.map((testimonial, index) => (
             <RevealItem
               key={testimonial.id}
               as="li"
               className="w-[85%] shrink-0 snap-start sm:w-[70%] md:w-auto"
             >
-              <TestimonialCard testimonial={testimonial} />
+              <TestimonialCard testimonial={testimonial} index={index} />
             </RevealItem>
           ))}
         </ul>
@@ -133,7 +133,7 @@ export function Testimonials() {
   );
 }
 
-function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
+function TestimonialCard({ testimonial, index }: { testimonial: Testimonial; index: number }) {
   return (
     <figure className="flex h-full flex-col rounded-3xl border border-line bg-white p-6 shadow-soft">
       <Quote className="size-6 text-brand-200" aria-hidden="true" />
@@ -141,22 +141,13 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
         „{testimonial.quote}“
       </blockquote>
       <figcaption className="mt-5 flex items-center gap-3">
-        {testimonial.avatar ? (
-          <Image
-            src={testimonial.avatar}
-            alt=""
-            width={44}
-            height={44}
-            className="size-11 shrink-0 rounded-full object-cover"
-          />
-        ) : (
-          <span
-            className="flex size-11 shrink-0 items-center justify-center rounded-full bg-navy-950 font-display text-sm font-bold text-white"
-            aria-hidden="true"
-          >
-            {initials(testimonial.name)}
-          </span>
-        )}
+        <Avatar
+          name={testimonial.name}
+          src={testimonial.avatar}
+          tone={(['navy', 'brand', 'success'] as const)[index % 3]}
+          className="size-11 text-sm"
+          sizes="44px"
+        />
         <span className="min-w-0">
           <span className="block text-sm font-bold text-navy-950">{testimonial.name}</span>
           <span className="block text-xs leading-snug text-muted">

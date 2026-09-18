@@ -3,8 +3,8 @@
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { Award, Building2, Star, Users } from 'lucide-react';
 import { motion } from 'motion/react';
-import Image from 'next/image';
 import { AnimatedNumber } from '@/components/ui/AnimatedNumber';
+import { Avatar } from '@/components/ui/Avatar';
 import { Reveal } from '@/components/ui/Reveal';
 import { company } from '@/content/company';
 import { siteConfig } from '@/content/site';
@@ -66,12 +66,18 @@ export function TrustBar() {
               >
                 {reviews.avatars.map((avatar, index) => (
                   <motion.li
-                    key={avatar.src}
+                    key={avatar.name}
                     variants={reduce ? undefined : popIn}
-                    className="relative -ml-3 size-12 overflow-hidden rounded-full border-[3px] border-white bg-surface shadow-soft first:ml-0 sm:size-14"
+                    className="relative -ml-3 first:ml-0"
                     style={{ zIndex: 10 - index }}
                   >
-                    <Image src={avatar.src} alt="" fill sizes="56px" className="object-cover" />
+                    <Avatar
+                      name={avatar.name}
+                      src={avatar.src}
+                      tone={avatar.tone}
+                      className="size-12 border-[3px] border-white text-sm shadow-soft sm:size-14 sm:text-base"
+                      sizes="56px"
+                    />
                   </motion.li>
                 ))}
                 <motion.li
