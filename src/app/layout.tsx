@@ -85,7 +85,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <body className="pb-mobile-cta">
         <QuoteProvider>
-          <div id="app-root" className="flex min-h-dvh flex-col">
+          <div
+            id="app-root"
+            className="relative flex min-h-dvh w-full max-w-full flex-col overflow-x-clip"
+          >
             <SkipLink />
             <ScrollProgress />
             <Header />

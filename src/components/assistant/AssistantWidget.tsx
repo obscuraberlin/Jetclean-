@@ -278,7 +278,16 @@ export function AssistantWidget() {
                 </button>
               </div>
               <p className="mt-2 text-center text-[0.6875rem] leading-snug text-muted">
-                KI-Antworten ohne Gewähr. Verbindliche Auskünfte: {company.contact.phoneDisplay}
+                KI-Antworten ohne Gewähr. Bitte keine personenbezogenen Daten eingeben – Ihre Frage
+                wird zur Beantwortung an unseren KI-Dienstleister übermittelt (
+                <Link
+                  href="/datenschutz#ki-assistent"
+                  onClick={() => setOpen(false)}
+                  className="underline underline-offset-2 hover:text-navy-900"
+                >
+                  Datenschutz
+                </Link>
+                ). Verbindliche Auskünfte: {company.contact.phoneDisplay}
               </p>
             </form>
           </motion.section>

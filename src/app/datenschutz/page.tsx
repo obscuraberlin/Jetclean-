@@ -127,9 +127,36 @@ export default function PrivacyPage() {
               >
                 policies.google.com/privacy
               </a>
-              . Links zu unseren Social-Media-Profilen (Facebook, TikTok) sind reine Verlinkungen
-              ohne Plugin; erst beim Aufruf der jeweiligen Plattform gelten deren
-              Datenschutzbestimmungen.
+              . Links zu unseren Social-Media-Profilen (Facebook, TikTok), zu unserem
+              Google-Bewertungsprofil und der WhatsApp-Button (Link auf wa.me) sind reine
+              Verlinkungen ohne Plugin; beim Aufruf der Seite werden keine Daten an diese Anbieter
+              übertragen. Erst wenn Sie einen solchen Link anklicken, gelten die
+              Datenschutzbestimmungen der jeweiligen Plattform (WhatsApp: WhatsApp Ireland Limited).
+            </p>
+            <p id="ki-assistent">
+              <strong>KI-Assistent (Chat):</strong> Über den Chat-Button können Sie Fragen zu
+              unseren Leistungen stellen. Beim Öffnen des Chats werden keine Daten übertragen. Erst
+              wenn Sie eine Frage absenden, werden der Text Ihrer Frage und der bisherige
+              Chatverlauf an unseren Server und von dort an den KI-Dienstleister Anthropic PBC (San
+              Francisco, USA) übermittelt, der die Antwort erzeugt. Ihre IP-Adresse wird dabei nicht
+              an Anthropic weitergegeben; auf unserem Server wird sie nur in gekürzter, gehashter
+              Form kurzzeitig zur Missbrauchsabwehr (Anfragelimit) verarbeitet. Es werden keine
+              Cookies gesetzt und der Chatverlauf wird nicht dauerhaft gespeichert. Bitte geben Sie
+              im Chat keine personenbezogenen Daten (Name, Adresse, Telefonnummer) ein – nutzen Sie
+              dafür das Anfrageformular. Rechtsgrundlage ist Ihre Einwilligung durch das aktive
+              Absenden der Frage (Art. 6 Abs. 1 lit. a DSGVO); die Übermittlung in die USA erfolgt
+              auf Grundlage von EU-Standardvertragsklauseln{' '}
+              <em>
+                [bzw. des EU-US Data Privacy Framework – Zertifizierung des Anbieters und
+                Auftragsverarbeitungsvertrag vor Livegang prüfen]
+              </em>
+              . Anthropic verwendet die über die Schnittstelle übermittelten Daten laut eigenen
+              Angaben nicht zum Training seiner Modelle. Weitere Informationen:{' '}
+              <a href="https://www.anthropic.com/privacy" rel="noopener noreferrer" target="_blank">
+                anthropic.com/privacy
+              </a>
+              . Ist kein KI-Dienst konfiguriert, beantwortet der Chat Fragen ausschließlich lokal
+              anhand der Website-Inhalte, ohne Datenübermittlung an Dritte.
             </p>
 
             <h2>8. Reichweitenmessung</h2>
@@ -164,6 +191,12 @@ export default function PrivacyPage() {
               </li>
               <li>
                 E-Mail-Versand der Anfragen: <em>[Resend – nur falls aktiviert]</em>
+              </li>
+              <li>
+                KI-Assistent:{' '}
+                <em>
+                  [Anthropic PBC, USA – nur falls aktiviert; AVV und Übermittlungsgrundlage prüfen]
+                </em>
               </li>
             </ul>
 
