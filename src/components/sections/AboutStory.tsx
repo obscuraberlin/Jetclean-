@@ -1,6 +1,5 @@
 import { ArrowRight, HeartHandshake, Leaf, Quote, Users } from 'lucide-react';
 import { Button, buttonIconClass } from '@/components/ui/Button';
-import { IconBox } from '@/components/ui/IconBox';
 import { Reveal, RevealGroup, RevealItem } from '@/components/ui/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { founderQuote } from '@/content/about';
@@ -26,16 +25,26 @@ const values = [
 ];
 
 /**
- * „Über uns“ auf der Startseite: Familienunternehmen seit 2004, drei Werte und der Imagefilm.
+ * „Über uns“ als eine durchgehende Fläche: weich auslaufender Hintergrund, Film mit
+ * Lichtschein, Zitat frei auf der Fläche, Werte als Zeilen – keine getrennten Kästen.
  */
 export function AboutStory() {
   return (
     <section
-      className="relative overflow-hidden bg-surface section-y"
+      className="relative overflow-hidden section-y"
       aria-labelledby="about-title"
       id="ueber-uns"
     >
-      <div aria-hidden="true" className="blob top-10 right-[-10rem] size-[26rem] bg-brand-500/10" />
+      {/* Auslaufender Hintergrund: warmes Licht oben, kühler Schimmer unten, weich in Weiß */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[radial-gradient(90%_60%_at_50%_0%,rgb(253_83_18/0.12),transparent_70%),radial-gradient(70%_50%_at_100%_70%,rgb(31_45_71/0.08),transparent_70%),linear-gradient(to_bottom,white,var(--color-surface)_45%,white)]"
+      />
+      <div
+        aria-hidden="true"
+        className="blob top-[28%] left-1/2 size-[36rem] -translate-x-1/2 bg-brand-500/15 blur-3xl"
+      />
+
       <div className="relative container-site">
         <SectionHeading
           id="about-title"
@@ -48,53 +57,69 @@ export function AboutStory() {
           }
           text={`${company.shortName} ist seit ${company.foundedYear} in Berlin zu Hause: familiengeführt, mittelständisch und mit dem Anspruch, dass sich Kunden um nichts kümmern müssen.`}
         />
-        {/* Imagefilm direkt unter dem Einleitungstext */}
-        <Reveal variant="image" className="mx-auto mt-8 max-w-3xl sm:mt-10">
-          <VideoEmbed />
+
+        {/* Film – Lichtschein statt Karte, geht weich in die Fläche über */}
+        <Reveal variant="image" className="relative mx-auto mt-8 max-w-3xl sm:mt-10">
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-8 -inset-y-6 rounded-[3rem] bg-brand-500/20 blur-3xl"
+          />
+          <VideoEmbed className="relative" />
         </Reveal>
 
-        {/* Zitat des Geschäftsführers mit Unterschrift */}
-        <Reveal className="mx-auto mt-8 max-w-3xl sm:mt-10">
-          <figure className="relative overflow-hidden rounded-3xl border border-line bg-white px-6 pt-8 pb-6 text-center shadow-card sm:px-10 sm:pt-10 sm:pb-8">
-            <Quote
+        {/* Zitat frei auf der Fläche */}
+        <Reveal className="relative mx-auto mt-12 max-w-3xl text-center sm:mt-16">
+          <Quote
+            aria-hidden="true"
+            className="mx-auto size-10 text-brand-500/40 sm:size-12"
+            strokeWidth={1.25}
+          />
+          <blockquote className="mt-4 font-display text-xl leading-snug font-bold text-navy-950 sm:text-3xl">
+            „{founderQuote.text}“ <span className="text-brand-600">{founderQuote.hashtag}</span>
+          </blockquote>
+          <div className="mt-5 flex flex-col items-center gap-1">
+            <span
+              className="font-signature text-4xl leading-none text-navy-900 sm:text-5xl"
               aria-hidden="true"
-              className="absolute top-4 left-5 size-14 text-brand-500/15 sm:size-20"
-              strokeWidth={1}
-            />
-            <blockquote className="relative font-display text-lg leading-snug font-bold text-navy-950 sm:text-2xl">
-              „{founderQuote.text}“ <span className="text-brand-600">{founderQuote.hashtag}</span>
-            </blockquote>
-            <figcaption className="relative mt-5 flex flex-col items-center gap-1">
-              <span
-                className="font-signature text-4xl leading-none text-navy-900 sm:text-5xl"
-                aria-hidden="true"
-              >
-                {founderQuote.signature}
-              </span>
-              <span className="text-sm text-muted">
-                <strong className="font-semibold text-navy-900">{founderQuote.name}</strong>,{' '}
-                {founderQuote.role} {company.shortName}
-              </span>
-            </figcaption>
-          </figure>
+            >
+              {founderQuote.signature}
+            </span>
+            <span className="text-sm text-muted">
+              <strong className="font-semibold text-navy-900">{founderQuote.name}</strong>,{' '}
+              {founderQuote.role} {company.shortName}
+            </span>
+          </div>
         </Reveal>
 
-        <RevealGroup as="ul" className="mt-8 grid gap-3 sm:mt-10 sm:grid-cols-3 sm:gap-4 lg:gap-5">
+        {/* Werte als Zeilen, keine Kästen – auf Desktop drei Spalten mit feinen Trennlinien */}
+        <div
+          aria-hidden="true"
+          className="mx-auto mt-12 h-px w-24 bg-gradient-to-r from-transparent via-brand-400 to-transparent sm:mt-16"
+        />
+        <RevealGroup
+          as="ul"
+          className="mx-auto mt-10 grid max-w-5xl gap-8 sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-navy-900/10"
+        >
           {values.map((value) => (
             <RevealItem
               key={value.title}
               as="li"
-              className="flex card-hover items-start gap-3 rounded-2xl border border-line bg-white p-4 shadow-soft sm:flex-col sm:gap-3 sm:rounded-3xl sm:p-6"
+              className="flex items-start gap-4 sm:flex-col sm:items-center sm:px-6 sm:text-center lg:px-10"
             >
-              <IconBox icon={value.icon} tone="brand" size="md" />
+              <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-white text-brand-600 shadow-soft ring-1 ring-brand-100 sm:size-14">
+                <value.icon className="size-6 sm:size-7" strokeWidth={1.75} aria-hidden="true" />
+              </span>
               <span>
-                <h3 className="text-base font-bold sm:text-lg">{value.title}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-muted">{value.text}</p>
+                <h3 className="text-base font-bold text-navy-950 sm:mt-1 sm:text-lg">
+                  {value.title}
+                </h3>
+                <p className="mt-1 text-sm leading-relaxed text-muted sm:mt-2">{value.text}</p>
               </span>
             </RevealItem>
           ))}
         </RevealGroup>
-        <div className="mt-8 flex justify-center">
+
+        <div className="mt-10 flex justify-center sm:mt-12">
           <Button href="/ueber-uns" variant="secondary">
             Mehr über uns
             <ArrowRight className={buttonIconClass} aria-hidden="true" />
