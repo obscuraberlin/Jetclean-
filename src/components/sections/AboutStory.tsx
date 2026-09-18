@@ -46,8 +46,13 @@ export function AboutStory() {
               <span className="text-accent">seit {company.foundedYear}.</span>
             </>
           }
-          text={`${company.shortName} ist seit ${company.foundedYear} in Berlin zu Hause: familiengeführt, mittelständisch und mit dem Anspruch, dass sich Kunden um nichts kümmern müssen. Was uns seit dem ersten Tag ausmacht, sind drei Dinge.`}
+          text={`${company.shortName} ist seit ${company.foundedYear} in Berlin zu Hause: familiengeführt, mittelständisch und mit dem Anspruch, dass sich Kunden um nichts kümmern müssen.`}
         />
+        {/* Imagefilm direkt unter dem Einleitungstext */}
+        <Reveal variant="image" className="mx-auto mt-8 max-w-3xl sm:mt-10">
+          <VideoEmbed />
+        </Reveal>
+
         {/* Zitat des Geschäftsführers mit Unterschrift */}
         <Reveal className="mx-auto mt-8 max-w-3xl sm:mt-10">
           <figure className="relative overflow-hidden rounded-3xl border border-line bg-white px-6 pt-8 pb-6 text-center shadow-card sm:px-10 sm:pt-10 sm:pb-8">
@@ -89,9 +94,6 @@ export function AboutStory() {
             </RevealItem>
           ))}
         </RevealGroup>
-        <Reveal variant="image" className="mx-auto mt-8 max-w-3xl sm:mt-10">
-          <VideoEmbed />
-        </Reveal>
         <div className="mt-8 flex justify-center">
           <Button href="/ueber-uns" variant="secondary">
             Mehr über uns
