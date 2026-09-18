@@ -6,6 +6,16 @@ test.describe('Interaktionen', () => {
     isMobile,
   }) => {
     await page.goto('/');
+    if (isMobile) {
+      // Mobil: kompaktes Raster statt Karussell – alle Leistungen direkt sichtbar
+      const grid = page.getByTestId('services-grid');
+      await grid.scrollIntoViewIfNeeded();
+      await expect(grid).toBeVisible();
+      await expect(grid.getByRole('link', { name: /Büroreinigung/ })).toBeVisible();
+      await expect(grid.getByRole('link', { name: /Sonderreinigung/ })).toBeVisible();
+      await expect(page.getByTestId('services-carousel')).toBeHidden();
+      return;
+    }
     const track = page.getByTestId('services-carousel');
     await track.scrollIntoViewIfNeeded();
     await expect(track).toBeVisible();

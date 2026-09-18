@@ -15,7 +15,7 @@ import { RevealGroup, RevealItem } from '@/components/ui/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { services } from '@/content/services';
 import { cn } from '@/lib/utils';
-import { ServiceCard } from './ServiceCard';
+import { ServiceCard, ServiceTile } from './ServiceCard';
 
 const AUTOPLAY_MS = 6000;
 
@@ -188,8 +188,26 @@ export function ServicesCarousel() {
         />
       </div>
 
+      {/* Mobil: kompaktes Raster statt Wisch-Karussell */}
+      <div className="container-site mt-8 md:hidden" data-testid="services-grid">
+        <RevealGroup as="ul" className="grid grid-cols-2 gap-3">
+          {services.map((service) => (
+            <RevealItem key={service.slug} as="li">
+              <ServiceTile service={service} />
+            </RevealItem>
+          ))}
+        </RevealGroup>
+        <div className="mt-6 flex justify-center">
+          <Button href="/leistungen" variant="secondary" size="md">
+            Alle Leistungen
+            <ArrowRight className={buttonIconClass} aria-hidden="true" />
+          </Button>
+        </div>
+      </div>
+
+      {/* Tablet/Desktop: Karussell */}
       <div
-        className="mt-8 sm:mt-10"
+        className="mt-8 hidden sm:mt-10 md:block"
         role="region"
         aria-roledescription="Karussell"
         aria-label="Leistungen im Überblick"
@@ -228,17 +246,6 @@ export function ServicesCarousel() {
             ))}
           </ul>
         </RevealGroup>
-      </div>
-
-      <div className="container-site mt-2 flex items-center justify-between md:hidden">
-        <Button href="/leistungen" variant="link" size="sm">
-          Alle Leistungen
-          <ArrowRight className={buttonIconClass} aria-hidden="true" />
-        </Button>
-        <div className="flex items-center gap-2">
-          <CarouselButton direction="prev" onClick={() => scrollByCards(-1)} disabled={!canPrev} />
-          <CarouselButton direction="next" onClick={() => scrollByCards(1)} disabled={!canNext} />
-        </div>
       </div>
     </section>
   );

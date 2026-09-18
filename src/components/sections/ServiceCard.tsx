@@ -51,3 +51,33 @@ export function ServiceCard({ service, className, sizes, priority }: ServiceCard
     </Link>
   );
 }
+
+/** Weiche Trennstelle vor „reinigung“, damit lange Titel in schmalen Kacheln sauber umbrechen. */
+function hyphenateTitle(title: string) {
+  return title.replace(/(\S{4,})(reinigung)$/u, '$1\u00AD$2');
+}
+
+/** Kompakte Kachel für Mobile: Icon, Titel, Teaser – ohne Foto, zwei pro Zeile. */
+export function ServiceTile({ service, className }: { service: Service; className?: string }) {
+  return (
+    <Link
+      href={`/leistungen/${service.slug}`}
+      className={cn(
+        'group flex h-full card-hover flex-col gap-2.5 rounded-2xl border border-line bg-white p-4 shadow-soft',
+        className,
+      )}
+    >
+      <IconBox icon={service.icon} tone="brand" size="sm" />
+      <span className="flex flex-1 flex-col">
+        <span className="text-[0.9375rem] leading-snug font-bold [hyphens:manual] text-navy-950">
+          {hyphenateTitle(service.title)}
+        </span>
+        <span className="mt-1 text-xs leading-snug text-muted">{service.teaser}</span>
+      </span>
+      <span className="inline-flex items-center gap-1 text-xs font-semibold text-brand-600">
+        Mehr erfahren
+        <ArrowRight className="size-3.5" aria-hidden="true" />
+      </span>
+    </Link>
+  );
+}
